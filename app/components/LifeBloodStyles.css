@@ -1,0 +1,190 @@
+/* Revolutionary Life-Blood Design System */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bloodPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 40px rgba(220, 53, 69, 0.6), 0 0 60px rgba(255, 193, 7, 0.4);
+  }
+}
+
+@keyframes lifeForce {
+  0% { 
+    filter: brightness(1) saturate(1);
+    transform: translateY(0px);
+  }
+  33% { 
+    filter: brightness(1.1) saturate(1.2);
+    transform: translateY(-2px);
+  }
+  66% { 
+    filter: brightness(1.05) saturate(1.1);
+    transform: translateY(1px);
+  }
+  100% { 
+    filter: brightness(1) saturate(1);
+    transform: translateY(0px);
+  }
+}
+
+@keyframes organicBreathing {
+  0%, 100% { 
+    border-radius: 20px;
+    transform: scale(1) rotate(0deg);
+  }
+  25% { 
+    border-radius: 30px 15px 25px 20px;
+    transform: scale(1.02) rotate(0.5deg);
+  }
+  50% { 
+    border-radius: 25px 35px 20px 30px;
+    transform: scale(1.04) rotate(0deg);
+  }
+  75% { 
+    border-radius: 15px 25px 35px 20px;
+    transform: scale(1.02) rotate(-0.5deg);
+  }
+}
+
+@keyframes neuralPulse {
+  0% { 
+    stroke-dashoffset: 1000; 
+    opacity: 0.2; 
+  }
+  50% { 
+    stroke-dashoffset: 500; 
+    opacity: 0.8; 
+  }
+  100% { 
+    stroke-dashoffset: 0; 
+    opacity: 0.2; 
+  }
+}
+
+.life-essence {
+  background: linear-gradient(45deg, 
+    rgba(220, 53, 69, 0.1) 0%,
+    rgba(255, 193, 7, 0.1) 25%,
+    rgba(40, 167, 69, 0.1) 50%,
+    rgba(0, 123, 255, 0.1) 75%,
+    rgba(220, 53, 69, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite, lifeForce 3s ease-in-out infinite;
+}
+
+.blood-connection {
+  position: relative;
+  overflow: hidden;
+}
+
+.blood-connection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(220, 53, 69, 0.3) 50%, 
+    transparent 100%
+  );
+  animation: bloodFlow 3s linear infinite;
+}
+
+.organic-card {
+  animation: organicBreathing 8s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.organic-card:hover {
+  animation-play-state: paused;
+  transform: scale(1.08) translateY(-10px);
+  box-shadow: 0 20px 60px rgba(220, 53, 69, 0.3);
+}
+
+.neural-network {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.neural-path {
+  stroke: url(#neuralGradient);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 10, 5;
+  animation: neuralPulse 4s linear infinite;
+}
+
+.life-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #dc3545, transparent);
+  border-radius: 50%;
+  animation: particleFloat 6s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { 
+    transform: translateY(100vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+  10% { 
+    transform: translateY(90vh) translateX(10px) scale(1);
+    opacity: 1;
+  }
+  90% { 
+    transform: translateY(10vh) translateX(-10px) scale(1);
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(0vh) translateX(0px) scale(0);
+    opacity: 0;
+  }
+}
+
+.consciousness-glow {
+  position: relative;
+}
+
+.consciousness-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(220, 53, 69, 0.1) 0%,
+    rgba(255, 193, 7, 0.05) 30%,
+    transparent 70%
+  );
+  animation: consciousnessExpand 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes consciousnessExpand {
+  0%, 100% { 
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.7;
+  }
+}
