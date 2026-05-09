@@ -27,7 +27,7 @@ export default function Donate() {
       
       if (response.ok) {
         const data = await response.json()
-        alert(`${donationType === 'monthly' ? 'Monthly' : 'One-time'} donation of ₹${amount} initiated successfully!`)
+        alert(`${donationType === 'monthly' ? 'Monthly' : 'One-time'} donation of ₹${amount} initiated successfully.`)
       } else {
         throw new Error('Donation failed')
       }
@@ -154,7 +154,7 @@ export default function Donate() {
           
           <div style={{ background: 'rgba(40, 167, 69, 0.1)', padding: '1rem', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(40, 167, 69, 0.3)', backdropFilter: 'blur(10px)' }}>
             <p style={{ fontSize: '1rem', color: '#28a745', fontWeight: '600', marginBottom: '0.5rem' }}>
-              📜 80G Tax Benefit: Save up to 30% on taxes!
+              📜 80G Tax Benefit: Save up to 30% on taxes.
             </p>
             <p style={{ fontSize: '0.9rem', color: 'white', opacity: 0.9 }}>
               Donate ₹25,000 → Save ₹7,500 in taxes → Effective cost only ₹17,500

@@ -45,12 +45,12 @@ export default function AboutPage() {
           <section style={{ marginBottom: '4rem' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#28a745', fontWeight: '800' }}>Mission & Vision</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
-              <div style={{ padding: '2rem', background: 'rgba(255, 193, 7, 0.1)', borderRadius: '12px', border: '1px solid rgba(255, 193, 7, 0.3)', backdropFilter: 'blur(10px)' }}>
-                <h3 style={{ color: '#ffc107', marginBottom: '1rem' }}>🤝 Our Mission</h3>
+              <div style={{ padding: '2rem', background: 'rgba(255, 193, 7, 0.1)', borderRadius: '12px', border: '0.5px solid rgba(255, 193, 7, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <h3 style={{ color: '#ffc107', marginBottom: '1rem' }}>Our Mission</h3>
                 <p style={{ color: 'white', opacity: 0.9 }}>Provide comprehensive Thalassemia care through medical excellence, patient advocacy, and community support.</p>
               </div>
-              <div style={{ padding: '2rem', background: 'rgba(40, 167, 69, 0.1)', borderRadius: '12px', border: '1px solid rgba(40, 167, 69, 0.3)', backdropFilter: 'blur(10px)' }}>
-                <h3 style={{ color: '#28a745', marginBottom: '1rem' }}>⭐ Our Vision</h3>
+              <div style={{ padding: '2rem', background: 'rgba(40, 167, 69, 0.1)', borderRadius: '12px', border: '0.5px solid rgba(40, 167, 69, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <h3 style={{ color: '#28a745', marginBottom: '1rem' }}>Our Vision</h3>
                 <p style={{ color: 'white', opacity: 0.9 }}>A future where effective Thalassemia management is accessible to all, with breakthrough treatments leading to cures.</p>
               </div>
             </div>

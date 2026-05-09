@@ -24,8 +24,20 @@ export default function DaycareCenter() {
       <div className="container">
         <LifeBloodAnimations.LifePulseWave>
           <div style={{ textAlign: 'center', marginBottom: '4rem', color: 'white' }}>
-            <div style={{ display: 'inline-block', padding: '8px 20px', background: 'rgba(40, 167, 69, 0.2)', borderRadius: '25px', marginBottom: '2rem', fontSize: '0.9rem', fontWeight: '600' }}>
-              🏥 Our Flagship Facility
+            <div
+              className="section-label"
+              style={{
+                display: 'inline-block',
+                padding: '8px 20px',
+                background: 'rgba(40, 167, 69, 0.2)',
+                borderRadius: '25px',
+                marginBottom: '2rem',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                border: '0.5px solid rgba(40, 167, 69, 0.35)'
+              }}
+            >
+              Our Flagship Facility
             </div>
             <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#28a745', fontWeight: '800', lineHeight: '1.2' }}>
               More Than a Transfusion.<br />A Circle of Complete Care.
@@ -50,7 +62,7 @@ export default function DaycareCenter() {
             color: 'white',
             fontSize: '1.2rem',
             textAlign: 'center',
-            boxShadow: '0 20px 40px rgba(40, 167, 69, 0.3)',
+            border: '0.5px solid rgba(40, 167, 69, 0.35)',
             position: 'relative',
             overflow: 'hidden'
           }}>
@@ -76,10 +88,10 @@ export default function DaycareCenter() {
           }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '60px' }}>
               <div style={{ background: 'transparent', padding: '2rem', textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
-                <h4 style={{ color: '#dc3545', fontSize: '1.3rem', fontWeight: '700' }}>❌ Standard Government Hospital</h4>
+                <h4 style={{ color: '#dc3545', fontSize: '1.3rem', fontWeight: '700' }}>Standard Government Hospital</h4>
               </div>
               <div style={{ background: 'transparent', padding: '2rem', textAlign: 'center' }}>
-                <h4 style={{ color: '#28a745', fontSize: '1.3rem', fontWeight: '700' }}>✅ TWA Medical Center</h4>
+                <h4 style={{ color: '#28a745', fontSize: '1.3rem', fontWeight: '700' }}>TWA Medical Center</h4>
               </div>
               
               <div style={{ padding: '2rem', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'white', background: 'transparent' }}>
@@ -159,9 +171,10 @@ export default function DaycareCenter() {
                 borderRadius: '50px',
                 border: 'none',
                 boxShadow: '0 8px 25px rgba(255,255,255,0.3)',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                minHeight: '48px'
               }}>
-                🏥 Fund TWA Excellence
+                Fund TWA Excellence
               </button>
             </LifeBloodAnimations.OrganicMorph>
         </div>

@@ -48,9 +48,10 @@ export default function Header() {
             <LanguageSwitcher />
             <Link href="/donate" style={{ 
               background: 'linear-gradient(45deg, #dc3545, #c82333)',
-              color: 'white', padding: '10px 25px', fontSize: '14px', fontWeight: '700',
-              textDecoration: 'none', borderRadius: '25px'
-            }}>💝 Donate</Link>
+              color: 'white', padding: '12px 24px', fontSize: '14px', fontWeight: '700',
+              textDecoration: 'none', borderRadius: '25px', minHeight: '48px',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
+            }}>Donate</Link>
           </nav>
         )}
         
@@ -85,8 +86,9 @@ export default function Header() {
           <Link href="/get-involved" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 0' }}>Get Involved</Link>
           <Link href="/donate" onClick={() => setIsMenuOpen(false)} style={{ 
             background: 'linear-gradient(45deg, #dc3545, #c82333)', color: 'white', padding: '12px 20px',
-            textDecoration: 'none', borderRadius: '25px', textAlign: 'center', marginTop: '1rem'
-          }}>💝 Donate Now</Link>
+            textDecoration: 'none', borderRadius: '25px', textAlign: 'center', marginTop: '1rem',
+            minHeight: '48px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
+          }}>Donate Now</Link>
         </div>
       )}
     </header>

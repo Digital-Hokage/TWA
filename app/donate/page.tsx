@@ -40,7 +40,7 @@ export default function DonatePage() {
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#c62828', fontWeight: '800' }}>
-              🏥 Sustaining Excellence: Monthly Operations Fund
+              Sustaining Excellence: Monthly Operations Fund
             </h2>
             <p style={{ fontSize: '1.3rem', lineHeight: '1.6', marginBottom: '2rem', color: 'white', opacity: 0.9 }}>
               Our permanent healthcare facility requires consistent funding to maintain world-class medical standards, 
@@ -66,11 +66,11 @@ export default function DonatePage() {
               <div style={{ background: 'rgba(255,255,255,0.1)', height: '20px', borderRadius: '10px', marginTop: '2rem', overflow: 'hidden' }}>
                 <div style={{ background: 'linear-gradient(90deg, #28a745, #4caf50)', height: '100%', width: '75%', borderRadius: '10px' }}></div>
               </div>
-              <p style={{ marginTop: '1rem', fontSize: '1.1rem', color: '#28a745', fontWeight: '600' }}>75% Complete - Almost There!</p>
+              <p style={{ marginTop: '1rem', fontSize: '1.1rem', color: '#28a745', fontWeight: '600' }}>75% Complete - Almost There</p>
             </div>
             
             <button className="btn btn-primary animate-pulse" style={{ fontSize: '1.2rem', padding: '18px 40px', background: '#c62828', border: 'none', borderRadius: '50px' }}>
-              🏥 Support Our Medical Excellence
+              Support Our Medical Excellence
             </button>
           </div>
         </div>

@@ -34,40 +34,28 @@ export default function Footer() {
                 fontWeight: '900'
               }}>TWA Chennai</h3>
               <p style={{ lineHeight: '1.6', opacity: 0.9, marginBottom: '1rem' }}>
-                Where every heartbeat matters, every drop of blood carries hope, 
-                and every life is a universe worth saving.
+                Where every heartbeat matters,
+                and no patient faces thalassemia alone.
               </p>
               <div style={{ display: 'flex', gap: '1rem' }}>
-                <div style={{ 
-                  width: '40px', 
-                  height: '40px', 
-                  background: 'rgba(220, 53, 69, 0.2)', 
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(220, 53, 69, 0.3)'
-                }}>📧</div>
-                <div style={{ 
-                  width: '40px', 
-                  height: '40px', 
-                  background: 'rgba(255, 193, 7, 0.2)', 
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255, 193, 7, 0.3)'
-                }}>📱</div>
-                <div style={{ 
-                  width: '40px', 
-                  height: '40px', 
-                  background: 'rgba(40, 167, 69, 0.2)', 
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(40, 167, 69, 0.3)'
-                }}>🌐</div>
+                <div className="icon-container" style={{ color: '#dc3545' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
+                    <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="icon-container" style={{ color: '#ffc107' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 4h3l2 4-2 2a14 14 0 0 0 6 6l2-2 4 2v3c0 1-1 2-2 2A16 16 0 0 1 4 6c0-1 1-2 2-2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="icon-container" style={{ color: '#28a745' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+                    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" />
+                    <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </div>
               </div>
           </div>
           
@@ -78,8 +66,9 @@ export default function Footer() {
                 {[
                   { name: 'About Us', href: '/about' },
                   { name: 'What is Thalassemia?', href: '/what-is-thalassemia' },
-                  { name: 'Get Involved', href: '/get-involved' },
-                  { name: 'Donate Now', href: '/donate' }
+                  { name: 'Volunteer', href: '/get-involved' },
+                  { name: 'Donate', href: '/donate' },
+                  { name: 'Contact', href: '/#contact' }
                 ].map((link, index) => (
                   <li key={index} style={{ marginBottom: '0.5rem' }}>
                     <a href={link.href} style={{ 
@@ -97,35 +86,27 @@ export default function Footer() {
           <LifeBloodAnimations.HeartbeatPulse>
             <div>
               <h4 style={{ color: '#28a745', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: '700' }}>Our Impact</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span style={{ color: '#dc3545', fontSize: '1.2rem' }}>❤️</span>
-                  <span style={{ opacity: 0.9 }}>2,500+ Lives Transformed</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span style={{ color: '#ffc107', fontSize: '1.2rem' }}>🩸</span>
-                  <span style={{ opacity: 0.9 }}>15,000+ Safe Transfusions</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span style={{ color: '#28a745', fontSize: '1.2rem' }}>⭐</span>
-                  <span style={{ opacity: 0.9 }}>15+ Years Excellence</span>
-                </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                <span style={{ opacity: 0.9 }}>· 2,500+ Patients Supported</span>
+                <span style={{ opacity: 0.9 }}>· 15,000+ Transfusions Facilitated</span>
+                <span style={{ opacity: 0.9 }}>· 15+ Years of Service</span>
+                <span style={{ opacity: 0.9 }}>· 80G Tax Exemption Available</span>
               </div>
             </div>
           </LifeBloodAnimations.HeartbeatPulse>
           
           <LifeBloodAnimations.LifePulseWave>
-            <div>
-              <h4 style={{ color: '#dc3545', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: '700' }}>Emergency Contact</h4>
+            <div id="contact">
+              <h4 style={{ color: '#dc3545', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: '700' }}>Contact</h4>
               <div style={{ 
-                background: 'rgba(220, 53, 69, 0.1)', 
+                background: 'rgba(220, 53, 69, 0.08)', 
                 padding: '1rem', 
                 borderRadius: '10px',
-                border: '1px solid rgba(220, 53, 69, 0.3)'
+                border: '0.5px solid rgba(220, 53, 69, 0.3)'
               }}>
-                <p style={{ marginBottom: '0.5rem', fontWeight: '600' }}>24/7 Helpline</p>
-                <p style={{ fontSize: '1.2rem', color: '#dc3545', fontWeight: '700' }}>+91 XXXX XXXXXX</p>
-                <p style={{ fontSize: '0.9rem', opacity: 0.8, marginTop: '0.5rem' }}>For medical emergencies</p>
+                <p style={{ marginBottom: '0.5rem', fontWeight: '600' }}>24/7 Helpline: +91 XXXX XXXXXX</p>
+                <p style={{ marginBottom: '0.5rem' }}>Email: info@twachennai.org</p>
+                <p style={{ fontSize: '0.9rem', opacity: 0.85 }}>Address: [Your address], Chennai</p>
               </div>
             </div>
           </LifeBloodAnimations.LifePulseWave>
@@ -134,33 +115,15 @@ export default function Footer() {
         <div style={{ 
           borderTop: '1px solid rgba(255,255,255,0.1)', 
           paddingTop: '2rem', 
-          textAlign: 'center',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem'
+          textAlign: 'center'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <p style={{ opacity: 0.7, margin: 0 }}>
-              © 2024 TWA Chennai. All rights reserved. | Reg. No: XXXXX
-            </p>
-            <p style={{ opacity: 0.6, margin: 0, fontSize: '0.8rem' }}>
-              Developed by <a href="https://www.instagram.com/digital_hokage/" target="_blank" rel="noopener noreferrer" style={{ color: '#dc3545', textDecoration: 'none' }}>Digital Hokage</a>
-            </p>
-          </div>
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <span style={{ opacity: 0.7 }}>80G Tax Exemption Available</span>
-            <div style={{ 
-              background: 'rgba(40, 167, 69, 0.2)', 
-              padding: '0.5rem 1rem', 
-              borderRadius: '15px',
-              border: '1px solid rgba(40, 167, 69, 0.3)',
-              fontSize: '0.9rem'
-            }}>
-              ✓ Verified NGO
-            </div>
-          </div>
+          <p style={{ opacity: 0.7, margin: 0 }}>
+            © 2025 Thalassemia Welfare Association, Chennai.
+            Registered NGO · 80G Certified · All rights reserved.
+          </p>
+          <p style={{ opacity: 0.6, margin: '0.5rem 0 0', fontSize: '0.8rem' }}>
+            Designed & developed by <a href="https://www.instagram.com/digital_hokage/" target="_blank" rel="noopener noreferrer" style={{ color: '#dc3545', textDecoration: 'none' }}>Digital Hokage</a>
+          </p>
         </div>
       </div>
     </footer>
