@@ -1,43 +1,34 @@
-export interface Donation {
-  id: string
+export interface DonationRequest {
   amount: number
-  currency: string
-  donorName?: string
-  donorEmail?: string
-  donorPhone?: string
-  type: 'monthly' | 'onetime'
-  status: 'pending' | 'completed' | 'failed'
-  createdAt: Date
+  frequency: 'one-time' | 'monthly'
+  name: string
+  email: string
+  phone?: string
+  pan?: string
+  message?: string
 }
 
-export interface Volunteer {
-  id: string
+export interface VolunteerApplication {
   name: string
   email: string
   phone: string
-  skills: string[]
-  availability: string
+  role: 'blood-drive' | 'patient-companion' | 'office-digital' | 'fundraising' | 'medical' | 'other'
+  availability: 'weekdays' | 'weekends' | 'evenings' | 'flexible'
+  city?: string
   message?: string
-  status: 'pending' | 'approved' | 'rejected'
-  createdAt: Date
 }
 
-export interface Patient {
-  id: string
+export interface ContactMessage {
   name: string
-  age: number
-  bloodGroup: string
-  lastTransfusion?: Date
-  nextTransfusion?: Date
-  status: 'active' | 'inactive'
+  email: string
+  phone?: string
+  subject: string
+  message: string
 }
 
-export interface Event {
-  id: string
-  title: string
-  description: string
-  date: Date
-  location: string
-  type: 'blood_drive' | 'awareness_camp' | 'fundraiser'
-  status: 'upcoming' | 'ongoing' | 'completed'
+export interface ApiResult<T = unknown> {
+  ok: boolean
+  data?: T
+  error?: string
+  fields?: Record<string, string>
 }

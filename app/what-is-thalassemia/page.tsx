@@ -1,156 +1,150 @@
-'use client'
+import type { Metadata } from 'next'
+import Link from 'next/link'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { LifeBloodAnimations } from '../components/LifeBloodDesign'
+import CTABand from '../components/CTABand'
+import Icon from '../components/Icon'
 
-export default function WhatIsThalassemiaPage() {
+export const metadata: Metadata = {
+  title: 'What is thalassemia?',
+  description:
+    'Thalassemia is an inherited blood disorder in which the body produces less haemoglobin than it needs. Learn about types, treatment, carrier screening and care for thalassemia in India.',
+}
+
+export default function ThalassemiaPage() {
   return (
-    <main>
+    <>
       <Header />
-      <section style={{ 
-        padding: '6rem 0 4rem', 
-        background: 'linear-gradient(135deg, #0a0a0a 0%, #001a1a 50%, #0a0a0a 100%)',
-        minHeight: '100vh',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="life-particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-        
-        <div className="container">
-          <LifeBloodAnimations.HeartbeatPulse>
-            <h1 style={{ fontSize: '3.5rem', textAlign: 'center', marginBottom: '3rem', color: '#dc3545', fontWeight: '800' }}>
-              Understanding Thalassemia
-            </h1>
-          </LifeBloodAnimations.HeartbeatPulse>
+      <main id="main">
+        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
+          <div className="container-narrow">
+            <span className="eyebrow">Patient & family resources</span>
+            <h1>Understanding thalassemia</h1>
+            <p className="lead" style={{ marginTop: '0.75rem' }}>
+              An overview of what thalassemia is, how it is treated, and why carrier
+              screening before marriage is the single most powerful step a family can take.
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)', marginTop: '0.75rem' }}>
+              This page is for general information. It is not a substitute for advice from a
+              qualified medical professional. Always consult your treating physician.
+            </p>
+          </div>
+        </section>
 
-          <LifeBloodAnimations.LifePulseWave>
-            <section style={{ marginBottom: '4rem' }}>
-              <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#ffc107', fontWeight: '800' }}>What is Thalassemia?</h2>
-              <div style={{ 
-                background: 'rgba(255,255,255,0.05)', 
-                padding: '2rem', 
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.1)'
-              }}>
-                <p style={{ fontSize: '1.3rem', lineHeight: '1.6', marginBottom: '1.5rem', color: 'white' }}>
-                  Thalassemia is an inherited blood disorder affecting the body's ability to produce hemoglobin, 
-                  the protein in red blood cells that carries oxygen. This leads to anemia, 
-                  leaving patients feeling fatigued and weak.
-                </p>
-                <p style={{ fontSize: '1.3rem', lineHeight: '1.6', color: 'white' }}>
-                  For those with severe forms, regular blood transfusions are essential for survival.
-                </p>
-              </div>
-            </section>
-          </LifeBloodAnimations.LifePulseWave>
+        {/* What */}
+        <section className="section">
+          <div className="container-narrow">
+            <h2>What is thalassemia?</h2>
+            <p style={{ marginTop: '0.75rem' }}>
+              Thalassemia is an inherited blood disorder in which the body produces less of the
+              haemoglobin protein than it needs. Haemoglobin is the molecule inside red blood cells
+              that carries oxygen from the lungs to every organ in the body.
+            </p>
+            <p style={{ marginTop: '0.75rem' }}>
+              When haemoglobin production is reduced, red blood cells do not work properly and
+              are destroyed faster than the body can replace them. The result is chronic anaemia,
+              which in its severe form can cause fatigue, growth problems and organ damage if
+              untreated.
+            </p>
+          </div>
+        </section>
 
-          <section style={{ marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#28a745', fontWeight: '800' }}>Types of Thalassemia</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
-              <LifeBloodAnimations.OrganicMorph>
-                <div style={{ 
-                  padding: '2rem', 
-                  background: 'rgba(220, 53, 69, 0.1)', 
-                  borderRadius: '12px', 
-                  border: '1px solid rgba(220, 53, 69, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <LifeBloodAnimations.BloodVessel />
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
-                  <h3 style={{ color: '#dc3545', marginBottom: '1rem' }}>Thalassemia Major</h3>
-                  <p style={{ color: 'white', opacity: 0.9 }}>The most severe form requiring lifelong, regular blood transfusions and intensive medical care.</p>
-                </div>
-              </LifeBloodAnimations.OrganicMorph>
-              
-              <LifeBloodAnimations.OrganicMorph>
-                <div style={{ 
-                  padding: '2rem', 
-                  background: 'rgba(40, 167, 69, 0.1)', 
-                  borderRadius: '12px', 
-                  border: '1px solid rgba(40, 167, 69, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <LifeBloodAnimations.BloodVessel />
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🧬</div>
-                  <h3 style={{ color: '#28a745', marginBottom: '1rem' }}>Thalassemia Minor</h3>
-                  <p style={{ color: 'white', opacity: 0.9 }}>Carriers typically experience no health problems but can pass the trait to their children.</p>
-                </div>
-              </LifeBloodAnimations.OrganicMorph>
+        {/* Types */}
+        <section className="section bg-subtle">
+          <div className="container">
+            <div className="section-header">
+              <h2>Types of thalassemia</h2>
+              <p className="lead" style={{ margin: '0.75rem auto 0' }}>
+                Doctors classify thalassemia by which haemoglobin chain is affected (alpha or beta)
+                and by how severely.
+              </p>
             </div>
-          </section>
-
-          <section style={{ marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#dc3545', fontWeight: '800' }}>Treatment</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-              <LifeBloodAnimations.LifeEnergyGlow>
-                <div style={{ 
-                  padding: '2rem', 
-                  background: 'rgba(220, 53, 69, 0.1)', 
-                  borderRadius: '12px', 
-                  border: '1px solid rgba(220, 53, 69, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  textAlign: 'center'
-                }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🩸</div>
-                  <h3 style={{ color: '#dc3545', marginBottom: '1rem' }}>Blood Transfusions</h3>
-                  <p style={{ color: 'white', opacity: 0.9 }}>Regular transfusions provide healthy red blood cells essential for survival.</p>
-                </div>
-              </LifeBloodAnimations.LifeEnergyGlow>
-              
-              <LifeBloodAnimations.HeartbeatPulse>
-                <div style={{ 
-                  padding: '2rem', 
-                  background: 'rgba(255, 193, 7, 0.1)', 
-                  borderRadius: '12px', 
-                  border: '1px solid rgba(255, 193, 7, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  textAlign: 'center'
-                }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💊</div>
-                  <h3 style={{ color: '#ffc107', marginBottom: '1rem' }}>Iron Chelation</h3>
-                  <p style={{ color: 'white', opacity: 0.9 }}>Medicines to remove excess iron from frequent transfusions.</p>
-                </div>
-              </LifeBloodAnimations.HeartbeatPulse>
+            <div className="grid grid-3">
+              <article className="card">
+                <span className="badge badge-accent">Carrier</span>
+                <h3 className="card-title" style={{ marginTop: '0.85rem' }}>Thalassemia minor (trait)</h3>
+                <p className="card-body">
+                  A person carries one altered gene. They are usually healthy and may not need
+                  treatment, but they can pass the gene to children. Screening before marriage is
+                  important.
+                </p>
+              </article>
+              <article className="card">
+                <span className="badge">Moderate</span>
+                <h3 className="card-title" style={{ marginTop: '0.85rem' }}>Thalassemia intermedia</h3>
+                <p className="card-body">
+                  Anaemia is more pronounced. Some patients need occasional transfusions and
+                  medicines; many can lead largely normal lives with regular monitoring.
+                </p>
+              </article>
+              <article className="card">
+                <span className="badge badge-primary">Severe</span>
+                <h3 className="card-title" style={{ marginTop: '0.85rem' }}>Thalassemia major</h3>
+                <p className="card-body">
+                  Both parents have passed on the altered gene. Patients need lifelong, regular
+                  blood transfusions — typically every 2–4 weeks — and daily medicines to manage
+                  iron overload.
+                </p>
+              </article>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <LifeBloodAnimations.LifePulseWave>
-            <section>
-              <h2 style={{ fontSize: '3rem', marginBottom: '2rem', color: '#007bff', fontWeight: '800' }}>Prevention</h2>
-              <div style={{ 
-                background: 'rgba(0, 123, 255, 0.1)', 
-                padding: '2rem', 
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(0, 123, 255, 0.3)'
-              }}>
-                <p style={{ fontSize: '1.3rem', lineHeight: '1.6', marginBottom: '1.5rem', color: 'white' }}>
-                  A simple blood test (HbA2 testing) can determine if someone is a Thalassemia carrier.
-                </p>
-                <p style={{ fontSize: '1.3rem', lineHeight: '1.6', color: 'white' }}>
-                  We advocate for carrier screening before marriage to help couples make informed decisions.
-                </p>
-              </div>
-            </section>
-          </LifeBloodAnimations.LifePulseWave>
-        </div>
-      </section>
+        {/* Treatment */}
+        <section className="section">
+          <div className="container-narrow">
+            <h2>How is thalassemia treated?</h2>
+            <ul className="list-checks" style={{ marginTop: '1rem' }}>
+              <li><strong>Regular transfusions:</strong> Safe, screened, leukocyte-filtered blood every few weeks to keep haemoglobin in a safe range.</li>
+              <li><strong>Iron chelation:</strong> Iron from repeated transfusions builds up in organs. Medicines like deferasirox or deferiprone remove the excess and protect the heart, liver and endocrine glands.</li>
+              <li><strong>Regular monitoring:</strong> Quarterly ferritin and liver, kidney and cardiac assessments are essential.</li>
+              <li><strong>Curative options:</strong> Bone-marrow transplantation can be curative for some patients with a matched donor, but it is not appropriate for every family.</li>
+              <li><strong>Comprehensive care:</strong> Vaccinations, nutrition, schooling continuity and psychosocial support are part of good care, not extras.</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Prevention */}
+        <section className="section bg-subtle">
+          <div className="container-narrow">
+            <h2>Carrier screening: the single most important step</h2>
+            <p style={{ marginTop: '0.75rem' }}>
+              Thalassemia major occurs only when both parents are carriers of the altered gene.
+              A simple, inexpensive blood test (HbA2 quantification with a complete blood count)
+              can tell a young adult whether they are a carrier. When two carriers know in
+              advance, they can make informed choices and access prenatal counselling.
+            </p>
+            <p style={{ marginTop: '0.75rem' }}>
+              India has one of the largest populations of thalassemia carriers in the world, with
+              an estimated overall carrier rate of 3–4% (higher in some communities). Screening
+              before marriage — or at the latest, before planning a family — is the most powerful
+              public-health step a community can take.
+            </p>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="section">
+          <div className="container-narrow text-center">
+            <h2>Looking for help, or want to help?</h2>
+            <p className="lead" style={{ margin: '0.75rem auto 1.5rem' }}>
+              If you are a patient or a family member, our helpline is open six days a week.
+              If you would like to support our work, every contribution counts.
+            </p>
+            <div className="flex" style={{ justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn btn-outline btn-lg">
+                Talk to us
+              </Link>
+              <Link href="/donate" className="btn btn-primary btn-lg">
+                Donate <Icon name="arrow-right" size={16} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <CTABand />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

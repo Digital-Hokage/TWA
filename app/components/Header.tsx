@@ -1,96 +1,158 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import LanguageSwitcher from './LanguageSwitcher'
+import { usePathname } from 'next/navigation'
+import { NAV, ORG } from '../lib/constants'
+import Icon from './Icon'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    const onScroll = () => setScrolled(window.scrollY > 4)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
-    <header style={{ 
-      background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(26, 0, 0, 0.95))', 
-      boxShadow: '0 2px 20px rgba(220, 53, 69, 0.3)', 
-      padding: '1rem 0', 
-      position: 'sticky', 
-      top: 0, 
-      zIndex: 1000,
-      backdropFilter: 'blur(15px)',
-      borderBottom: '1px solid rgba(220, 53, 69, 0.2)'
-    }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <h1 style={{ 
-            background: 'linear-gradient(45deg, #dc3545, #ffc107)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontSize: '2rem', 
-            fontWeight: '900'
-          }}>TWA</h1>
-          <span style={{ color: 'white', fontSize: '0.9rem', marginLeft: '0.5rem', opacity: 0.8 }}>Chennai</span>
-        </div>
+  useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
-        {!isMobile && (
-          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link href="/" style={{ textDecoration: 'none', color: 'white', fontWeight: '600', opacity: 0.8 }}>Home</Link>
-            <Link href="/about" style={{ textDecoration: 'none', color: 'white', fontWeight: '600', opacity: 0.8 }}>About</Link>
-            <Link href="/what-is-thalassemia" style={{ textDecoration: 'none', color: 'white', fontWeight: '600', opacity: 0.8 }}>Thalassemia</Link>
-            <Link href="/get-involved" style={{ textDecoration: 'none', color: 'white', fontWeight: '600', opacity: 0.8 }}>Get Involved</Link>
-            <LanguageSwitcher />
-            <Link href="/donate" style={{ 
-              background: 'linear-gradient(45deg, #dc3545, #c82333)',
-              color: 'white', padding: '12px 24px', fontSize: '14px', fontWeight: '700',
-              textDecoration: 'none', borderRadius: '25px', minHeight: '48px',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
-            }}>Donate</Link>
-          </nav>
-        )}
-        
-        {isMobile && (
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+  return (
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        background: 'rgba(255,255,255,0.92)',
+        backdropFilter: 'saturate(180%) blur(10px)',
+        WebkitBackdropFilter: 'saturate(180%) blur(10px)',
+        borderBottom: '1px solid var(--color-border)',
+        boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
+        transition: 'box-shadow .2s ease',
+      }}
+    >
+      <div className="container flex-between" style={{ padding: '0.85rem 1.5rem' }}>
+        {/* Logo */}
+        <Link href="/" aria-label={`${ORG.name} – Home`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
+          <span
+            aria-hidden="true"
             style={{
-              background: 'none',
-              border: 'none',
-              color: 'white',
-              fontSize: '1.5rem',
-              cursor: 'pointer'
+              width: 36, height: 36, borderRadius: 8,
+              background: 'var(--color-primary)',
+              color: '#fff',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.02em',
             }}
           >
-            {isMenuOpen ? '✕' : '☰'}
-          </button>
-        )}
+            TWA
+          </span>
+          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+            <span style={{ fontWeight: 700, color: 'var(--color-text)', fontSize: '0.98rem' }}>Thalassemia Welfare Association</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--color-text-subtle)', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              Chennai · Est. {ORG.foundedYear}
+            </span>
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav aria-label="Primary" className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          {NAV.map((item) => {
+            const active = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                style={{
+                  padding: '0.55rem 0.9rem',
+                  borderRadius: 'var(--radius)',
+                  fontWeight: 500,
+                  fontSize: '0.92rem',
+                  color: active ? 'var(--color-primary)' : 'var(--color-text)',
+                  textDecoration: 'none',
+                  background: active ? 'var(--color-primary-soft)' : 'transparent',
+                }}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
+          <Link href="/donate" className="btn btn-primary btn-sm" style={{ marginLeft: '0.5rem' }}>
+            Donate
+          </Link>
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          className="mobile-toggle"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((v) => !v)}
+          style={{
+            background: 'transparent', border: 0, cursor: 'pointer',
+            padding: '0.5rem', color: 'var(--color-text)',
+            display: 'none',
+          }}
+        >
+          <Icon name={open ? 'x' : 'menu'} size={24} />
+        </button>
       </div>
-      
-      {isMenuOpen && isMobile && (
-        <div style={{
-          background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(26, 0, 0, 0.98))',
-          backdropFilter: 'blur(15px)',
-          padding: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem'
-        }}>
-          <Link href="/" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 0' }}>Home</Link>
-          <Link href="/about" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 0' }}>About Us</Link>
-          <Link href="/what-is-thalassemia" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 0' }}>What is Thalassemia?</Link>
-          <Link href="/get-involved" onClick={() => setIsMenuOpen(false)} style={{ color: 'white', textDecoration: 'none', padding: '0.5rem 0' }}>Get Involved</Link>
-          <Link href="/donate" onClick={() => setIsMenuOpen(false)} style={{ 
-            background: 'linear-gradient(45deg, #dc3545, #c82333)', color: 'white', padding: '12px 20px',
-            textDecoration: 'none', borderRadius: '25px', textAlign: 'center', marginTop: '1rem',
-            minHeight: '48px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
-          }}>Donate Now</Link>
-        </div>
-      )}
+
+      {/* Mobile nav */}
+      <div
+        id="mobile-nav"
+        className="mobile-nav"
+        hidden={!open}
+        style={{
+          display: open ? 'block' : 'none',
+          borderTop: '1px solid var(--color-border)',
+          background: '#fff',
+        }}
+      >
+        <nav aria-label="Mobile" style={{ padding: '0.5rem 1rem 1rem' }}>
+          {NAV.map((item) => {
+            const active = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                style={{
+                  display: 'block',
+                  padding: '0.85rem 0.75rem',
+                  borderRadius: 'var(--radius)',
+                  fontWeight: 500,
+                  fontSize: '1rem',
+                  color: active ? 'var(--color-primary)' : 'var(--color-text)',
+                  textDecoration: 'none',
+                  background: active ? 'var(--color-primary-soft)' : 'transparent',
+                }}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
+          <Link href="/donate" className="btn btn-primary btn-block" style={{ marginTop: '0.5rem' }}>
+            Donate
+          </Link>
+        </nav>
+      </div>
+
+      <style jsx>{`
+        @media (max-width: 920px) {
+          :global(.desktop-nav) { display: none !important; }
+          .mobile-toggle { display: inline-flex !important; }
+        }
+      `}</style>
     </header>
   )
 }
