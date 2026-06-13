@@ -51,6 +51,10 @@ export default function CostBreakdown() {
                 </div>
               </li>
             </ul>
+            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginTop: '1rem' }}>
+              Comprehensive care including BMT, chelation, diagnostics, and transfusions for our
+              patients is covered under the government insurance scheme through years of advocacy by TWA.
+            </p>
           </div>
 
           <aside className="card" style={{ background: '#fff' }}>

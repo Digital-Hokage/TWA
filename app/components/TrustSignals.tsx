@@ -11,6 +11,8 @@ const SIGNALS: Signal[] = [
     desc: 'Independent statutory audit every financial year. Reports published on our Transparency page.' },
   { title: 'Patient-first governance', icon: 'users',
     desc: 'Board includes parents of patients, treating physicians and independent professionals. No staff member sits on the board.' },
+  { title: 'Government Medal of Honour', icon: 'award',
+    desc: 'TWA received the Medal of Honour from the Government of Tamil Nadu in recognition of two decades of service to thalassemia patients.' },
 ]
 
 export default function TrustSignals() {

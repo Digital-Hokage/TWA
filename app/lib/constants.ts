@@ -6,8 +6,8 @@
 export const ORG = {
   name: 'Thalassemia Welfare Association',
   shortName: 'TWA Chennai',
-  tagline: 'Hope, care and lifelong support for thalassemia patients in Tamil Nadu.',
-  foundedYear: 2009,
+  tagline: 'Two decades of care. Zero cost to patients. Because no family should lose a child to a treatable condition.',
+  foundedYear: 2006,
   city: 'Chennai',
   state: 'Tamil Nadu',
   country: 'India',
@@ -46,10 +46,12 @@ export const SOCIAL = {
 
 export const NAV = [
   { label: 'About', href: '/about' },
+  { label: 'Our Story', href: '/our-story' },
   { label: 'Thalassemia', href: '/what-is-thalassemia' },
   { label: 'Programs', href: '/programs' },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'Transparency', href: '/transparency' },
+  { label: 'Media', href: '/media' },
   { label: 'Contact', href: '/contact' },
 ] as const
 

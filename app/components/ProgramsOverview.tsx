@@ -11,19 +11,19 @@ type Program = {
 const PROGRAMS: Program[] = [
   {
     title: 'Safe Blood Transfusions',
-    desc: 'We coordinate with partner hospitals and blood banks to ensure regular, screened, leukocyte-filtered transfusions every 2–4 weeks for the patients in our care.',
+    desc: 'We coordinate with partner hospitals and blood banks to ensure regular, screened, leukocyte-filtered transfusions every 2–4 weeks for the patients in our care. Using leucodepletion filters and 4th generation ELISA kits. Febrile reaction rates kept below 1%. A pioneering use of scalp vein sets protects veins in long-term patients.',
     icon: 'droplet',
     href: '/programs#blood',
   },
   {
     title: 'Free Medicines & Iron Chelation',
-    desc: 'Iron chelators like deferasirox are essential to prevent iron overload but cost ₹2,000–₹4,000 a month. We provide them free to families who cannot afford the lifelong expense.',
+    desc: 'Iron chelators like deferasirox are essential to prevent iron overload but cost ₹2,000–₹4,000 a month. We provide them free to families who cannot afford the lifelong expense. Chelation therapy is fully covered under the government insurance scheme. Our team monitors each patient\u2019s ferritin, liver, and cardiac iron quarterly.',
     icon: 'pill',
     href: '/programs#medicines',
   },
   {
     title: 'Diagnostics & Monitoring',
-    desc: 'Quarterly ferritin, liver, kidney and cardiac monitoring at our partner laboratories — at no cost to patient families.',
+    desc: 'Quarterly ferritin, liver, kidney and cardiac monitoring at our partner laboratories — at no cost to patient families. Includes Hepatitis C screening and antiviral treatment where needed. All patients receive Vitamin D supplementation every 6 months to address bone disease.',
     icon: 'flask',
     href: '/programs#diagnostics',
   },
@@ -35,13 +35,13 @@ const PROGRAMS: Program[] = [
   },
   {
     title: 'Awareness & Carrier Screening',
-    desc: 'Camps in colleges, workplaces and communities educate young adults about carrier screening — the single most effective step to prevent the next generation of patients.',
+    desc: 'We run carrier-screening drives in colleges, workplaces and community events. We have represented thalassemia awareness at all regional obstetric meetings and conferences across Tamil Nadu. Our campaigns have reached the high-prevalence district of Sitteri, Dharmapuri.',
     icon: 'users',
     href: '/programs#awareness',
   },
   {
     title: 'Family Counselling',
-    desc: 'A diagnosis changes a family. We support parents with guidance on care planning, school continuity and access to government schemes.',
+    desc: 'A diagnosis changes a family. We support parents with guidance on care planning, school continuity and access to government schemes. We provide extended family counselling to prevent new affected births in existing families. We have assisted 9 successful deliveries within our own thalassemia patient cohort.',
     icon: 'heart',
     href: '/programs#counselling',
   },

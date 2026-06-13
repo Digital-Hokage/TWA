@@ -16,6 +16,7 @@ export type IconName =
   | 'facebook' | 'instagram' | 'twitter' | 'youtube' | 'linkedin'
   | 'building' | 'file-text' | 'award' | 'calendar'
   | 'pill' | 'flask' | 'bus' | 'rupee' | 'globe' | 'info'
+  | 'dna' | 'activity' | 'microscope' | 'zap' | 'book-open' | 'newspaper'
 
 const PATHS: Record<IconName, React.ReactNode> = {
   heart: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />,
@@ -49,7 +50,13 @@ const PATHS: Record<IconName, React.ReactNode> = {
   bus: <><rect x="3" y="6" width="18" height="13" rx="2" /><line x1="3" y1="13" x2="21" y2="13" /><circle cx="7.5" cy="17.5" r="1.5" /><circle cx="16.5" cy="17.5" r="1.5" /></>,
   rupee: <><path d="M6 3h12" /><path d="M6 8h12" /><path d="M6 13l9 8" /><path d="M6 13c5 0 7-2 7-5" /></>,
   globe: <><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></>,
-  info: <><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></>,
+  info:        <><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></>,
+  dna:         <><path d="M9 3c0 4.5 6 4 6 9s-6 4.5-6 9" /><path d="M15 3c0 4.5-6 4-6 9s6 4.5 6 9" /><line x1="9.5" y1="6.5" x2="14.5" y2="6.5" /><line x1="8.5" y1="11.5" x2="15.5" y2="11.5" /><line x1="9.5" y1="17.5" x2="14.5" y2="17.5" /></>,
+  activity:    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />,
+  microscope:  <><path d="M6 18h8" /><path d="M3 22h18" /><path d="M14 22a7 7 0 1 0 0-14h-1" /><path d="M9 9h1" /><rect x="8" y="2" width="6" height="10" rx="2" /></>,
+  zap:         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
+  'book-open': <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>,
+  newspaper:   <><path d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="12" y2="17" /></>,
 }
 
 export default function Icon({ name, size = 20, strokeWidth = 1.8, className, ...rest }: IconProps) {

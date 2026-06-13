@@ -39,7 +39,9 @@ export default function GetInvolvedPage() {
             <h1>Your time is as valuable as your blood.</h1>
             <p className="lead" style={{ marginTop: '0.75rem' }}>
               Whether you have an hour a week, a weekend a month, or a professional skill we
-              urgently need — there is a role for you at TWA Chennai.
+              urgently need — there is a role for you at TWA Chennai. Our three dedicated
+              volunteers and three staff members cannot do this alone. Your time, your blood,
+              and your voice are urgently needed.
             </p>
           </div>
         </section>
@@ -64,13 +66,32 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
+        <section className="section">
+          <div className="container-narrow">
+            <h2>Thank You to Our Blood Donors</h2>
+            <p style={{ marginTop: '0.75rem' }}>
+              This centre exists because of people who gave blood, again and again, with no
+              expectation of return. Our patients — especially children — depend on voluntary,
+              non-remunerated blood donation for life. We thank every individual, college,
+              company, and community group that has ever organised or participated in a blood
+              donation camp for TWA.
+            </p>
+            <p style={{ marginTop: '0.75rem' }}>
+              If your organisation would like to host a dedicated blood drive for thalassemia
+              patients, please contact us — we will provide full logistical support.
+            </p>
+          </div>
+        </section>
+
         <section id="apply" className="section bg-subtle">
           <div className="container">
             <VolunteerForm />
           </div>
         </section>
 
-        <BloodDonorCTA />
+        <BloodDonorCTA
+          extraNote="Every unit of blood donated at a TWA camp goes directly to a patient in our care. Over two decades, voluntary blood donors have been the single most important reason our patients are alive today. We remain deeply grateful to every donor who has ever shown up — and we welcome you to join the TWA donor family."
+        />
       </main>
       <Footer />
     </>

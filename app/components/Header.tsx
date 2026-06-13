@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { NAV, ORG } from '../lib/constants'
+import { NAV } from '../lib/constants'
 import Icon from './Icon'
+import Logo from './Logo'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -40,25 +41,8 @@ export default function Header() {
     >
       <div className="container flex-between" style={{ padding: '0.85rem 1.5rem' }}>
         {/* Logo */}
-        <Link href="/" aria-label={`${ORG.name} – Home`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
-          <span
-            aria-hidden="true"
-            style={{
-              width: 36, height: 36, borderRadius: 8,
-              background: 'var(--color-primary)',
-              color: '#fff',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.02em',
-            }}
-          >
-            TWA
-          </span>
-          <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-            <span style={{ fontWeight: 700, color: 'var(--color-text)', fontSize: '0.98rem' }}>Thalassemia Welfare Association</span>
-            <span style={{ fontSize: '0.72rem', color: 'var(--color-text-subtle)', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-              Chennai · Est. {ORG.foundedYear}
-            </span>
-          </span>
+        <Link href="/" aria-label="Thalassemia Welfare Association Chennai — Home" style={{ textDecoration: 'none' }}>
+          <Logo />
         </Link>
 
         {/* Desktop nav */}
