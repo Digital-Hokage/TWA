@@ -4,6 +4,7 @@ import { ORG } from './lib/constants'
 const routes = [
   { path: '',                       priority: 1.0, changeFrequency: 'monthly' as const },
   { path: '/about',                 priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/our-story',             priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/what-is-thalassemia',   priority: 0.8, changeFrequency: 'yearly'  as const },
   { path: '/programs',              priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/get-involved',          priority: 0.8, changeFrequency: 'monthly' as const },

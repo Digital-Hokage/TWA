@@ -9,7 +9,7 @@ import { ORG } from '../lib/constants'
 export const metadata: Metadata = {
   title: 'About us',
   description:
-    'Founded in 2009, the Thalassemia Welfare Association supports thalassemia patients in Chennai and across Tamil Nadu with lifelong care, medicines and safe blood.',
+    'Founded in 2006, the Thalassemia Welfare Association supports thalassemia patients in Chennai and across Tamil Nadu with lifelong care, medicines and safe blood.',
 }
 
 const VALUES: { title: string; desc: string; icon: IconName }[] = [
@@ -20,7 +20,7 @@ const VALUES: { title: string; desc: string; icon: IconName }[] = [
     desc: 'Audited accounts, published expense ratios and a public list of our registrations. Trust is earned with evidence.',
     icon: 'file-text' },
   { title: 'Medically led',
-    desc: 'Treatment protocols and partnerships are reviewed by paediatric haematologists. We follow guidelines, not trends.',
+    desc: 'Treatment protocols are reviewed by paediatric haematologists. We hold MoUs with Apollo Hospitals for bone marrow transplantation and Mediscan Systems for prenatal diagnosis. We follow evidence-based guidelines, not trends.',
     icon: 'stethoscope' },
   { title: 'Community powered',
     desc: 'Donors, volunteers, blood donors and parent groups are partners — not audiences. We grow only because they choose to stay.',
@@ -39,7 +39,7 @@ export default function AboutPage() {
             <h1>{ORG.name}</h1>
             <p className="lead" style={{ marginTop: '0.75rem' }}>
               Since {ORG.foundedYear}, we have walked alongside families navigating thalassemia in
-              Tamil Nadu — one transfusion, one prescription, one school year at a time.
+              Tamil Nadu — one transfusion, one bone marrow transplant, one school year at a time.
             </p>
           </div>
         </section>
@@ -74,18 +74,23 @@ export default function AboutPage() {
             <span className="eyebrow eyebrow--accent">Our story</span>
             <h2>How a small parents&apos; group became a statewide support network.</h2>
             <p style={{ marginTop: '1rem' }}>
-              TWA Chennai began in {ORG.foundedYear} when a small group of parents whose children
-              were living with thalassemia major realised the same thing at the same time:
-              treatment was available, but the cost, logistics and emotional load were quietly
-              breaking families. A few of those parents started coordinating blood donors, pooling
-              prescriptions, and making hospital trips together.
+              TWA Chennai began in 2006 when a small group of patient families, volunteers, and
+              physicians came together at Voluntary Health Services (VHS) Hospital, Chennai. In the
+              words of our Honorary President, Dr. Revathi Raj: &lsquo;Home is a place where hearts
+              are woven together, and no family member gets left behind or forgotten.&rsquo;
             </p>
             <p style={{ marginTop: '1rem' }}>
-              That informal mutual aid is still the heart of our work. What changed is the scale —
-              today, we coordinate with hospitals and blood banks across the city, run carrier
-              screening camps, and partner with physicians who guide our protocols. The promise to
-              families has not changed: while a patient is in our care, treatment will not stop
-              for want of money.
+              What started with four patients on regular transfusion in 2006 has grown to 199
+              patients in 2026, over 300 bone marrow transplants performed free of cost, and a
+              statewide network of care that extends to Coimbatore and Nellore.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              This is our story — told fully and honestly, with all the setbacks and the triumphs.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              <Link href="/our-story" className="text-primary" style={{ textDecoration: 'underline', fontWeight: 600 }}>
+                Read the full story in Dr. Revathi Raj&apos;s own words →
+              </Link>
             </p>
           </div>
         </section>
@@ -118,7 +123,16 @@ export default function AboutPage() {
               TWA Chennai is governed by a board of trustees that includes parents of patients,
               treating physicians and independent professionals. No member of paid staff serves
               on the board. A full list of trustees, their roles and conflict-of-interest
-              declarations is available in our annual report.
+              declarations is available in our annual report. Dr. Revathi Raj serves as Honorary
+              President of TWA and has guided the centre&apos;s clinical and advocacy work since
+              its founding. The board also includes treating physicians, parent representatives,
+              and independent professionals.
+            </p>
+            <h3 style={{ marginTop: '2rem' }}>Government Recognition</h3>
+            <p style={{ marginTop: '0.75rem' }}>
+              TWA&apos;s work has been acknowledged by the Government of Tamil Nadu with a Medal of
+              Honour — a recognition of two decades of service to thalassemia patients and their
+              families across the state.
             </p>
             <div className="mt-6">
               <Link href="/transparency" className="btn btn-outline">

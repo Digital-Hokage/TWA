@@ -321,6 +321,8 @@ p  { color: var(--color-text-muted); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+  /* ensure scroll-reveal elements are always visible for reduced-motion users */
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
 
 /* Utility */
@@ -344,6 +346,133 @@ p  { color: var(--color-text-muted); }
 .divider { height: 1px; background: var(--color-border); margin: 2rem 0; border: 0; }
 
 :target { scroll-margin-top: 88px; }
+
+/* ── Hero 2-column layout ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 3rem;
+  align-items: center;
+}
+.hero-image-sub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.hero-mini-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Our Story 2-column layout ── */
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ── Partners grid ── */
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Media Coverage grid ── */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-image-col { display: none; }
+  .story-grid { grid-template-columns: 1fr; }
+  .partner-grid { grid-template-columns: repeat(2, 1fr); }
+  .media-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .partner-grid { grid-template-columns: 1fr; }
+  .hero-image-sub { grid-template-columns: 1fr; }
+  .hero-mini-stats { gap: 1.25rem; }
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up    { transform: translateY(28px); }
+.reveal-left  { transform: translateX(-28px); }
+.reveal-right { transform: translateX(28px); }
+.reveal-fade  { transform: none; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ── Thalassemia page specific ─────────────────────────────────────────────── */
+.thal-quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.thal-quick-nav a {
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.thal-quick-nav a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  text-decoration: none;
+}
+.severity-bar {
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  margin: 0.85rem 0 0.5rem;
+  overflow: hidden;
+}
+.severity-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+.treatment-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.treatment-step:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-strong);
+}
+.punnett-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+@media (max-width: 640px) {
+  .punnett-grid { grid-template-columns: 1fr; }
+}
 
 @media print {
   header, footer, .no-print { display: none !important; }

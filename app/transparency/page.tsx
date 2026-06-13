@@ -41,6 +41,12 @@ export default function TransparencyPage() {
           <div className="container-narrow">
             <h2>Registrations</h2>
             <p className="mt-3">
+              TWA was founded in 2006 as an informal parent-volunteer group at VHS Hospital,
+              Chennai, and formally registered as a non-profit society under the Tamil Nadu
+              Societies Registration Act. Over two decades, our work has been recognised with a
+              Medal of Honour from the Government of Tamil Nadu.
+            </p>
+            <p className="mt-3">
               TWA Chennai is registered under applicable Indian laws governing non-profit
               organisations. The following identifiers can be verified with the relevant
               authorities.

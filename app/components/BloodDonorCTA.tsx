@@ -14,7 +14,7 @@ const ITEMS: Item[] = [
     desc: 'A single unit of whole blood can be separated into red cells, plasma and platelets, helping multiple patients.' },
 ]
 
-export default function BloodDonorCTA() {
+export default function BloodDonorCTA({ extraNote }: { extraNote?: string }) {
   return (
     <section className="section bg-dark" id="blood" aria-labelledby="donor-heading">
       <div className="container">
@@ -50,6 +50,18 @@ export default function BloodDonorCTA() {
             </div>
           ))}
         </div>
+
+        <p style={{ color: 'rgba(255,255,255,0.78)', maxWidth: '70ch', margin: '2rem auto 0', textAlign: 'center' }}>
+          Blood donors are the foundation of everything we do. Without consistent, voluntary donors,
+          there is no alternative for our patients. We remain deeply grateful to every individual who
+          has donated blood at our camps over the past two decades.
+        </p>
+
+        {extraNote && (
+          <p style={{ color: 'rgba(255,255,255,0.78)', maxWidth: '70ch', margin: '1.25rem auto 0', textAlign: 'center' }}>
+            {extraNote}
+          </p>
+        )}
 
         <div className="flex" style={{ justifyContent: 'center', gap: '0.75rem', marginTop: '2.25rem', flexWrap: 'wrap' }}>
           <Link href="/get-involved#blood-drive" className="btn btn-light btn-lg">

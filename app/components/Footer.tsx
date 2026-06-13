@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ORG, CONTACT, SOCIAL, REGISTRATION, NAV } from '../lib/constants'
 import Icon, { type IconName } from './Icon'
+import Logo from './Logo'
 
 const socialLinks: { name: string; href: string; icon: IconName }[] = [
   { name: 'Facebook', href: SOCIAL.facebook, icon: 'facebook' },
@@ -19,14 +20,15 @@ export default function Footer() {
         <div className="grid grid-4" style={{ gap: '2rem' }}>
           {/* Brand */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-              <span style={{
-                width: 36, height: 36, borderRadius: 8,
-                background: 'var(--color-primary)', color: '#fff',
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                fontWeight: 800, fontSize: '0.95rem',
-              }}>TWA</span>
-              <span style={{ color: '#fff', fontWeight: 700 }}>{ORG.shortName}</span>
+            {/* CSS variable override so Logo text reads as white on dark bg */}
+            <div
+              style={{
+                marginBottom: '1rem',
+                '--color-text': '#fff',
+                '--color-text-subtle': 'rgba(226,232,240,0.55)',
+              } as React.CSSProperties}
+            >
+              <Logo />
             </div>
             <p style={{ fontSize: '0.92rem', color: 'rgba(226,232,240,0.8)', lineHeight: 1.6 }}>
               {ORG.tagline}
