@@ -30,7 +30,7 @@ export default function Hero() {
 
           {/* ── Left: copy ── */}
           <div>
-            <span className="badge badge-primary" style={{ marginBottom: '1.5rem' }}>
+            <span className="badge badge-primary" style={{ marginBottom: '1.5rem', maxWidth: '100%' }}>
               <Icon name="droplet" size={13} />
               VHS Hospital, Taramani, Chennai · Est. 2006
             </span>

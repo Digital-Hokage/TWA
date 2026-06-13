@@ -82,7 +82,7 @@ export default function OurStory() {
             <Link
               href="/our-story"
               className="btn btn-outline"
-              style={{ marginTop: '2rem', display: 'inline-flex' }}
+              style={{ marginTop: '2rem', display: 'inline-flex', whiteSpace: 'normal', textAlign: 'center' }}
             >
               Read the full story in Dr. Revathi Raj&apos;s own words →
             </Link>

@@ -179,7 +179,7 @@ export default function ThalassemiaPage() {
         {/* ── Section I: What is Thalassemia ── */}
         <section id="what" className="section" aria-labelledby="what-heading" style={{ scrollMarginTop: '80px' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.25fr) minmax(0,1fr)', gap: '3.5rem', alignItems: 'center' }}>
+            <div className="stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.25fr) minmax(0,1fr)', gap: '3.5rem', alignItems: 'center' }}>
 
               {/* text */}
               <div>
@@ -292,6 +292,7 @@ export default function ThalassemiaPage() {
             </ScrollReveal>
 
             <div
+              className="stack-mobile"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(0,1fr) minmax(0,1.4fr)',
@@ -561,7 +562,6 @@ export default function ThalassemiaPage() {
                             background: 'var(--color-accent-soft)',
                             padding: '0.15rem 0.55rem',
                             borderRadius: 'var(--radius-full)',
-                            whiteSpace: 'nowrap',
                           }}
                         >
                           {s.note}
@@ -602,6 +602,7 @@ export default function ThalassemiaPage() {
         >
           <div className="container">
             <div
+              className="stack-mobile"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(0,1.1fr) minmax(0,0.9fr)',
