@@ -24,28 +24,37 @@ export default function VolunteerForm() {
     name: '', email: '', phone: '', city: '',
     role: '', availability: '', message: '',
   })
-  const [submitting, setSubmitting] = useState(false)
-  const [result, setResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [submitted, setSubmitted] = useState(false)
 
-  async function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitting(true)
-    setResult(null)
-    try {
-      const res = await fetch('/api/volunteers', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-      const json = await res.json()
-      if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed.')
-      setResult({ type: 'success', text: 'Thank you. A member of our team will reach out within two working days.' })
-      setData({ name: '', email: '', phone: '', city: '', role: '', availability: '', message: '' })
-    } catch (err) {
-      setResult({ type: 'error', text: err instanceof Error ? err.message : 'Submission failed. Please try again.' })
-    } finally {
-      setSubmitting(false)
-    }
+    const roleLabel  = ROLES.find((r) => r.value === data.role)?.label  ?? data.role
+    const availLabel = AVAILABILITY.find((a) => a.value === data.availability)?.label ?? data.availability
+
+    const body = [
+      'VOLUNTEER APPLICATION',
+      '=====================',
+      `Full Name:    ${data.name}`,
+      `Email:        ${data.email}`,
+      `Phone:        ${data.phone}`,
+      `City:         ${data.city || 'Not provided'}`,
+      '',
+      `Role:         ${roleLabel}`,
+      `Availability: ${availLabel}`,
+      '',
+      'Additional information:',
+      data.message || 'None provided',
+      '',
+      '---',
+      'Submitted via TWA Chennai website volunteer form.',
+      'Please respond within two working days.',
+    ].join('\n')
+
+    window.location.href =
+      `mailto:twachennai@gmail.com?subject=${encodeURIComponent('Volunteer Application — ' + data.name)}&body=${encodeURIComponent(body)}`
+
+    setSubmitted(true)
+    setData({ name: '', email: '', phone: '', city: '', role: '', availability: '', message: '' })
   }
 
   return (
@@ -55,7 +64,13 @@ export default function VolunteerForm() {
         Tell us a little about yourself. We&apos;ll match you with a role that fits your time and skills.
       </p>
 
-      {result && <div className={`form-message ${result.type}`} role="status">{result.text}</div>}
+      {submitted && (
+        <div className="form-message success" role="status">
+          Your email client should open with a pre-filled application — just click Send. If it
+          didn&apos;t open, email us at{' '}
+          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+        </div>
+      )}
 
       <div className="grid grid-2" style={{ gap: '0.75rem' }}>
         <div className="field">
@@ -107,9 +122,12 @@ export default function VolunteerForm() {
           placeholder="Skills, languages, prior volunteering, questions for us." />
       </div>
 
-      <button type="submit" disabled={submitting} className="btn btn-accent btn-block btn-lg">
-        {submitting ? 'Submitting…' : (<>Submit application <Icon name="arrow-right" size={16} /></>)}
+      <button type="submit" className="btn btn-accent btn-block btn-lg">
+        Submit application <Icon name="arrow-right" size={16} />
       </button>
+      <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.6rem', textAlign: 'center' }}>
+        Clicking Submit opens your email app with a pre-filled application to twachennai@gmail.com.
+      </p>
     </form>
   )
 }

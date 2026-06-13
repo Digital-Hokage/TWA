@@ -95,7 +95,7 @@ export default function OurStory() {
               label="Dr. Revathi Raj, Founder & President of TWA Chennai — portrait or candid photo at the VHS Taramani centre"
             />
 
-            {/* Medal of Honour callout */}
+            {/* Government scheme recognition callout */}
             <div
               style={{
                 background: 'var(--color-accent-soft)',
@@ -111,19 +111,19 @@ export default function OurStory() {
                   color: 'var(--color-accent-dark)', marginBottom: '0.4rem',
                 }}
               >
-                Government Recognition
+                Government Inclusion
               </p>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>
-                TWA received the <strong style={{ color: 'var(--color-accent-dark)' }}>Medal of Honour</strong> from
-                the Government of Tamil Nadu in recognition of two decades of service to
-                thalassemia patients across the state.
+                Through persistent advocacy, <strong style={{ color: 'var(--color-accent-dark)' }}>thalassemia comprehensive care</strong> — including
+                diagnosis, transfusion, chelation, and curative BMT — is now fully covered under
+                the Tamil Nadu Chief Minister&apos;s Comprehensive Health Insurance Scheme, at zero cost to patients.
               </p>
             </div>
 
-            {/* Photo of award ceremony placeholder */}
+            {/* Community event / camp photo */}
             <ImagePlaceholder
               aspectRatio="16/9"
-              label="Award ceremony photo — TWA receiving the Government of Tamil Nadu Medal of Honour"
+              label="Photo of a TWA community event, awareness camp, or patient gathering at VHS Taramani — e.g. World Thalassemia Day programme, blood donation drive, or Camp Rainbow session"
             />
           </div>
 

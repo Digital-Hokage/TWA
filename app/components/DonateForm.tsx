@@ -13,8 +13,7 @@ export default function DonateForm() {
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [amount, setAmount] = useState<number>(8500)
   const [donor, setDonor] = useState({ name: '', email: '', phone: '', pan: '', message: '' })
-  const [submitting, setSubmitting] = useState(false)
-  const [result, setResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [submitted, setSubmitted] = useState(false)
 
   const impact = useMemo(() => {
     if (amount >= 102000) return 'Funds one patient for a full year.'
@@ -25,43 +24,48 @@ export default function DonateForm() {
     return ''
   }, [amount])
 
-  async function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitting(true)
-    setResult(null)
-    try {
-      const res = await fetch('/api/donations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount, frequency, ...donor }),
-      })
-      const json = await res.json()
-      if (!res.ok || !json.ok) throw new Error(json.error || 'Could not process donation right now.')
-      setResult({
-        type: 'success',
-        text: 'Thank you. We have recorded your pledge and emailed you next steps to complete payment securely.',
-      })
-      setDonor({ name: '', email: '', phone: '', pan: '', message: '' })
-    } catch (err) {
-      setResult({
-        type: 'error',
-        text: err instanceof Error ? err.message : 'Something went wrong. Please try again or email us at donate@twachennai.org.',
-      })
-    } finally {
-      setSubmitting(false)
-    }
+    const freqLabel = frequency === 'monthly' ? 'Monthly recurring' : 'One-time'
+    const body = [
+      'DONATION PLEDGE',
+      '===============',
+      `Donor Name: ${donor.name}`,
+      `Email:      ${donor.email}`,
+      `Phone:      ${donor.phone || 'Not provided'}`,
+      `PAN:        ${donor.pan || 'Not provided'}`,
+      '',
+      `Donation Type: ${freqLabel}`,
+      `Amount:        ₹${amount.toLocaleString('en-IN')}`,
+      '',
+      'Message:',
+      donor.message || 'None provided',
+      '',
+      '---',
+      'Submitted via TWA Chennai website donation form.',
+      'Please send payment instructions and 80G receipt details.',
+    ].join('\n')
+
+    const subject = `Donation Pledge — ${donor.name} — ₹${amount.toLocaleString('en-IN')} ${freqLabel}`
+    window.location.href =
+      `mailto:twachennai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    setSubmitted(true)
+    setDonor({ name: '', email: '', phone: '', pan: '', message: '' })
   }
 
   return (
     <form onSubmit={onSubmit} aria-labelledby="donate-form-heading" className="card" style={{ maxWidth: 640, margin: '0 auto' }}>
       <h2 id="donate-form-heading" style={{ marginBottom: '0.25rem' }}>Make a donation</h2>
       <p className="text-muted" style={{ fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-        Secure payment is processed by our payment partner. You will receive an 80G receipt by email.
+        Submit your pledge and our team will follow up with payment instructions and an 80G receipt.
       </p>
 
-      {result && (
-        <div className={`form-message ${result.type}`} role="status">
-          {result.text}
+      {submitted && (
+        <div className="form-message success" role="status">
+          Your email client should open with a pre-filled pledge — just click Send. If it
+          didn&apos;t open, email us at{' '}
+          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a> with your donation amount.
         </div>
       )}
 
@@ -117,7 +121,7 @@ export default function DonateForm() {
         {impact && <span className="hint">{impact}</span>}
       </div>
 
-      {/* Donor */}
+      {/* Donor details */}
       <div className="grid grid-2" style={{ gap: '0.75rem' }}>
         <div className="field">
           <label htmlFor="name">Full name</label>
@@ -152,13 +156,13 @@ export default function DonateForm() {
           className="textarea" placeholder="Dedicate this gift, ask a question, or leave a note." />
       </div>
 
-      <button type="submit" disabled={submitting || amount < 100} className="btn btn-primary btn-block btn-lg">
-        {submitting ? 'Processing…' : (<>Donate {formatINR(amount)} {frequency === 'monthly' ? '/ month' : ''} <Icon name="arrow-right" size={16} /></>)}
+      <button type="submit" disabled={amount < 100} className="btn btn-primary btn-block btn-lg">
+        Pledge {formatINR(amount)}{frequency === 'monthly' ? ' / month' : ''} <Icon name="arrow-right" size={16} />
       </button>
 
       <p style={{ fontSize: '0.8rem', color: 'var(--color-text-subtle)', marginTop: '0.8rem', textAlign: 'center' }}>
+        Clicking Pledge opens your email app. Our team will follow up with a secure payment link and 80G receipt.
         By donating you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
-        Donations are non-refundable except in cases of duplicate payment.
       </p>
     </form>
   )
