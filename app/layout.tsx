@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import type { Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ORG, CONTACT } from './lib/constants'
 
@@ -42,6 +43,12 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -379,7 +379,7 @@ export default function MediaPage() {
               </div>
             </ScrollReveal>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '1.5rem' }}>
               {FEATURED.map((a, i) => (
                 <ScrollReveal key={a.headline} delay={i * 120}>
                   <article
