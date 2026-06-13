@@ -1,11 +1,11 @@
 [build]
-  publish = ".next"
   command = "npm run build"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# The official Next.js runtime handles routing, API routes, and middleware.
+# A SPA-style catch-all redirect (/* -> /index.html) must NOT be used here —
+# it would intercept API routes like /api/admin/login and break the admin login.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
   NODE_VERSION = "18"
