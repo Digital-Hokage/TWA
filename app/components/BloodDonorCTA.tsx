@@ -16,7 +16,12 @@ const ITEMS: Item[] = [
 
 export default function BloodDonorCTA({ extraNote }: { extraNote?: string }) {
   return (
-    <section className="section bg-dark" id="blood" aria-labelledby="donor-heading">
+    <section
+      className="section"
+      id="blood"
+      aria-labelledby="donor-heading"
+      style={{ background: 'linear-gradient(180deg, #0F172A 0%, #111827 100%)' }}
+    >
       <div className="container">
         <div className="section-header" style={{ color: '#fff' }}>
           <span className="eyebrow" style={{ color: '#FCA5A5' }}>Blood donors</span>
@@ -31,14 +36,17 @@ export default function BloodDonorCTA({ extraNote }: { extraNote?: string }) {
           {ITEMS.map((it) => (
             <div key={it.title}
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.09)',
                 borderRadius: 'var(--radius-lg)',
-                padding: '1.5rem',
+                padding: '1.75rem',
+                transition: 'background .2s ease, border-color .2s ease',
               }}>
               <span style={{
-                width: 44, height: 44, borderRadius: 10,
-                background: 'rgba(185, 28, 28, 0.18)', color: '#FCA5A5',
+                width: 46, height: 46, borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(185,28,28,0.25) 0%, rgba(127,19,19,0.18) 100%)',
+                border: '1px solid rgba(248,113,113,0.15)',
+                color: '#FCA5A5',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               }} aria-hidden="true">
                 <Icon name={it.icon} size={20} />

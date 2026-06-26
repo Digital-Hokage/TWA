@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
+import PageHero from '../components/PageHero'
 import Icon, { type IconName } from '../components/Icon'
 import { ORG } from '../lib/constants'
 
@@ -20,7 +21,7 @@ const VALUES: { title: string; desc: string; icon: IconName }[] = [
     desc: 'Audited accounts, published expense ratios and a public list of our registrations. Trust is earned with evidence.',
     icon: 'file-text' },
   { title: 'Medically led',
-    desc: 'Treatment protocols are reviewed by paediatric haematologists. We hold MoUs with Apollo Hospitals for bone marrow transplantation and Mediscan Systems for prenatal diagnosis. We follow evidence-based guidelines, not trends.',
+    desc: 'Treatment protocols are reviewed by paediatric haematologists. We hold MoUs with Apollo Hospitals for bone marrow transplantation and Mediscan Systems for prenatal diagnosis.',
     icon: 'stethoscope' },
   { title: 'Community powered',
     desc: 'Donors, volunteers, blood donors and parent groups are partners — not audiences. We grow only because they choose to stay.',
@@ -32,33 +33,46 @@ export default function AboutPage() {
     <>
       <Header />
       <main id="main">
-        {/* Hero */}
-        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow">About</span>
-            <h1>{ORG.name}</h1>
-            <p className="lead" style={{ marginTop: '0.75rem' }}>
-              Since {ORG.foundedYear}, we have walked alongside families navigating thalassemia in
-              Tamil Nadu — one transfusion, one bone marrow transplant, one school year at a time.
-            </p>
-          </div>
-        </section>
+
+        <PageHero
+          eyebrow="About"
+          title={ORG.name}
+          lead={`Since ${ORG.foundedYear}, we have walked alongside families navigating thalassemia in Tamil Nadu — one transfusion, one bone marrow transplant, one school year at a time.`}
+        />
 
         {/* Mission / Vision */}
         <section className="section">
           <div className="container-narrow">
             <div className="grid grid-2">
-              <div className="card">
-                <h2 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>Our mission</h2>
-                <p>
+              <div
+                className="card"
+                style={{
+                  borderTop: '3px solid var(--color-primary)',
+                  borderRadius: 'var(--radius-lg)',
+                }}
+              >
+                <span className="icon-tile" aria-hidden="true" style={{ marginBottom: '1.125rem' }}>
+                  <Icon name="heart" size={22} />
+                </span>
+                <h2 style={{ fontSize: '1.35rem', marginBottom: '0.75rem' }}>Our mission</h2>
+                <p style={{ lineHeight: 1.72 }}>
                   To ensure that no thalassemia patient in Tamil Nadu misses a transfusion or a
                   dose of medicine because of cost — and that every family has access to
                   guidance, counselling and community support along the way.
                 </p>
               </div>
-              <div className="card">
-                <h2 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>Our vision</h2>
-                <p>
+              <div
+                className="card"
+                style={{
+                  borderTop: '3px solid var(--color-accent)',
+                  borderRadius: 'var(--radius-lg)',
+                }}
+              >
+                <span className="icon-tile accent" aria-hidden="true" style={{ marginBottom: '1.125rem' }}>
+                  <Icon name="zap" size={22} />
+                </span>
+                <h2 style={{ fontSize: '1.35rem', marginBottom: '0.75rem' }}>Our vision</h2>
+                <p style={{ lineHeight: 1.72 }}>
                   A generation of thalassemia patients who grow up well-treated, well-informed and
                   fully able to plan their futures — and a public that understands how a simple
                   carrier-screening conversation can prevent the next case.
@@ -72,24 +86,41 @@ export default function AboutPage() {
         <section className="section bg-subtle">
           <div className="container-narrow">
             <span className="eyebrow eyebrow--accent">Our story</span>
-            <h2>How a small parents&apos; group became a statewide support network.</h2>
-            <p style={{ marginTop: '1rem' }}>
+            <h2 style={{ marginTop: '0.25rem', marginBottom: '1.25rem' }}>
+              How a small parents&apos; group became a statewide support network.
+            </h2>
+            <blockquote
+              style={{
+                borderLeft: '3px solid var(--color-primary)',
+                background: 'linear-gradient(90deg, rgba(185,28,28,0.04) 0%, transparent 100%)',
+                borderRadius: '0 8px 8px 0',
+                padding: '1rem 1.375rem',
+                marginBottom: '1.5rem',
+                fontStyle: 'italic',
+                color: 'var(--color-text-muted)',
+                fontSize: '1.05rem',
+                lineHeight: 1.7,
+              }}
+            >
+              &lsquo;Home is a place where hearts are woven together, and no family member gets left
+              behind or forgotten.&rsquo;
+              <footer style={{ marginTop: '0.5rem', fontStyle: 'normal', fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text-subtle)' }}>
+                — Dr. Revathi Raj, Honorary President
+              </footer>
+            </blockquote>
+            <p style={{ lineHeight: 1.72 }}>
               TWA Chennai began in 2006 when a small group of patient families, volunteers, and
-              physicians came together at Voluntary Health Services (VHS) Hospital, Chennai. In the
-              words of our Honorary President, Dr. Revathi Raj: &lsquo;Home is a place where hearts
-              are woven together, and no family member gets left behind or forgotten.&rsquo;
+              physicians came together at Voluntary Health Services (VHS) Hospital, Chennai.
+              What started with four patients on regular transfusion has grown to 199 patients
+              in 2026, over 300 bone marrow transplants performed free of cost, and a statewide
+              network of care that extends to Coimbatore and Nellore.
             </p>
-            <p style={{ marginTop: '1rem' }}>
-              What started with four patients on regular transfusion in 2006 has grown to 199
-              patients in 2026, over 300 bone marrow transplants performed free of cost, and a
-              statewide network of care that extends to Coimbatore and Nellore.
-            </p>
-            <p style={{ marginTop: '1rem' }}>
+            <p style={{ marginTop: '1rem', lineHeight: 1.72 }}>
               This is our story — told fully and honestly, with all the setbacks and the triumphs.
             </p>
-            <p style={{ marginTop: '1rem' }}>
-              <Link href="/our-story" className="text-primary" style={{ textDecoration: 'underline', fontWeight: 600 }}>
-                Read the full story in Dr. Revathi Raj&apos;s own words →
+            <p style={{ marginTop: '1.25rem' }}>
+              <Link href="/our-story" className="btn btn-primary btn-sm">
+                Read the full story <Icon name="arrow-right" size={14} />
               </Link>
             </p>
           </div>
@@ -105,8 +136,10 @@ export default function AboutPage() {
             <div className="grid grid-4">
               {VALUES.map((v) => (
                 <article key={v.title} className="card card-hover">
-                  <span className="icon-tile accent" aria-hidden="true"><Icon name={v.icon} size={20} /></span>
-                  <h3 className="card-title" style={{ marginTop: '0.85rem' }}>{v.title}</h3>
+                  <span className="icon-tile accent" aria-hidden="true" style={{ marginBottom: '1rem' }}>
+                    <Icon name={v.icon} size={22} />
+                  </span>
+                  <h3 className="card-title">{v.title}</h3>
                   <p className="card-body">{v.desc}</p>
                 </article>
               ))}
@@ -114,26 +147,55 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership placeholder */}
+        {/* Leadership */}
         <section className="section bg-subtle">
           <div className="container-narrow">
             <span className="eyebrow eyebrow--muted">Leadership</span>
-            <h2>Our board and team.</h2>
-            <p style={{ marginTop: '0.75rem' }}>
+            <h2 style={{ marginTop: '0.25rem', marginBottom: '1rem' }}>Our board and team.</h2>
+            <p style={{ lineHeight: 1.72 }}>
               TWA Chennai is governed by a board of trustees that includes parents of patients,
               treating physicians and independent professionals. No member of paid staff serves
-              on the board. A full list of trustees, their roles and conflict-of-interest
-              declarations is available in our annual report. Dr. Revathi Raj serves as Honorary
-              President of TWA and has guided the centre&apos;s clinical and advocacy work since
-              its founding. The board also includes treating physicians, parent representatives,
-              and independent professionals.
+              on the board. Dr. Revathi Raj serves as Honorary President and has guided the
+              centre&apos;s clinical and advocacy work since its founding.
             </p>
-            <h3 style={{ marginTop: '2rem' }}>Government Recognition</h3>
-            <p style={{ marginTop: '0.75rem' }}>
-              TWA&apos;s work has been acknowledged by the Government of Tamil Nadu with a Medal of
-              Honour — a recognition of two decades of service to thalassemia patients and their
-              families across the state.
-            </p>
+
+            {/* Government recognition callout */}
+            <div
+              style={{
+                marginTop: '2rem',
+                background: 'linear-gradient(135deg, rgba(185,28,28,0.06) 0%, rgba(185,28,28,0.03) 100%)',
+                border: '1px solid rgba(185,28,28,0.18)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.5rem 1.75rem',
+                display: 'flex',
+                gap: '1rem',
+                alignItems: 'flex-start',
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  width: 44, height: 44, borderRadius: 10,
+                  background: 'rgba(185,28,28,0.1)',
+                  color: 'var(--color-primary)',
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                }}
+                aria-hidden="true"
+              >
+                <Icon name="award" size={22} />
+              </span>
+              <div>
+                <div style={{ fontWeight: 700, color: 'var(--color-primary)', fontSize: '0.875rem', letterSpacing: '0.02em', marginBottom: '0.35rem' }}>
+                  Government Medal of Honour
+                </div>
+                <p style={{ fontSize: '0.935rem', color: 'var(--color-text-muted)', lineHeight: 1.65, margin: 0 }}>
+                  TWA&apos;s work has been acknowledged by the Government of Tamil Nadu with a Medal of
+                  Honour — a recognition of two decades of service to thalassemia patients and their
+                  families across the state.
+                </p>
+              </div>
+            </div>
+
             <div className="mt-6">
               <Link href="/transparency" className="btn btn-outline">
                 View governance documents <Icon name="arrow-right" size={16} />

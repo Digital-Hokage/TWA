@@ -62,17 +62,22 @@ export default function ProgramsOverview() {
 
         <div className="grid grid-3">
           {PROGRAMS.map((p) => (
-            <article key={p.title} className="card card-hover">
-              <span className="icon-tile" aria-hidden="true">
+            <article key={p.title} className="card card-hover" style={{ borderTop: '3px solid transparent', transition: 'box-shadow .3s cubic-bezier(0.16,1,0.3,1), transform .3s cubic-bezier(0.16,1,0.3,1), border-color .25s ease' }}>
+              <span className="icon-tile" aria-hidden="true" style={{ background: 'var(--color-primary-soft)', color: 'var(--color-primary)' }}>
                 <Icon name={p.icon} size={20} />
               </span>
-              <h3 className="card-title" style={{ marginTop: '1rem' }}>{p.title}</h3>
+              <h3 className="card-title" style={{ marginTop: '1.1rem', fontWeight: 700 }}>{p.title}</h3>
               <p className="card-body">{p.desc}</p>
               <Link
                 href={p.href}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.85rem', fontSize: '0.9rem', fontWeight: 600 }}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                  marginTop: '1rem', fontSize: '0.88rem', fontWeight: 700,
+                  color: 'var(--color-primary)',
+                  letterSpacing: '-0.01em',
+                }}
               >
-                Learn more <Icon name="arrow-right" size={14} />
+                Learn more <Icon name="arrow-right" size={13} />
               </Link>
             </article>
           ))}

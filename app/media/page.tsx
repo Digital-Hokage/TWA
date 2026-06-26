@@ -330,12 +330,15 @@ export default function MediaPage() {
         {/* ── Page Hero ── */}
         <section
           style={{
-            background: 'linear-gradient(135deg, #0F172A 0%, #1a2744 100%)',
+            background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
             padding: '5rem 0 4rem',
-            borderBottom: '1px solid rgba(255,255,255,0.07)',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          <div className="container-narrow">
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 10% 65%, rgba(185,28,28,0.14) 0%, transparent 52%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
+          <div className="container-narrow" style={{ position: 'relative' }}>
             <span className="eyebrow" style={{ color: '#FCA5A5' }}>Press &amp; Media</span>
             <h1 style={{ color: '#fff', marginTop: '0.5rem', marginBottom: '1rem' }}>
               TWA Chennai in the Media

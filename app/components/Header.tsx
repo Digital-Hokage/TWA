@@ -31,12 +31,12 @@ export default function Header() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: 'rgba(255,255,255,0.92)',
-        backdropFilter: 'saturate(180%) blur(10px)',
-        WebkitBackdropFilter: 'saturate(180%) blur(10px)',
+        background: scrolled ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.90)',
+        backdropFilter: 'saturate(200%) blur(16px)',
+        WebkitBackdropFilter: 'saturate(200%) blur(16px)',
         borderBottom: '1px solid var(--color-border)',
-        boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
-        transition: 'box-shadow .2s ease',
+        boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)' : 'none',
+        transition: 'box-shadow .25s ease, background .25s ease',
       }}
     >
       <div className="container flex-between" style={{ padding: '0.85rem 1.5rem' }}>
@@ -55,20 +55,34 @@ export default function Header() {
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 style={{
-                  padding: '0.55rem 0.9rem',
+                  padding: '0.5rem 0.85rem',
                   borderRadius: 'var(--radius)',
-                  fontWeight: 500,
-                  fontSize: '0.92rem',
+                  fontWeight: active ? 600 : 500,
+                  fontSize: '0.9rem',
                   color: active ? 'var(--color-primary)' : 'var(--color-text)',
                   textDecoration: 'none',
                   background: active ? 'var(--color-primary-soft)' : 'transparent',
+                  transition: 'background .15s ease, color .15s ease',
+                  letterSpacing: '-0.01em',
                 }}
               >
                 {item.label}
               </Link>
             )
           })}
-          <Link href="/donate" className="btn btn-primary btn-sm" style={{ marginLeft: '0.5rem' }}>
+          <Link
+            href="/donate"
+            className="btn btn-sm"
+            style={{
+              marginLeft: '0.5rem',
+              background: 'linear-gradient(135deg, #C41E1E 0%, #7F1313 100%)',
+              color: '#fff',
+              boxShadow: '0 4px 14px rgba(185,28,28,0.28)',
+              border: '1px solid transparent',
+              fontWeight: 700,
+              letterSpacing: '-0.01em',
+            }}
+          >
             Donate
           </Link>
         </nav>

@@ -35,13 +35,16 @@ export default function OurStory() {
               {/* pull quote */}
               <blockquote
                 style={{
-                  borderLeft: '4px solid var(--color-primary)',
-                  paddingLeft: '1.25rem',
+                  borderLeft: '3px solid var(--color-primary)',
+                  paddingLeft: '1.375rem',
                   marginBottom: '2.25rem',
                   fontStyle: 'italic',
                   color: 'var(--color-text-muted)',
                   fontSize: '1.05rem',
-                  lineHeight: 1.65,
+                  lineHeight: 1.7,
+                  background: 'linear-gradient(90deg, rgba(185,28,28,0.04) 0%, transparent 100%)',
+                  borderRadius: '0 8px 8px 0',
+                  padding: '0.875rem 1.375rem',
                 }}
               >
                 "In 2006, a group of patient families, volunteers, and physicians came together
@@ -58,10 +61,11 @@ export default function OurStory() {
                       flexShrink: 0,
                       width: 40, height: 40,
                       borderRadius: '50%',
-                      background: 'var(--color-primary)',
+                      background: 'linear-gradient(135deg, #C41E1E 0%, #7F1313 100%)',
+                      boxShadow: '0 4px 14px rgba(185,28,28,0.28)',
                       color: '#fff',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 800, fontSize: '0.75rem',
+                      fontWeight: 800, fontSize: '0.72rem',
                       letterSpacing: '0.03em',
                       marginTop: '0.15rem',
                     }}

@@ -26,7 +26,7 @@ function ImagePlaceholder({ src, alt, label, caption }: Placeholder) {
         style={{
           aspectRatio: '16 / 9',
           width: '100%',
-          background: '#E7E2DC',
+          background: 'var(--color-bg-subtle)',
           border: '1px solid var(--color-border)',
           borderRadius: 'var(--radius-lg)',
           display: 'flex',
@@ -100,28 +100,64 @@ export default function OurStoryPage() {
       <Header />
       <main id="main">
         {/* Section 1 — Opening quote & author */}
-        <section className="section bg-subtle" style={{ textAlign: 'center', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow eyebrow--accent">Our Story</span>
+        <section
+          style={{
+            background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
+            padding: '5.5rem 0 5rem',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute', inset: 0,
+              background: 'radial-gradient(ellipse at 50% 60%, rgba(185,28,28,0.12) 0%, transparent 55%)',
+              pointerEvents: 'none',
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)',
+              backgroundSize: '28px 28px',
+              pointerEvents: 'none',
+            }}
+          />
+
+          <div className="container-narrow" style={{ position: 'relative' }}>
+            <span
+              style={{
+                fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em',
+                textTransform: 'uppercase', color: '#5EEAD4',
+                display: 'block', marginBottom: '2rem',
+              }}
+            >
+              Our Story
+            </span>
             <blockquote
               style={{
-                margin: '1rem auto 0',
-                maxWidth: '20ch',
+                margin: '0 auto',
+                maxWidth: '22ch',
                 fontSize: 'clamp(1.9rem, 5vw, 3rem)',
-                fontWeight: 700,
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-                color: 'var(--color-text)',
+                fontWeight: 800,
+                lineHeight: 1.12,
+                letterSpacing: '-0.025em',
+                color: '#F1F5F9',
               }}
             >
               &ldquo;Learn from Yesterday. Live for Today. Hope for Tomorrow.&rdquo;
             </blockquote>
-            <p style={{ marginTop: '1.5rem', fontWeight: 600, color: 'var(--color-text)' }}>
-              — Dr. Revathi Raj
-            </p>
-            <p style={{ marginTop: '0.25rem', color: 'var(--color-text-subtle)' }}>
-              Honorary President, Thalassemia Welfare Association, VHS, Chennai
-            </p>
+            <div style={{ marginTop: '2.25rem' }}>
+              <p style={{ fontWeight: 700, color: 'rgba(255,255,255,0.88)', fontSize: '0.95rem' }}>
+                — Dr. Revathi Raj
+              </p>
+              <p style={{ marginTop: '0.3rem', color: 'rgba(255,255,255,0.42)', fontSize: '0.85rem' }}>
+                Honorary President, Thalassemia Welfare Association, VHS, Chennai
+              </p>
+            </div>
           </div>
         </section>
 
@@ -338,7 +374,7 @@ export default function OurStoryPage() {
                       width: 80,
                       height: 80,
                       flexShrink: 0,
-                      background: '#E7E2DC',
+                      background: 'var(--color-bg-subtle)',
                       border: '1px solid var(--color-border)',
                       borderRadius: 'var(--radius)',
                       display: 'flex',

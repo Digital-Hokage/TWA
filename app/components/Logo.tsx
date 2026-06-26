@@ -18,18 +18,18 @@ export default function Logo() {
       <span
         aria-hidden="true"
         style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          background: 'linear-gradient(145deg, #B91C1C 0%, #7F1313 100%)',
+          width: 42,
+          height: 42,
+          borderRadius: 12,
+          background: 'linear-gradient(145deg, #C41E1E 0%, #7F1313 100%)',
           color: '#fff',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontWeight: 900,
-          fontSize: '0.8rem',
-          letterSpacing: '0.08em',
-          boxShadow: '0 2px 8px rgba(127,19,19,0.28)',
+          fontSize: '0.78rem',
+          letterSpacing: '0.09em',
+          boxShadow: '0 4px 14px rgba(127,19,19,0.32)',
           flexShrink: 0,
           userSelect: 'none',
         }}
