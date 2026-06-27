@@ -133,30 +133,27 @@ export default function ThalassemiaPage() {
         <section
           aria-labelledby="thal-hero-heading"
           style={{
-            background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
-            padding: '5rem 0 4rem',
-            position: 'relative',
-            overflow: 'hidden',
+            background: '#FFFFFF',
+            borderBottom: '1px solid var(--color-border)',
+            padding: '4rem 0 3.5rem',
           }}
         >
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 10% 65%, rgba(185,28,28,0.14) 0%, transparent 52%)', pointerEvents: 'none' }} />
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
-          <div className="container-narrow" style={{ position: 'relative' }}>
-            <span className="eyebrow" style={{ color: '#FCA5A5' }}>Patient &amp; Family Resources</span>
+          <div className="container-narrow">
+            <span className="eyebrow">Patient &amp; Family Resources</span>
             <h1
               id="thal-hero-heading"
-              style={{ color: '#fff', marginTop: '0.5rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
             >
               Understanding Thalassemia
             </h1>
-            <p className="lead" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '62ch' }}>
+            <p className="lead" style={{ maxWidth: '62ch' }}>
               A clear, evidence-based overview of what thalassemia is, how it is inherited,
               how it is treated, and why carrier screening before starting a family is the single
               most powerful step a community can take.
             </p>
             <p
               style={{
-                fontSize: '0.8rem', color: 'rgba(255,255,255,0.38)',
+                fontSize: '0.8rem', color: 'var(--color-text-subtle)',
                 marginTop: '0.85rem', maxWidth: '55ch', lineHeight: 1.55,
               }}
             >
@@ -599,7 +596,7 @@ export default function ThalassemiaPage() {
         {/* ── Section V: Carrier Screening ── */}
         <section
           id="screening"
-          className="section bg-dark"
+          className="section bg-subtle"
           aria-labelledby="screening-heading"
           style={{ scrollMarginTop: '80px' }}
         >
@@ -614,22 +611,22 @@ export default function ThalassemiaPage() {
             >
               {/* left: text */}
               <ScrollReveal direction="left">
-                <span className="eyebrow" style={{ color: '#FCA5A5' }}>Section V</span>
+                <span className="eyebrow">Section V</span>
                 <h2
                   id="screening-heading"
-                  style={{ color: '#fff', marginTop: '0.4rem', marginBottom: '1rem' }}
+                  style={{ marginTop: '0.4rem', marginBottom: '1rem' }}
                 >
                   Carrier screening is the single most important step.
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+                <p style={{ lineHeight: 1.7, marginBottom: '1.25rem' }}>
                   Thalassemia major occurs only when both parents are carriers.
-                  A simple, inexpensive blood test — <strong style={{ color: '#fff' }}>HbA2 quantification
+                  A simple, inexpensive blood test — <strong>HbA2 quantification
                   with a complete blood count</strong> — tells a young adult whether they carry the gene.
                   When two carriers know in advance, they can make informed choices and access
                   prenatal counselling before having children.
                 </p>
-                <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
-                  Over the last 20 years, TWA has facilitated <strong style={{ color: '#fff' }}>over
+                <p style={{ lineHeight: 1.7 }}>
+                  Over the last 20 years, TWA has facilitated <strong>over
                   100 prenatal diagnoses</strong> through an MoU with Mediscan Systems,
                   helping prevent affected births in families who already have one child
                   with thalassemia major. Carrier screening drives have been conducted
@@ -641,14 +638,10 @@ export default function ThalassemiaPage() {
                     display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap',
                   }}
                 >
-                  <Link href="/get-involved" className="btn btn-light btn-lg">
+                  <Link href="/get-involved" className="btn btn-primary btn-lg">
                     Get screened <Icon name="arrow-right" size={16} />
                   </Link>
-                  <Link
-                    href="/contact"
-                    className="btn btn-outline btn-lg"
-                    style={{ borderColor: 'rgba(255,255,255,0.35)', color: '#fff' }}
-                  >
+                  <Link href="/contact" className="btn btn-outline btn-lg">
                     Talk to our counsellors
                   </Link>
                 </div>
@@ -656,71 +649,34 @@ export default function ThalassemiaPage() {
 
               {/* right: key facts */}
               <ScrollReveal direction="right" delay={150}>
-                <div
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.09)',
-                    borderRadius: 'var(--radius-lg)',
-                    padding: '2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.25rem',
-                  }}
-                >
+                <div className="card card-flat" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <span
-                      style={{
-                        width: 48, height: 48, flexShrink: 0,
-                        background: 'rgba(185,28,28,0.2)', color: '#FCA5A5',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        borderRadius: 'var(--radius)',
-                      }}
-                    >
-                      <Icon name="microscope" size={22} />
-                    </span>
+                    <span className="icon-tile"><Icon name="microscope" size={22} /></span>
                     <div>
-                      <div style={{ color: '#fff', fontWeight: 700 }}>One simple blood test</div>
-                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem' }}>HbA2 quantification + CBC</div>
+                      <div style={{ fontWeight: 700, color: 'var(--color-text)' }}>One simple blood test</div>
+                      <div style={{ color: 'var(--color-text-subtle)', fontSize: '0.85rem' }}>HbA2 quantification + CBC</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <span
-                      style={{
-                        width: 48, height: 48, flexShrink: 0,
-                        background: 'rgba(15,118,110,0.2)', color: '#5EEAD4',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        borderRadius: 'var(--radius)',
-                      }}
-                    >
-                      <Icon name="shield" size={22} />
-                    </span>
+                    <span className="icon-tile accent"><Icon name="shield" size={22} /></span>
                     <div>
-                      <div style={{ color: '#fff', fontWeight: 700 }}>Screening prevents new cases</div>
-                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem' }}>100+ prenatal diagnoses facilitated by TWA</div>
+                      <div style={{ fontWeight: 700, color: 'var(--color-text)' }}>Screening prevents new cases</div>
+                      <div style={{ color: 'var(--color-text-subtle)', fontSize: '0.85rem' }}>100+ prenatal diagnoses facilitated by TWA</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <span
-                      style={{
-                        width: 48, height: 48, flexShrink: 0,
-                        background: 'rgba(245,158,11,0.15)', color: '#FCD34D',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        borderRadius: 'var(--radius)',
-                      }}
-                    >
-                      <Icon name="users" size={22} />
-                    </span>
+                    <span className="icon-tile neutral"><Icon name="users" size={22} /></span>
                     <div>
-                      <div style={{ color: '#fff', fontWeight: 700 }}>Both partners must be tested</div>
-                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem' }}>Risk only exists if both carry the gene</div>
+                      <div style={{ fontWeight: 700, color: 'var(--color-text)' }}>Both partners must be tested</div>
+                      <div style={{ color: 'var(--color-text-subtle)', fontSize: '0.85rem' }}>Risk only exists if both carry the gene</div>
                     </div>
                   </div>
 
-                  <hr style={{ border: 0, borderTop: '1px solid rgba(255,255,255,0.07)' }} />
+                  <hr style={{ border: 0, borderTop: '1px solid var(--color-border)' }} />
 
-                  <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--color-text-subtle)', lineHeight: 1.6, margin: 0 }}>
                     If you are already pregnant and both partners are carriers, prenatal diagnosis
                     through chorion villous sampling (CVS) between 10–13 weeks can determine
                     if the foetus is affected. Contact us for a referral.

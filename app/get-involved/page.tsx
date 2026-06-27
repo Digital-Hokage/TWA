@@ -65,8 +65,8 @@ export default function GetInvolvedPage() {
           <div className="container-narrow">
             <div
               style={{
-                background: 'linear-gradient(135deg, rgba(185,28,28,0.06) 0%, rgba(185,28,28,0.02) 100%)',
-                border: '1px solid rgba(185,28,28,0.15)',
+                background: 'linear-gradient(135deg, rgba(76,122,76,0.06) 0%, rgba(76,122,76,0.02) 100%)',
+                border: '1px solid rgba(76,122,76,0.15)',
                 borderRadius: 'var(--radius-xl)',
                 padding: '2rem 2.25rem',
               }}

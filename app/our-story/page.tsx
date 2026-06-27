@@ -102,37 +102,18 @@ export default function OurStoryPage() {
         {/* Section 1 — Opening quote & author */}
         <section
           style={{
-            background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
-            padding: '5.5rem 0 5rem',
+            background: '#FFFFFF',
+            borderBottom: '1px solid var(--color-border)',
+            padding: '4.5rem 0 4rem',
             textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
           }}
         >
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute', inset: 0,
-              background: 'radial-gradient(ellipse at 50% 60%, rgba(185,28,28,0.12) 0%, transparent 55%)',
-              pointerEvents: 'none',
-            }}
-          />
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)',
-              backgroundSize: '28px 28px',
-              pointerEvents: 'none',
-            }}
-          />
-
-          <div className="container-narrow" style={{ position: 'relative' }}>
+          <div className="container-narrow">
             <span
               style={{
-                fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em',
-                textTransform: 'uppercase', color: '#5EEAD4',
-                display: 'block', marginBottom: '2rem',
+                fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
+                textTransform: 'uppercase', color: 'var(--color-primary)',
+                display: 'block', marginBottom: '1.5rem',
               }}
             >
               Our Story
@@ -140,21 +121,21 @@ export default function OurStoryPage() {
             <blockquote
               style={{
                 margin: '0 auto',
-                maxWidth: '22ch',
-                fontSize: 'clamp(1.9rem, 5vw, 3rem)',
+                maxWidth: '26ch',
+                fontSize: 'clamp(1.7rem, 4.5vw, 2.75rem)',
                 fontWeight: 800,
-                lineHeight: 1.12,
+                lineHeight: 1.15,
                 letterSpacing: '-0.025em',
-                color: '#F1F5F9',
+                color: 'var(--color-text)',
               }}
             >
               &ldquo;Learn from Yesterday. Live for Today. Hope for Tomorrow.&rdquo;
             </blockquote>
-            <div style={{ marginTop: '2.25rem' }}>
-              <p style={{ fontWeight: 700, color: 'rgba(255,255,255,0.88)', fontSize: '0.95rem' }}>
+            <div style={{ marginTop: '2rem' }}>
+              <p style={{ fontWeight: 700, color: 'var(--color-text)', fontSize: '0.95rem' }}>
                 — Dr. Revathi Raj
               </p>
-              <p style={{ marginTop: '0.3rem', color: 'rgba(255,255,255,0.42)', fontSize: '0.85rem' }}>
+              <p style={{ marginTop: '0.3rem', color: 'var(--color-text-subtle)', fontSize: '0.85rem' }}>
                 Honorary President, Thalassemia Welfare Association, VHS, Chennai
               </p>
             </div>

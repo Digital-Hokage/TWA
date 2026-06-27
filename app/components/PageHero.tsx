@@ -7,45 +7,28 @@ type PageHeroProps = {
 
 export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, lead }: PageHeroProps) {
   const eyebrowColor =
-    eyebrowVariant === 'accent' ? '#5EEAD4'
-    : eyebrowVariant === 'muted' ? 'rgba(255,255,255,0.4)'
-    : '#FCA5A5'
+    eyebrowVariant === 'accent' ? 'var(--color-accent)'
+    : eyebrowVariant === 'muted' ? 'var(--color-text-subtle)'
+    : 'var(--color-primary)'
 
   return (
     <section
       style={{
-        background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
-        padding: '4.75rem 0 4.25rem',
-        position: 'relative',
-        overflow: 'hidden',
+        background: '#FFFFFF',
+        borderBottom: '1px solid var(--color-border)',
+        padding: '4rem 0 3.5rem',
       }}
     >
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 10% 65%, rgba(185,28,28,0.14) 0%, transparent 52%)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div className="container-narrow" style={{ position: 'relative' }}>
+      <div className="container-narrow">
         {eyebrow && (
           <span
             style={{
               display: 'block',
-              fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em',
-              textTransform: 'uppercase', marginBottom: '1.125rem',
+              fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
+              textTransform: 'uppercase', marginBottom: '1rem',
               color: eyebrowColor,
+              borderLeft: '3px solid currentColor',
+              paddingLeft: '0.75rem',
             }}
           >
             {eyebrow}
@@ -53,9 +36,9 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
         )}
         <h1
           style={{
-            color: '#F1F5F9',
+            color: 'var(--color-text)',
             lineHeight: 1.08,
-            marginBottom: lead ? '1.125rem' : 0,
+            marginBottom: lead ? '1rem' : 0,
           }}
         >
           {title}
@@ -64,7 +47,7 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
           <p
             style={{
               fontSize: '1.125rem', lineHeight: 1.72,
-              color: 'rgba(241,245,249,0.6)',
+              color: 'var(--color-text-muted)',
               maxWidth: '58ch',
               margin: 0,
             }}

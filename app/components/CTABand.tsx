@@ -6,7 +6,7 @@ export default function CTABand() {
     <section
       className="section-tight"
       style={{
-        background: 'linear-gradient(135deg, #991B1B 0%, #B91C1C 45%, #7F1313 100%)',
+        background: 'linear-gradient(135deg, #991B1B 0%, #4C7A4C 45%, #7F1313 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}

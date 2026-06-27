@@ -42,7 +42,7 @@ export default function OurStory() {
                   color: 'var(--color-text-muted)',
                   fontSize: '1.05rem',
                   lineHeight: 1.7,
-                  background: 'linear-gradient(90deg, rgba(185,28,28,0.04) 0%, transparent 100%)',
+                  background: 'linear-gradient(90deg, rgba(76,122,76,0.04) 0%, transparent 100%)',
                   borderRadius: '0 8px 8px 0',
                   padding: '0.875rem 1.375rem',
                 }}
@@ -61,8 +61,8 @@ export default function OurStory() {
                       flexShrink: 0,
                       width: 40, height: 40,
                       borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #C41E1E 0%, #7F1313 100%)',
-                      boxShadow: '0 4px 14px rgba(185,28,28,0.28)',
+                      background: 'var(--color-primary)',
+                      boxShadow: 'none',
                       color: '#fff',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontWeight: 800, fontSize: '0.72rem',
@@ -102,8 +102,8 @@ export default function OurStory() {
             {/* Government scheme recognition callout */}
             <div
               style={{
-                background: 'var(--color-accent-soft)',
-                border: '1px solid #99F6E4',
+                background: 'var(--color-primary-soft)',
+                border: '1px solid rgba(76,122,76,0.25)',
                 borderRadius: 'var(--radius-lg)',
                 padding: '1.25rem',
               }}
@@ -112,13 +112,13 @@ export default function OurStory() {
                 style={{
                   fontSize: '0.8rem', fontWeight: 700,
                   textTransform: 'uppercase', letterSpacing: '0.07em',
-                  color: 'var(--color-accent-dark)', marginBottom: '0.4rem',
+                  color: 'var(--color-primary-dark)', marginBottom: '0.4rem',
                 }}
               >
                 Government Inclusion
               </p>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>
-                Through persistent advocacy, <strong style={{ color: 'var(--color-accent-dark)' }}>thalassemia comprehensive care</strong> — including
+                Through persistent advocacy, <strong style={{ color: 'var(--color-primary-dark)' }}>thalassemia comprehensive care</strong> — including
                 diagnosis, transfusion, chelation, and curative BMT — is now fully covered under
                 the Tamil Nadu Chief Minister&apos;s Comprehensive Health Insurance Scheme, at zero cost to patients.
               </p>

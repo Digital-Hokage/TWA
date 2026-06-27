@@ -330,20 +330,17 @@ export default function MediaPage() {
         {/* ── Page Hero ── */}
         <section
           style={{
-            background: 'linear-gradient(150deg, #0A0D1A 0%, #14060A 55%, #0A0D1A 100%)',
-            padding: '5rem 0 4rem',
-            position: 'relative',
-            overflow: 'hidden',
+            background: '#FFFFFF',
+            borderBottom: '1px solid var(--color-border)',
+            padding: '4rem 0 3.5rem',
           }}
         >
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 10% 65%, rgba(185,28,28,0.14) 0%, transparent 52%)', pointerEvents: 'none' }} />
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
-          <div className="container-narrow" style={{ position: 'relative' }}>
-            <span className="eyebrow" style={{ color: '#FCA5A5' }}>Press &amp; Media</span>
-            <h1 style={{ color: '#fff', marginTop: '0.5rem', marginBottom: '1rem' }}>
+          <div className="container-narrow">
+            <span className="eyebrow">Press &amp; Media</span>
+            <h1 style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
               TWA Chennai in the Media
             </h1>
-            <p className="lead" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '62ch' }}>
+            <p className="lead" style={{ maxWidth: '62ch' }}>
               From early treatment milestones in 2010 to community fundraising in 2025 — press
               coverage from The Hindu, Times of India, New Indian Express, Adyar Times, and
               more charting two decades of thalassemia care in Tamil Nadu.
@@ -354,7 +351,7 @@ export default function MediaPage() {
               style={{
                 display: 'flex', flexWrap: 'wrap', gap: '2rem',
                 marginTop: '2.5rem', paddingTop: '2.5rem',
-                borderTop: '1px solid rgba(255,255,255,0.08)',
+                borderTop: '1px solid var(--color-border)',
               }}
             >
               {[
@@ -364,8 +361,8 @@ export default function MediaPage() {
                 { value: `${urlCount}`, label: 'Live links' },
               ].map((s) => (
                 <div key={s.label}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.2rem' }}>{s.label}</div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--color-primary)', lineHeight: 1 }}>{s.value}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--color-text-subtle)', marginTop: '0.2rem' }}>{s.label}</div>
                 </div>
               ))}
             </div>

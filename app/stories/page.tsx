@@ -27,7 +27,7 @@ export default function StoriesPage() {
               style={{
                 borderLeft: '3px solid var(--color-primary)',
                 borderRadius: 'var(--radius-lg)',
-                background: 'linear-gradient(90deg, rgba(185,28,28,0.03) 0%, transparent 100%)',
+                background: 'linear-gradient(90deg, rgba(76,122,76,0.03) 0%, transparent 100%)',
               }}
             >
               <span

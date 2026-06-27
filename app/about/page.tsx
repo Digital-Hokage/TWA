@@ -92,7 +92,7 @@ export default function AboutPage() {
             <blockquote
               style={{
                 borderLeft: '3px solid var(--color-primary)',
-                background: 'linear-gradient(90deg, rgba(185,28,28,0.04) 0%, transparent 100%)',
+                background: 'linear-gradient(90deg, rgba(76,122,76,0.04) 0%, transparent 100%)',
                 borderRadius: '0 8px 8px 0',
                 padding: '1rem 1.375rem',
                 marginBottom: '1.5rem',
@@ -163,8 +163,8 @@ export default function AboutPage() {
             <div
               style={{
                 marginTop: '2rem',
-                background: 'linear-gradient(135deg, rgba(185,28,28,0.06) 0%, rgba(185,28,28,0.03) 100%)',
-                border: '1px solid rgba(185,28,28,0.18)',
+                background: 'linear-gradient(135deg, rgba(76,122,76,0.06) 0%, rgba(76,122,76,0.03) 100%)',
+                border: '1px solid rgba(76,122,76,0.18)',
                 borderRadius: 'var(--radius-lg)',
                 padding: '1.5rem 1.75rem',
                 display: 'flex',
@@ -176,7 +176,7 @@ export default function AboutPage() {
                 style={{
                   flexShrink: 0,
                   width: 44, height: 44, borderRadius: 10,
-                  background: 'rgba(185,28,28,0.1)',
+                  background: 'rgba(76,122,76,0.1)',
                   color: 'var(--color-primary)',
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 }}

@@ -24,7 +24,7 @@ export default function FAQAccordion({ items, title = 'Frequently asked question
                 key={it.q}
                 style={{
                   background: '#fff',
-                  border: `1px solid ${isOpen ? 'rgba(185,28,28,0.25)' : 'var(--color-border)'}`,
+                  border: `1px solid ${isOpen ? 'rgba(76,122,76,0.25)' : 'var(--color-border)'}`,
                   borderLeft: `3px solid ${isOpen ? 'var(--color-primary)' : 'transparent'}`,
                   borderRadius: 'var(--radius-lg)',
                   overflow: 'hidden',

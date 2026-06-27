@@ -72,16 +72,8 @@ export default function Header() {
           })}
           <Link
             href="/donate"
-            className="btn btn-sm"
-            style={{
-              marginLeft: '0.5rem',
-              background: 'linear-gradient(135deg, #C41E1E 0%, #7F1313 100%)',
-              color: '#fff',
-              boxShadow: '0 4px 14px rgba(185,28,28,0.28)',
-              border: '1px solid transparent',
-              fontWeight: 700,
-              letterSpacing: '-0.01em',
-            }}
+            className="btn btn-accent btn-sm"
+            style={{ marginLeft: '0.5rem', fontWeight: 700 }}
           >
             Donate
           </Link>
