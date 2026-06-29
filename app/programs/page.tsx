@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
 import Icon, { type IconName } from '../components/Icon'
+import PageHero from '../components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Our programmes',
@@ -107,16 +108,11 @@ export default function ProgramsPage() {
     <>
       <Header />
       <main id="main">
-        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow">Our programmes</span>
-            <h1>A lifelong package of care.</h1>
-            <p className="lead" style={{ marginTop: '0.75rem' }}>
-              Nine programmes that work together. None of them works in isolation — and skipping
-              even one quietly undoes the others.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Our programmes"
+          title="A lifelong package of care."
+          lead="Nine programmes that work together. None of them works in isolation — and skipping even one quietly undoes the others."
+        />
 
         {SECTIONS.map((s, i) => (
           <section

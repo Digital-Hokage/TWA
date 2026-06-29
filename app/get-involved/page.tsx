@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import VolunteerForm from '../components/VolunteerForm'
 import BloodDonorCTA from '../components/BloodDonorCTA'
 import Icon, { type IconName } from '../components/Icon'
+import PageHero from '../components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Get involved',
@@ -33,18 +34,12 @@ export default function GetInvolvedPage() {
     <>
       <Header />
       <main id="main">
-        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow eyebrow--accent">Get involved</span>
-            <h1>Your time is as valuable as your blood.</h1>
-            <p className="lead" style={{ marginTop: '0.75rem' }}>
-              Whether you have an hour a week, a weekend a month, or a professional skill we
-              urgently need — there is a role for you at TWA Chennai. Our three dedicated
-              volunteers and three staff members cannot do this alone. Your time, your blood,
-              and your voice are urgently needed.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Get involved"
+          eyebrowVariant="accent"
+          title="Your time is as valuable as your blood."
+          lead="Whether you have an hour a week, a weekend a month, or a professional skill we urgently need — there is a role for you at TWA Chennai. Our three dedicated volunteers and three staff members cannot do this alone."
+        />
 
         <section className="section">
           <div className="container">
@@ -66,20 +61,38 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section bg-subtle">
           <div className="container-narrow">
-            <h2>Thank You to Our Blood Donors</h2>
-            <p style={{ marginTop: '0.75rem' }}>
-              This centre exists because of people who gave blood, again and again, with no
-              expectation of return. Our patients — especially children — depend on voluntary,
-              non-remunerated blood donation for life. We thank every individual, college,
-              company, and community group that has ever organised or participated in a blood
-              donation camp for TWA.
-            </p>
-            <p style={{ marginTop: '0.75rem' }}>
-              If your organisation would like to host a dedicated blood drive for thalassemia
-              patients, please contact us — we will provide full logistical support.
-            </p>
+            <div
+              style={{
+                background: 'linear-gradient(135deg, rgba(76,122,76,0.06) 0%, rgba(76,122,76,0.02) 100%)',
+                border: '1px solid rgba(76,122,76,0.15)',
+                borderRadius: 'var(--radius-xl)',
+                padding: '2rem 2.25rem',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em',
+                  textTransform: 'uppercase', color: 'var(--color-primary)',
+                  display: 'block', marginBottom: '0.75rem',
+                }}
+              >
+                Blood donors
+              </span>
+              <h2 style={{ fontSize: '1.35rem', marginBottom: '0.875rem' }}>Thank You to Our Blood Donors</h2>
+              <p style={{ lineHeight: 1.72, color: 'var(--color-text-muted)' }}>
+                This centre exists because of people who gave blood, again and again, with no
+                expectation of return. Our patients — especially children — depend on voluntary,
+                non-remunerated blood donation for life. We thank every individual, college,
+                company, and community group that has ever organised or participated in a blood
+                donation camp for TWA.
+              </p>
+              <p style={{ marginTop: '0.875rem', lineHeight: 1.72, color: 'var(--color-text-muted)' }}>
+                If your organisation would like to host a dedicated blood drive for thalassemia
+                patients, please contact us — we will provide full logistical support.
+              </p>
+            </div>
           </div>
         </section>
 

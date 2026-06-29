@@ -27,8 +27,8 @@ export default function TrustSignals() {
         <div className="grid grid-4">
           {SIGNALS.map((s) => (
             <div key={s.title} className="card card-hover">
-              <span className="icon-tile accent" aria-hidden="true"><Icon name={s.icon} size={20} /></span>
-              <h3 className="card-title" style={{ marginTop: '0.85rem' }}>{s.title}</h3>
+              <span className="icon-tile accent lg" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
+              <h3 className="card-title" style={{ marginTop: '1rem', fontWeight: 700 }}>{s.title}</h3>
               <p className="card-body">{s.desc}</p>
             </div>
           ))}

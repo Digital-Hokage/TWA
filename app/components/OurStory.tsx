@@ -35,13 +35,16 @@ export default function OurStory() {
               {/* pull quote */}
               <blockquote
                 style={{
-                  borderLeft: '4px solid var(--color-primary)',
-                  paddingLeft: '1.25rem',
+                  borderLeft: '3px solid var(--color-primary)',
+                  paddingLeft: '1.375rem',
                   marginBottom: '2.25rem',
                   fontStyle: 'italic',
                   color: 'var(--color-text-muted)',
                   fontSize: '1.05rem',
-                  lineHeight: 1.65,
+                  lineHeight: 1.7,
+                  background: 'linear-gradient(90deg, rgba(76,122,76,0.04) 0%, transparent 100%)',
+                  borderRadius: '0 8px 8px 0',
+                  padding: '0.875rem 1.375rem',
                 }}
               >
                 "In 2006, a group of patient families, volunteers, and physicians came together
@@ -59,9 +62,10 @@ export default function OurStory() {
                       width: 40, height: 40,
                       borderRadius: '50%',
                       background: 'var(--color-primary)',
+                      boxShadow: 'none',
                       color: '#fff',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 800, fontSize: '0.75rem',
+                      fontWeight: 800, fontSize: '0.72rem',
                       letterSpacing: '0.03em',
                       marginTop: '0.15rem',
                     }}
@@ -98,8 +102,8 @@ export default function OurStory() {
             {/* Government scheme recognition callout */}
             <div
               style={{
-                background: 'var(--color-accent-soft)',
-                border: '1px solid #99F6E4',
+                background: 'var(--color-primary-soft)',
+                border: '1px solid rgba(76,122,76,0.25)',
                 borderRadius: 'var(--radius-lg)',
                 padding: '1.25rem',
               }}
@@ -108,13 +112,13 @@ export default function OurStory() {
                 style={{
                   fontSize: '0.8rem', fontWeight: 700,
                   textTransform: 'uppercase', letterSpacing: '0.07em',
-                  color: 'var(--color-accent-dark)', marginBottom: '0.4rem',
+                  color: 'var(--color-primary-dark)', marginBottom: '0.4rem',
                 }}
               >
                 Government Inclusion
               </p>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>
-                Through persistent advocacy, <strong style={{ color: 'var(--color-accent-dark)' }}>thalassemia comprehensive care</strong> — including
+                Through persistent advocacy, <strong style={{ color: 'var(--color-primary-dark)' }}>thalassemia comprehensive care</strong> — including
                 diagnosis, transfusion, chelation, and curative BMT — is now fully covered under
                 the Tamil Nadu Chief Minister&apos;s Comprehensive Health Insurance Scheme, at zero cost to patients.
               </p>

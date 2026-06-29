@@ -4,7 +4,7 @@
  */
 
 export const ORG = {
-  name: 'Thalassemia Welfare Association',
+  name: 'Thalassaemia Welfare Association',
   shortName: 'TWA Chennai',
   tagline: 'Two decades of care. Zero cost to patients. Because no family should lose a child to a treatable condition.',
   foundedYear: 2006,
@@ -15,25 +15,23 @@ export const ORG = {
 } as const
 
 export const CONTACT = {
-  // TODO: replace placeholders with verified details before launch.
-  phonePrimary: '+91 00000 00000',
-  phoneHelpline: '+91 00000 00000',
+  phonePrimary: '044-22542201',
+  phoneHelpline: '044-22542202',
   email: 'info@twachennai.org',
   emailDonations: 'donate@twachennai.org',
   emailVolunteers: 'volunteer@twachennai.org',
-  addressLine1: 'TWA Chennai Centre',
-  addressLine2: 'Chennai, Tamil Nadu',
-  pincode: '600000',
+  addressLine1: 'VHS Thalassaemia Transfusion Centre, Rotary Central TTK VHS Blood Bank',
+  addressLine2: 'Voluntary Health Services, Rajiv Gandhi Salai, Taramani, Chennai',
+  pincode: '600113',
   hours: 'Mon – Sat · 9:00 AM – 6:00 PM',
 } as const
 
 export const REGISTRATION = {
-  // TODO: replace with actual registration numbers.
-  societyRegNo: 'TODO',
-  pan: 'TODO',
-  reg80G: 'TODO',
-  reg12A: 'TODO',
-  csrRegNo: 'TODO',
+  societyRegNo: '273/2005',
+  pan: 'AABTT4267D',
+  reg80G: 'TODO',     // TODO: get from TWA
+  reg12A: 'TODO',     // TODO: get from TWA
+  csrRegNo: 'TODO',   // TODO: get from TWA
 } as const
 
 export const SOCIAL = {

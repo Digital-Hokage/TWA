@@ -100,11 +100,16 @@ export default function DonateForm() {
               style={{
                 textAlign: 'left', padding: '0.9rem 1rem', cursor: 'pointer',
                 borderColor: amount === p.amount ? 'var(--color-primary)' : 'var(--color-border)',
-                background: amount === p.amount ? 'var(--color-primary-soft)' : '#fff',
+                borderLeft: `3px solid ${amount === p.amount ? 'var(--color-primary)' : 'transparent'}`,
+                background: amount === p.amount
+                  ? 'linear-gradient(135deg, rgba(76,122,76,0.07) 0%, rgba(76,122,76,0.03) 100%)'
+                  : '#fff',
+                boxShadow: amount === p.amount ? 'var(--shadow-sm)' : 'none',
+                transition: 'border-color .15s ease, background .15s ease, box-shadow .15s ease',
               }}
             >
-              <div style={{ fontWeight: 700, fontSize: '1rem' }}>{formatINR(p.amount)}</div>
-              <div style={{ fontSize: '0.82rem', color: 'var(--color-text-subtle)' }}>{p.label}</div>
+              <div style={{ fontWeight: 700, fontSize: '1rem', color: amount === p.amount ? 'var(--color-primary)' : 'var(--color-text)' }}>{formatINR(p.amount)}</div>
+              <div style={{ fontSize: '0.82rem', color: amount === p.amount ? 'rgba(76,122,76,0.65)' : 'var(--color-text-subtle)' }}>{p.label}</div>
             </button>
           ))}
         </div>

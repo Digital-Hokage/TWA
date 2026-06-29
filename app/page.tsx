@@ -89,7 +89,7 @@ const PARTNERS: Partner[] = [
 ]
 
 const TYPE_COLORS: Record<string, { bg: string; text: string }> = {
-  'Hospital Partner':     { bg: '#FEE2E2', text: '#7F1313' },
+  'Hospital Partner':     { bg: '#EDF3ED', text: '#375939' },
   'Diagnostics Partner':  { bg: '#DBEAFE', text: '#1E3A8A' },
   'Nutrition Partner':    { bg: '#DCFCE7', text: '#14532D' },
   'Wellness Partner':     { bg: '#FEF3C7', text: '#78350F' },

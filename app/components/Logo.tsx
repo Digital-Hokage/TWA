@@ -1,43 +1,22 @@
-/**
- * TWA Logo component.
- *
- * HOW TO ADD THE REAL LOGO:
- * 1. Place the logo file at:  public/twa-logo.svg  (SVG preferred, PNG accepted)
- * 2. Replace the entire <div> below (the "TWA lettermark block") with:
- *      <Image src="/twa-logo.svg" alt="TWA Chennai" width={150} height={40} priority />
- *    (import Image from 'next/image' at the top of this file)
- *
- * The text underneath the logo badge ("Thalassemia Welfare Association") is always shown
- * alongside the logo for accessibility — keep it even after adding the real logo image.
- */
+import Image from 'next/image'
+
 export default function Logo() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
 
-      {/* ── TWA lettermark – replace with <Image> when logo is ready ── */}
-      <span
-        aria-hidden="true"
+      <Image
+        src="/images/logo.jpeg"
+        alt="Thalassaemia Welfare Association logo"
+        width={44}
+        height={44}
+        priority
         style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          background: 'linear-gradient(145deg, #B91C1C 0%, #7F1313 100%)',
-          color: '#fff',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 900,
-          fontSize: '0.8rem',
-          letterSpacing: '0.08em',
-          boxShadow: '0 2px 8px rgba(127,19,19,0.28)',
+          borderRadius: 8,
+          objectFit: 'contain',
           flexShrink: 0,
-          userSelect: 'none',
         }}
-      >
-        TWA
-      </span>
+      />
 
-      {/* org name – always visible next to the logo */}
       <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
         <span
           style={{
@@ -46,7 +25,7 @@ export default function Logo() {
             fontSize: '0.95rem',
           }}
         >
-          Thalassemia Welfare Association
+          Thalassaemia Welfare Association
         </span>
         <span
           style={{

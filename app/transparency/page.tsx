@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
 import Icon, { type IconName } from '../components/Icon'
 import { REGISTRATION } from '../lib/constants'
+import PageHero from '../components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Transparency & governance',
@@ -26,15 +27,11 @@ export default function TransparencyPage() {
     <>
       <Header />
       <main id="main">
-        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow">Transparency</span>
-            <h1>The numbers and documents behind our work.</h1>
-            <p className="lead" style={{ marginTop: '0.75rem' }}>
-              Trust is something a charity earns every year. Here is the evidence.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Transparency"
+          title="The numbers and documents behind our work."
+          lead="Trust is something a charity earns every year. Here is the evidence."
+        />
 
         {/* Registrations */}
         <section className="section">

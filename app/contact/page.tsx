@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import ContactForm from '../components/ContactForm'
 import Icon from '../components/Icon'
 import { CONTACT } from '../lib/constants'
+import PageHero from '../components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Contact us',
@@ -15,59 +16,57 @@ export default function ContactPage() {
     <>
       <Header />
       <main id="main">
-        <section style={{ background: 'var(--color-bg-subtle)', padding: '4rem 0 3rem', borderBottom: '1px solid var(--color-border)' }}>
-          <div className="container-narrow">
-            <span className="eyebrow">Contact</span>
-            <h1>We&apos;d love to hear from you.</h1>
-            <p className="lead" style={{ marginTop: '0.75rem' }}>
-              Patient or family member, donor, volunteer, journalist or corporate partner —
-              the same team will read and respond to your message.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Contact"
+          title="We'd love to hear from you."
+          lead="Patient or family member, donor, volunteer, journalist or corporate partner — the same team will read and respond to your message."
+        />
 
         <section className="section">
           <div className="container">
             <div className="grid grid-2" style={{ alignItems: 'start', gap: '2.5rem' }}>
-              {/* Info */}
-              <div>
-                <h2 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Reach us directly</h2>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.75rem' }}>
+              {/* Info panel */}
+              <div
+                className="card"
+                style={{ background: 'var(--color-bg-subtle)' }}
+              >
+                <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', fontWeight: 700 }}>Reach us directly</h2>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.875rem' }}>
                     <span className="icon-tile accent" aria-hidden="true"><Icon name="map-pin" size={18} /></span>
                     <div>
-                      <div style={{ fontWeight: 600 }}>Visit</div>
-                      <div className="text-muted" style={{ fontSize: '0.95rem' }}>
+                      <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.2rem' }}>Visit</div>
+                      <div className="text-muted" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>
                         {CONTACT.addressLine1}<br />{CONTACT.addressLine2} – {CONTACT.pincode}
                       </div>
                     </div>
                   </li>
-                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.875rem' }}>
                     <span className="icon-tile accent" aria-hidden="true"><Icon name="phone" size={18} /></span>
                     <div>
-                      <div style={{ fontWeight: 600 }}>Call</div>
-                      <div className="text-muted" style={{ fontSize: '0.95rem' }}>
+                      <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.2rem' }}>Call</div>
+                      <div className="text-muted" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>
                         <a href={`tel:${CONTACT.phonePrimary.replace(/\s/g, '')}`}>{CONTACT.phonePrimary}</a><br />
                         Helpline: <a href={`tel:${CONTACT.phoneHelpline.replace(/\s/g, '')}`}>{CONTACT.phoneHelpline}</a>
                       </div>
                     </div>
                   </li>
-                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.875rem' }}>
                     <span className="icon-tile accent" aria-hidden="true"><Icon name="mail" size={18} /></span>
                     <div>
-                      <div style={{ fontWeight: 600 }}>Email</div>
-                      <div className="text-muted" style={{ fontSize: '0.95rem' }}>
+                      <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.2rem' }}>Email</div>
+                      <div className="text-muted" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>
                         General: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br />
                         Donations: <a href={`mailto:${CONTACT.emailDonations}`}>{CONTACT.emailDonations}</a><br />
                         Volunteers: <a href={`mailto:${CONTACT.emailVolunteers}`}>{CONTACT.emailVolunteers}</a>
                       </div>
                     </div>
                   </li>
-                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <li className="flex" style={{ alignItems: 'flex-start', gap: '0.875rem' }}>
                     <span className="icon-tile accent" aria-hidden="true"><Icon name="clock" size={18} /></span>
                     <div>
-                      <div style={{ fontWeight: 600 }}>Hours</div>
-                      <div className="text-muted" style={{ fontSize: '0.95rem' }}>{CONTACT.hours}</div>
+                      <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.2rem' }}>Hours</div>
+                      <div className="text-muted" style={{ fontSize: '0.9rem' }}>{CONTACT.hours}</div>
                     </div>
                   </li>
                 </ul>
