@@ -29,8 +29,8 @@ export const CONTACT = {
 export const REGISTRATION = {
   societyRegNo: '273/2005',
   pan: 'AABTT4267D',
-  reg80G: 'TODO',     // TODO: get from TWA
-  reg12A: 'TODO',     // TODO: get from TWA
+  reg80G: 'AABTT4267D25CH02',
+  reg12A: 'AABTT4267D25CH01',
   csrRegNo: 'TODO',   // TODO: get from TWA
 } as const
 

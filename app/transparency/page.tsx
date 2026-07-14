@@ -53,8 +53,8 @@ export default function TransparencyPage() {
                 <tbody>
                   <tr><th>Society Registration No.</th><td>{REGISTRATION.societyRegNo}</td></tr>
                   <tr><th>PAN</th><td>{REGISTRATION.pan}</td></tr>
-                  <tr><th>80G certification</th><td>{REGISTRATION.reg80G === 'TODO' ? 'Available on request' : REGISTRATION.reg80G}</td></tr>
-                  <tr><th>12A certification</th><td>{REGISTRATION.reg12A === 'TODO' ? 'Available on request' : REGISTRATION.reg12A}</td></tr>
+                  <tr><th>80G certification</th><td>{REGISTRATION.reg80G}</td></tr>
+                  <tr><th>12A certification</th><td>{REGISTRATION.reg12A}</td></tr>
                   <tr><th>CSR-1 Registration</th><td>{REGISTRATION.csrRegNo === 'TODO' ? 'Available on request' : REGISTRATION.csrRegNo}</td></tr>
                 </tbody>
               </table>

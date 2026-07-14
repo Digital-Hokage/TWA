@@ -95,18 +95,6 @@ const DETAILS: Item[] = [
     priority: 'high',
   },
   {
-    what: '80G registration certificate number and validity date',
-    where: 'Footer, Donate page, Transparency page',
-    notes: 'Verify if certificate is still valid. Upload scanned copy to /resources/ via admin portal.',
-    priority: 'high',
-  },
-  {
-    what: '12A registration certificate number',
-    where: 'Transparency page, CSR profile',
-    notes: 'Required for CSR-eligible donations under Companies Act 2013.',
-    priority: 'high',
-  },
-  {
     what: 'FCRA registration (if applicable)',
     where: 'Transparency page',
     notes: 'Required if receiving foreign donations. Confirm whether TWA holds FCRA registration.',
@@ -170,15 +158,9 @@ const DOCS: Item[] = [
     priority: 'high',
   },
   {
-    what: 'Scanned 80G certificate',
+    what: 'Scanned 80G & 12A registration orders (Form 10AD)',
     where: '/resources/, Transparency page',
-    notes: 'Donors may ask for proof of 80G before donating. Upload as PDF.',
-    priority: 'high',
-  },
-  {
-    what: 'Scanned 12A certificate',
-    where: '/resources/, Transparency page',
-    notes: 'For CSR donors and institutional partners.',
+    notes: 'Unique Registration Numbers confirmed: 80G — AABTT4267D25CH02 (AY 2027-28 to 2031-32); 12A — AABTT4267D25CH01 (AY 2027-28 to 2036-37). Upload scanned Form 10AD orders as PDF.',
     priority: 'medium',
   },
   {
@@ -248,10 +230,10 @@ const REMOVALS: Item[] = [
     priority: 'high',
   },
   {
-    what: 'Remove "TODO" registration numbers once real ones are confirmed',
+    what: 'Remove "TODO" CSR-1 registration number once confirmed',
     where: 'app/lib/constants.ts — REGISTRATION object',
-    notes: 'Society Reg, PAN, 80G, 12A, CSR are all currently "TODO".',
-    priority: 'high',
+    notes: 'Society Reg, PAN, 80G and 12A are confirmed. Only csrRegNo remains "TODO".',
+    priority: 'medium',
   },
   {
     what: 'Remove placeholder phone numbers once real numbers are provided',
