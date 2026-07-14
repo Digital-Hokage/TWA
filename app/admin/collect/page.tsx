@@ -56,9 +56,9 @@ const PHOTOS: Item[] = [
     priority: 'low',
   },
   {
-    what: 'Photos of partner institutions (building exteriors or logos)',
-    where: 'Homepage Partners section',
-    notes: 'Apollo Hospitals Chennai, Mediscan Systems, Masonic Medical Centre Coimbatore, Rotary Centre Nellore.',
+    what: 'Annamayil logo',
+    where: 'Homepage Partners section, Our Story page',
+    notes: 'Apollo, Mediscan, Camp Rainbow, Five Star Business Finance, and Rotork logos received. Annamayil still outstanding.',
     priority: 'low',
   },
   {
@@ -230,12 +230,6 @@ const APPROVALS: Item[] = [
     what: 'Partner logo and name approvals',
     where: 'Homepage Partners section',
     notes: 'Confirm each partner\'s preferred name, logo, and role description before publishing.',
-    priority: 'medium',
-  },
-  {
-    what: 'Sister centre details (Coimbatore and Nellore)',
-    where: 'Homepage Partners section, Programs page',
-    notes: 'Confirm names of doctors leading sister centres and their preferred descriptions.',
     priority: 'medium',
   },
   {

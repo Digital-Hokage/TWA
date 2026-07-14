@@ -40,8 +40,8 @@ export default function TransparencyPage() {
             <p className="mt-3">
               TWA was founded in 2006 as an informal parent-volunteer group at VHS Hospital,
               Chennai, and formally registered as a non-profit society under the Tamil Nadu
-              Societies Registration Act. Over two decades, our work has been recognised with a
-              Medal of Honour from the Government of Tamil Nadu.
+              Societies Registration Act. Over two decades, our work has been acknowledged by
+              the Government of Tamil Nadu.
             </p>
             <p className="mt-3">
               TWA Chennai is registered under applicable Indian laws governing non-profit
@@ -53,9 +53,9 @@ export default function TransparencyPage() {
                 <tbody>
                   <tr><th>Society Registration No.</th><td>{REGISTRATION.societyRegNo}</td></tr>
                   <tr><th>PAN</th><td>{REGISTRATION.pan}</td></tr>
-                  <tr><th>80G certification</th><td>{REGISTRATION.reg80G}</td></tr>
-                  <tr><th>12A certification</th><td>{REGISTRATION.reg12A}</td></tr>
-                  <tr><th>CSR-1 Registration</th><td>{REGISTRATION.csrRegNo}</td></tr>
+                  <tr><th>80G certification</th><td>{REGISTRATION.reg80G === 'TODO' ? 'Available on request' : REGISTRATION.reg80G}</td></tr>
+                  <tr><th>12A certification</th><td>{REGISTRATION.reg12A === 'TODO' ? 'Available on request' : REGISTRATION.reg12A}</td></tr>
+                  <tr><th>CSR-1 Registration</th><td>{REGISTRATION.csrRegNo === 'TODO' ? 'Available on request' : REGISTRATION.csrRegNo}</td></tr>
                 </tbody>
               </table>
             </div>

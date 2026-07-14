@@ -105,8 +105,8 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.88rem', color: 'rgba(226,232,240,0.75)' }}>
               <li>Society Reg. No.: <strong style={{ color: '#fff' }}>{REGISTRATION.societyRegNo}</strong></li>
               <li>PAN: <strong style={{ color: '#fff' }}>{REGISTRATION.pan}</strong></li>
-              <li>80G Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg80G}</strong></li>
-              <li>12A Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg12A}</strong></li>
+              <li>80G Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg80G === 'TODO' ? 'On request' : REGISTRATION.reg80G}</strong></li>
+              <li>12A Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg12A === 'TODO' ? 'On request' : REGISTRATION.reg12A}</strong></li>
             </ul>
             <p style={{ fontSize: '0.8rem', color: 'rgba(226,232,240,0.6)', marginTop: '0.8rem' }}>
               All donations are eligible for tax deduction under Section 80G of the Income Tax Act, 1961.

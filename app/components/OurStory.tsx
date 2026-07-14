@@ -10,7 +10,7 @@ const CHAPTERS = [
   {
     num: '02',
     title: 'Live for Today',
-    text: 'We have now performed over 300 BMT procedures fully free of cost, including haploidentical BMT through an MoU with Apollo Hospitals, Chennai. Prenatal diagnosis is the way forward — we have assisted over 100 chorion villous sampling procedures through an MoU with Mediscan Systems. Two sister centres in Coimbatore and Nellore now serve an additional 150 children.',
+    text: 'We have now performed over 300 BMT procedures fully free of cost, including haploidentical BMT through an MoU with Apollo Hospitals, Chennai. Prenatal diagnosis is the way forward — we have assisted over 100 chorion villous sampling procedures through an MoU with Mediscan Systems.',
   },
   {
     num: '03',

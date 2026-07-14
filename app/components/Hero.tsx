@@ -12,7 +12,7 @@ const STATS = [
 const TRUST = [
   'Registered non-profit',
   '80G tax exemption',
-  'Government Medal of Honour',
+  'Audited annually',
 ]
 
 export default function Hero() {
@@ -163,7 +163,7 @@ export default function Hero() {
                 </p>
                 <p style={{ color: 'var(--color-text-muted)', fontSize: '0.78rem', margin: 0, fontWeight: 600 }}>
                   Dr. Revathi Raj<br />
-                  <span style={{ fontWeight: 400 }}>President, TWA Chennai</span>
+                  <span style={{ fontWeight: 400 }}>Honorary President, TWA Chennai</span>
                 </p>
               </div>
             </div>

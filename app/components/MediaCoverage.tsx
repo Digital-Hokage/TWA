@@ -3,6 +3,7 @@ import Icon from './Icon'
 type Article = {
   publication: string
   date: string
+  dateTime: string
   headline: string
   summary: string
   url: string
@@ -13,37 +14,41 @@ const ARTICLES: Article[] = [
   {
     publication: 'LiveChennai',
     date: '6 Sep 2010',
+    dateTime: '2010-09-06',
     headline: 'Four children cured of Thalassemia at the VHS, Taramani, Chennai',
     summary:
       'Four children successfully treated at VHS Taramani under the Kalaignar health insurance scheme. Reports that 159 youngsters from across Tamil Nadu are registered with TWA, receiving free transfusions.',
-    url: '#', // TODO: update with full article URL
+    url: '',
     pubColor: { bg: '#DBEAFE', text: '#1E3A8A' },
   },
   {
     publication: 'New Indian Express',
     date: '1 Jul 2013',
+    dateTime: '2013-07-01',
     headline: 'Undetected thalassemia preying on Dharmapuri kids',
     summary:
       'Tribal children in rural Dharmapuri travel to the TWA Chennai centre in Taramani for monthly blood transfusions, highlighting the statewide reach of the programme.',
-    url: '#', // TODO: update with full article URL
+    url: '',
     pubColor: { bg: '#DCFCE7', text: '#14532D' },
   },
   {
     publication: 'Times of India — Chennai',
     date: '12 May 2021',
+    dateTime: '2021-05-12',
     headline: 'Thalassemia patients face shortage of blood donors amid pandemic',
     summary:
-      'Dr. Revathi Raj (TWA President) confirmed an acute blood shortage at VHS Chennai during COVID-19 lockdowns. Patients’ haemoglobin levels fell as transfusions were delayed across the city.',
-    url: '#', // TODO: update with full article URL
+      'Dr. Revathi Raj (TWA Honorary President) confirmed an acute blood shortage at VHS Chennai during COVID-19 lockdowns. Patients’ haemoglobin levels fell as transfusions were delayed across the city.',
+    url: '',
     pubColor: { bg: '#FEF3C7', text: '#78350F' },
   },
   {
     publication: 'Adyar Times — Chennai',
     date: '21 Mar 2025',
+    dateTime: '2025-03-21',
     headline: 'Rotary Club hits the right note for Thalassemia Care',
     summary:
-      'The Rotary Club of Chennai Port City donated ₹2 lakh to TWA at VHS Taramani via a musical concert fundraiser, supporting ongoing thalassemia patient care and education programmes.',
-    url: '#', // TODO: update with full article URL
+      'The Rotary Club of Chennai Port City donated ₹2 lakh to TWA at VHS Taramani via a musical concert fundraiser, supporting ongoing thalassemia patient care and education programmes.',
+    url: '',
     pubColor: { bg: '#EDE9FE', text: '#3B0764' },
   },
 ]
@@ -94,7 +99,7 @@ export default function MediaCoverage() {
                   {a.publication}
                 </span>
                 <time
-                  dateTime={a.date}
+                  dateTime={a.dateTime}
                   style={{ fontSize: '0.8rem', color: 'var(--color-text-subtle)', flexShrink: 0 }}
                 >
                   {a.date}
@@ -122,32 +127,36 @@ export default function MediaCoverage() {
                 {a.summary}
               </p>
 
-              {/* link */}
-              <a
-                href={a.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-                  marginTop: '1.1rem',
-                  fontSize: '0.875rem', fontWeight: 600,
-                  color: 'var(--color-accent-dark)',
-                }}
-              >
-                Read article <Icon name="arrow-up-right" size={14} />
-              </a>
+              {/* link — only shown when URL is available */}
+              {a.url ? (
+                <a
+                  href={a.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                    marginTop: '1.1rem',
+                    fontSize: '0.875rem', fontWeight: 600,
+                    color: 'var(--color-accent-dark)',
+                  }}
+                >
+                  Read article <Icon name="arrow-up-right" size={14} />
+                </a>
+              ) : (
+                <span
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                    marginTop: '1.1rem',
+                    fontSize: '0.8rem', fontWeight: 500,
+                    color: 'var(--color-text-subtle)',
+                  }}
+                >
+                  Link coming soon
+                </span>
+              )}
             </article>
           ))}
         </div>
-
-        <p
-          style={{
-            textAlign: 'center', marginTop: '2rem',
-            fontSize: '0.82rem', color: 'var(--color-text-subtle)',
-          }}
-        >
-          Article links will be updated with direct URLs to each publication.
-        </p>
       </div>
     </section>
   )
