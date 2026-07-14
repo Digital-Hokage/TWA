@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
+import Icon, { type IconName } from '../components/Icon'
 
 export const metadata: Metadata = {
   title: 'Our Story',
@@ -12,34 +14,39 @@ export const metadata: Metadata = {
 type Placeholder = {
   src: string
   alt: string
-  label: string
+  icon: IconName
+  tone: 'primary' | 'accent'
   caption: string
 }
 
-function ImagePlaceholder({ src, alt, label, caption }: Placeholder) {
+/**
+ * Renders a themed icon card in place of the photo named in `src` until it
+ * arrives (see /public/images/story/README.md for the expected filenames).
+ * Swap for <Image src={src} alt={alt} fill /> once photography is in hand.
+ */
+function ImagePlaceholder({ src, alt, icon, tone, caption }: Placeholder) {
+  const bg = tone === 'accent'
+    ? 'linear-gradient(135deg, var(--color-accent-soft) 0%, #FFFFFF 100%)'
+    : 'linear-gradient(135deg, var(--color-primary-soft) 0%, #FFFFFF 100%)'
   return (
-    <figure style={{ margin: 0 }}>
+    <figure style={{ margin: 0 }} data-photo-pending={src}>
       <div
-        data-src={src}
         role="img"
         aria-label={alt}
         style={{
           aspectRatio: '16 / 9',
           width: '100%',
-          background: 'var(--color-bg-subtle)',
+          background: bg,
           border: '1px solid var(--color-border)',
           borderRadius: 'var(--radius-lg)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          textAlign: 'center',
-          padding: '1.5rem',
-          color: 'var(--color-text-subtle)',
-          fontWeight: 600,
-          fontSize: '0.95rem',
         }}
       >
-        {label}
+        <span className={`icon-tile ${tone} lg`} aria-hidden="true" style={{ background: 'rgba(255,255,255,0.75)' }}>
+          <Icon name={icon} size={28} />
+        </span>
       </div>
       <figcaption
         style={{
@@ -77,20 +84,20 @@ const PARTNERS: { name: string; desc: string; logo: string; alt: string }[] = [
   {
     name: 'Camp Rainbow',
     desc: 'Conducts art therapy and creative wellness sessions for young thalassemia patients at our centre.',
-    logo: '/images/partners/camp-rainbow.png',
+    logo: '/images/partners/camp-rainbow.webp',
     alt: 'Camp Rainbow logo',
   },
   {
-    name: 'Masonic Medical Centre, Coimbatore',
-    desc: 'Sister thalassaemia centre led by Dr Kavitha Ganesan — caring for patients across the Coimbatore region.',
-    logo: '/images/partners/masonic-medical-coimbatore.png',
-    alt: 'Masonic Medical Centre Coimbatore logo',
+    name: 'Five Star Business Finance Limited',
+    desc: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
+    logo: '/images/partners/five-star-business-finance.png',
+    alt: 'Five Star Business Finance Limited logo',
   },
   {
-    name: 'Rotary Centre, Nellore',
-    desc: 'Sister thalassaemia centre led by Dr Ramya Uppuluri — extending care to 150 additional children.',
-    logo: '/images/partners/rotary-centre-nellore.png',
-    alt: 'Rotary Centre Nellore logo',
+    name: 'Rotork',
+    desc: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
+    logo: '/images/partners/rotork.png',
+    alt: 'Rotork logo',
   },
 ]
 
@@ -172,7 +179,8 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/safe-transfusion.jpg"
                 alt="Medical staff performing a safe blood transfusion at VHS Thalassaemia Centre, Chennai"
-                label="[ Photo: VHS Thalassaemia Centre — Safe transfusion, optimal chelation ]"
+                icon="droplet"
+                tone="primary"
                 caption="Safe transfusion, optimal chelation — the foundation of every patient's care."
               />
             </div>
@@ -212,7 +220,8 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/awareness-camp-schools.jpg"
                 alt="TWA volunteers conducting a thalassemia awareness camp at a school in Chennai"
-                label="[ Photo: Thalassaemia awareness camp in schools ]"
+                icon="book-open"
+                tone="accent"
                 caption="Thalassaemia awareness camps in schools — reaching the next generation."
               />
             </div>
@@ -241,25 +250,23 @@ export default function OurStoryPage() {
               those coming for transfusion, and Camp Rainbow, who come for Art therapy sessions.
             </p>
             <p style={{ marginTop: '1.5rem' }}>
-              The work needs to be replicated in other cities, and to assist easy patient access, two
-              sister centres have been established in the Masonic Medical Centre in Coimbatore led by Dr
-              Kavitha Ganesan, and the Rotary Centre in Nellore led by Dr Ramya Uppuluri. These new
-              centres cover another 150 children with the same care pathways. Our volunteers ensure that
-              awareness on testing for thalassaemia is represented in all regional obstetric meetings
-              and conferences.
+              Our volunteers ensure that awareness on testing for thalassaemia is represented in all
+              regional obstetric meetings and conferences.
             </p>
 
             <div className="grid grid-2" style={{ marginTop: '2rem' }}>
               <ImagePlaceholder
                 src="/images/story/diwali-after-bmt.jpg"
                 alt="Thalassemia patients celebrating Diwali after successful bone marrow transplantation at VHS Chennai"
-                label="[ Photo: Celebrating Diwali after a successful BMT ]"
+                icon="heart"
+                tone="accent"
                 caption="Celebrating Diwali after a successful BMT."
               />
               <ImagePlaceholder
                 src="/images/story/prenatal-diagnosis-bmt.jpg"
                 alt="Prenatal diagnosis procedure and BMT success at VHS Thalassaemia Centre"
-                label="[ Photo: Prenatal diagnosis and successful BMT ]"
+                icon="dna"
+                tone="primary"
                 caption="Prenatal diagnosis and successful BMT — two milestones that change a family's future."
               />
             </div>
@@ -293,18 +300,18 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/thalassemia-free-survival-apollo.jpg"
                 alt="Thalassemia-free survival achieved at Apollo Chennai through BMT partnership with TWA"
-                label="[ Photo: Thalassaemia free survival — Apollo Chennai ]"
+                icon="award"
+                tone="primary"
                 caption="Thalassaemia free survival in Apollo Chennai — the goal that drives everything we do."
               />
             </div>
           </div>
         </section>
 
-        {/* Section 6 — Video placeholder */}
+        {/* Section 6 — Video */}
         <section className="section">
           <div className="container-narrow">
             <h3>Watch: Our Thalassaemia Awareness Film</h3>
-            {/* TODO: Replace this div with a YouTube iframe embed when Reva sends the video link */}
             <div
               style={{
                 marginTop: '1.5rem',
@@ -313,27 +320,25 @@ export default function OurStoryPage() {
                 background: '#1F2937',
                 borderRadius: 'var(--radius-lg)',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                padding: '1.5rem',
-                color: 'rgba(255,255,255,0.85)',
-                fontWeight: 600,
-                fontSize: '0.95rem',
+                padding: '2rem',
+                gap: '0.75rem',
               }}
             >
-              [ Video will be embedded here — YouTube link coming soon ]
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="10 8 16 12 10 16 10 8" fill="rgba(255,255,255,0.35)" stroke="none" />
+              </svg>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600, fontSize: '0.95rem', margin: 0 }}>
+                Our awareness film is coming soon.
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', margin: 0 }}>
+                Produced by TWA Chennai — check back shortly.
+              </p>
             </div>
-            <p
-              style={{
-                marginTop: '0.75rem',
-                fontSize: '0.9rem',
-                color: 'var(--color-text-subtle)',
-                fontStyle: 'italic',
-              }}
-            >
-              Our thalassaemia awareness video produced by TWA Chennai.
-            </p>
           </div>
         </section>
 
@@ -348,9 +353,6 @@ export default function OurStoryPage() {
               {PARTNERS.map((p) => (
                 <article key={p.name} className="card" style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
                   <div
-                    data-src={p.logo}
-                    role="img"
-                    aria-label={p.alt}
                     style={{
                       width: 80,
                       height: 80,
@@ -361,13 +363,16 @@ export default function OurStoryPage() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      textAlign: 'center',
-                      fontSize: '0.7rem',
-                      color: 'var(--color-text-subtle)',
-                      padding: '0.4rem',
+                      padding: '0.6rem',
                     }}
                   >
-                    Logo
+                    <Image
+                      src={p.logo}
+                      alt={p.alt}
+                      width={68}
+                      height={68}
+                      style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                    />
                   </div>
                   <div>
                     <h3 className="card-title">{p.name}</h3>

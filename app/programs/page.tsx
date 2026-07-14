@@ -81,19 +81,6 @@ const SECTIONS: Section[] = [
     ),
   },
   {
-    id: 'network', eyebrow: 'Network & Sister Centres', title: 'Expanding the Model Beyond Chennai', icon: 'building',
-    body: (
-      <>
-        <p>To make this level of care accessible to more families, TWA has established two sister centres with the same care pathways:</p>
-        <ul className="list-checks mt-3">
-          <li>Masonic Medical Centre, Coimbatore — led by Dr. Kavitha Ganesan</li>
-          <li>Rotary Centre, Nellore — led by Dr. Ramya Uppuluri</li>
-        </ul>
-        <p className="mt-3">Together, these centres support an additional 150 children outside Chennai. TWA provides ongoing guidance on clinical protocols and advocacy to both centres.</p>
-      </>
-    ),
-  },
-  {
     id: 'wellness', eyebrow: 'Wellness', title: 'Camp Rainbow — Art Therapy', icon: 'heart',
     body: (
       <>

@@ -186,12 +186,12 @@ export default function AboutPage() {
               </span>
               <div>
                 <div style={{ fontWeight: 700, color: 'var(--color-primary)', fontSize: '0.875rem', letterSpacing: '0.02em', marginBottom: '0.35rem' }}>
-                  Government Medal of Honour
+                  Government Acknowledgement
                 </div>
                 <p style={{ fontSize: '0.935rem', color: 'var(--color-text-muted)', lineHeight: 1.65, margin: 0 }}>
-                  TWA&apos;s work has been acknowledged by the Government of Tamil Nadu with a Medal of
-                  Honour — a recognition of two decades of service to thalassemia patients and their
-                  families across the state.
+                  TWA&apos;s two decades of service has been acknowledged by the Government of Tamil Nadu
+                  — a recognition of our commitment to thalassemia patients and their families
+                  across the state.
                 </p>
               </div>
             </div>

@@ -6,13 +6,11 @@ const SIGNALS: Signal[] = [
   { title: 'Registered non-profit', icon: 'building',
     desc: 'Society registered under the Tamil Nadu Societies Registration Act. Governance documents available on request.' },
   { title: '80G & 12A certified', icon: 'award',
-    desc: 'Donations are eligible for tax deduction under Section 80G. We hold a valid 12A registration with the Income Tax Department.' },
+    desc: 'Donations are eligible for tax deduction under Section 80G. Registration certificates held; numbers available on request.' },
   { title: 'Annual audited accounts', icon: 'file-text',
-    desc: 'Independent statutory audit every financial year. Reports published on our Transparency page.' },
+    desc: 'Independent statutory audit every financial year. Reports available on the Transparency page or on request.' },
   { title: 'Patient-first governance', icon: 'users',
     desc: 'Board includes parents of patients, treating physicians and independent professionals. No staff member sits on the board.' },
-  { title: 'Government Medal of Honour', icon: 'award',
-    desc: 'TWA received the Medal of Honour from the Government of Tamil Nadu in recognition of two decades of service to thalassemia patients.' },
 ]
 
 export default function TrustSignals() {

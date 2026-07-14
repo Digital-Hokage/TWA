@@ -40,8 +40,8 @@ export default function TransparencyPage() {
             <p className="mt-3">
               TWA was founded in 2006 as an informal parent-volunteer group at VHS Hospital,
               Chennai, and formally registered as a non-profit society under the Tamil Nadu
-              Societies Registration Act. Over two decades, our work has been recognised with a
-              Medal of Honour from the Government of Tamil Nadu.
+              Societies Registration Act. Over two decades, our work has been acknowledged by
+              the Government of Tamil Nadu.
             </p>
             <p className="mt-3">
               TWA Chennai is registered under applicable Indian laws governing non-profit
@@ -55,7 +55,10 @@ export default function TransparencyPage() {
                   <tr><th>PAN</th><td>{REGISTRATION.pan}</td></tr>
                   <tr><th>80G certification</th><td>{REGISTRATION.reg80G}</td></tr>
                   <tr><th>12A certification</th><td>{REGISTRATION.reg12A}</td></tr>
-                  <tr><th>CSR-1 Registration</th><td>{REGISTRATION.csrRegNo}</td></tr>
+                  {/* CLIENT TODO: CSR-1 registration number not yet confirmed — row hidden until it is */}
+                  {REGISTRATION.csrRegNo !== 'TODO' && (
+                    <tr><th>CSR-1 Registration</th><td>{REGISTRATION.csrRegNo}</td></tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -83,8 +86,8 @@ export default function TransparencyPage() {
               ))}
             </ul>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)', marginTop: '1rem' }}>
-              We are migrating to public PDF downloads. Until then, please contact us for a
-              copy and we will email it the same working day.
+              Every report is audited by an independent chartered accountant before it is
+              shared. Write to us and we will email the PDF the same working day.
             </p>
           </div>
         </section>

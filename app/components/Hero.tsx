@@ -1,18 +1,16 @@
 import Link from 'next/link'
 import Icon from './Icon'
-import ImagePlaceholder from './ImagePlaceholder'
 
-const STATS = [
-  { value: '199',  label: 'Patients in care' },
-  { value: '300+', label: 'BMTs performed free' },
-  { value: '20+',  label: 'Years of service' },
-  { value: '₹0',   label: 'Cost to patients' },
+const MICRO_STATS = [
+  { value: '199',  label: 'Patients' },
+  { value: '300+', label: 'BMTs' },
+  { value: '₹0',   label: 'Cost' },
 ]
 
 const TRUST = [
   'Registered non-profit',
   '80G tax exemption',
-  'Government Medal of Honour',
+  'Audited annually',
 ]
 
 export default function Hero() {
@@ -71,42 +69,6 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Stats strip */}
-            <div style={{
-              display: 'flex', flexWrap: 'wrap',
-              borderRadius: '14px',
-              background: 'var(--color-bg-subtle)',
-              border: '1px solid var(--color-border)',
-              overflow: 'hidden',
-            }}>
-              {STATS.map((s, i) => (
-                <div
-                  key={s.label}
-                  style={{
-                    padding: '1.25rem 1.5rem',
-                    borderRight: i < STATS.length - 1 ? '1px solid var(--color-border)' : undefined,
-                    flex: '1 1 0', minWidth: 0,
-                    textAlign: 'center',
-                  }}
-                >
-                  <div style={{
-                    fontSize: '1.8rem', fontWeight: 800,
-                    color: 'var(--color-primary)', lineHeight: 1,
-                    letterSpacing: '-0.035em',
-                  }}>
-                    {s.value}
-                  </div>
-                  <div style={{
-                    fontSize: '0.7rem', color: 'var(--color-text-subtle)',
-                    marginTop: '0.3rem', fontWeight: 600,
-                    textTransform: 'uppercase', letterSpacing: '0.07em',
-                  }}>
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
             {/* Trust badges */}
             <ul style={{
               marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '1.5rem',
@@ -123,49 +85,73 @@ export default function Hero() {
             </ul>
           </div>
 
-          {/* ── Right: images ── */}
-          <div className="hero-image-col" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-            <ImagePlaceholder
-              aspectRatio="16/11"
-              label="Warm group photo of patients, families and medical staff at the TWA Chennai centre, VHS Taramani — showing the community and care atmosphere"
-            />
-            <div className="hero-image-sub">
-              <ImagePlaceholder
-                aspectRatio="1/1"
-                label="Dr. Revathi Raj, President of TWA Chennai — portrait or candid at the centre"
-              />
-              {/* Pull quote card */}
-              <div
-                style={{
-                  background: 'var(--color-primary-soft)',
-                  border: '1px solid var(--color-border)',
-                  borderLeft: '3px solid var(--color-primary)',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '1.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  gap: '0.75rem',
-                }}
-              >
-                <svg
-                  width="22" height="22" viewBox="0 0 24 24"
-                  fill="var(--color-primary)" opacity={0.3} aria-hidden="true"
+          {/* ── Right: single quote/stats card ── */}
+          <div
+            className="hero-image-col"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              alignSelf: 'stretch',
+              background: 'var(--color-primary-dark)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '2.5rem',
+              boxShadow: 'var(--shadow-md)',
+            }}
+          >
+            {/* Decorative rule */}
+            <div style={{ width: 48, height: 3, borderRadius: 'var(--radius-full)', background: 'var(--color-primary-mid)' }} />
+
+            {/* Quote */}
+            <p style={{
+              marginTop: '2rem',
+              fontFamily: 'Georgia, "Times New Roman", serif',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              fontSize: '1.5rem',
+              lineHeight: 1.42,
+              color: '#fff',
+            }}>
+              &ldquo;Home is a place where hearts are woven together, and no family member gets
+              left behind or forgotten.&rdquo;
+            </p>
+
+            {/* Attribution */}
+            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+              <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', margin: 0 }}>
+                — Dr. Revathi Raj
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', marginTop: '0.35rem' }}>
+                Honorary President, TWA Chennai
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem', marginTop: '0.2rem' }}>
+                VHS Hospital, Taramani · Est. 2006
+              </p>
+            </div>
+
+            <div style={{ flex: 1 }} />
+
+            {/* Micro-stats */}
+            <div style={{ display: 'flex', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+              {MICRO_STATS.map((s, i) => (
+                <div
+                  key={s.label}
+                  style={{
+                    flex: '1 1 0', minWidth: 0, textAlign: 'center',
+                    borderRight: i < MICRO_STATS.length - 1 ? '1px solid rgba(255,255,255,0.15)' : undefined,
+                  }}
                 >
-                  <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
-                  <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
-                </svg>
-                <p style={{
-                  color: 'var(--color-text)', fontSize: '0.9rem',
-                  lineHeight: 1.65, fontStyle: 'italic', fontWeight: 500, margin: 0,
-                }}>
-                  No family should lose a child to a treatable condition.
-                </p>
-                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.78rem', margin: 0, fontWeight: 600 }}>
-                  Dr. Revathi Raj<br />
-                  <span style={{ fontWeight: 400 }}>President, TWA Chennai</span>
-                </p>
-              </div>
+                  <div style={{ color: '#fff', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.02em' }}>
+                    {s.value}
+                  </div>
+                  <div style={{
+                    marginTop: '0.3rem', color: 'rgba(255,255,255,0.6)',
+                    fontSize: '0.68rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em',
+                  }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import ImpactStats from './components/ImpactStats'
@@ -12,7 +13,6 @@ import MediaCoverage from './components/MediaCoverage'
 import CTABand from './components/CTABand'
 import FAQAccordion from './components/FAQAccordion'
 import Footer from './components/Footer'
-import ImagePlaceholder from './components/ImagePlaceholder'
 import ScrollReveal from './components/ScrollReveal'
 
 const FAQS = [
@@ -29,10 +29,6 @@ const FAQS = [
     a: 'Absolutely. Patients on our register need transfusions every 2–4 weeks. You can register as a donor through the Get Involved page, walk in to any of our partner blood banks, or host a drive at your workplace, college or community.',
   },
   {
-    q: 'Do you support patients outside Chennai?',
-    a: 'Yes. Through our sister centres at Masonic Medical Centre in Coimbatore (led by Dr Kavitha Ganesan) and the Rotary Centre in Nellore (led by Dr Ramya Uppuluri), we support an additional 150 patients outside Chennai with the same care pathways.',
-  },
-  {
     q: 'How can my company partner with TWA?',
     a: 'We work with companies on CSR funding, employee giving, volunteering days and blood drives. Write to us at info@twachennai.org and we will share our CSR profile and partnership options.',
   },
@@ -47,6 +43,7 @@ type Partner = {
   shortName: string
   role: string
   type: string
+  logo?: string
 }
 
 const PARTNERS: Partner[] = [
@@ -55,12 +52,14 @@ const PARTNERS: Partner[] = [
     shortName: 'Apollo',
     role: 'MoU partner for haploidentical Bone Marrow Transplantation — over 300 BMTs performed free.',
     type: 'Hospital Partner',
+    logo: '/images/partners/apollo-hospitals.png',
   },
   {
     name: 'Mediscan Systems',
     shortName: 'Mediscan',
     role: 'MoU partner for prenatal diagnosis and chorion villous sampling — over 100 procedures completed.',
     type: 'Diagnostics Partner',
+    logo: '/images/partners/mediscan-systems.png',
   },
   {
     name: 'Annamayil',
@@ -73,18 +72,21 @@ const PARTNERS: Partner[] = [
     shortName: 'Camp Rainbow',
     role: 'Conducts art therapy and creative wellness sessions for our young patients.',
     type: 'Wellness Partner',
+    logo: '/images/partners/camp-rainbow.webp',
   },
   {
-    name: 'Masonic Medical Centre, Coimbatore',
-    shortName: 'Masonic — Coimbatore',
-    role: 'Sister thalassemia centre led by Dr. Kavitha Ganesan, serving the Coimbatore region.',
-    type: 'Sister Centre',
+    name: 'Five Star Business Finance Limited',
+    shortName: 'Five Star',
+    role: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
+    type: 'Corporate Donor',
+    logo: '/images/partners/five-star-business-finance.png',
   },
   {
-    name: 'Rotary Centre, Nellore',
-    shortName: 'Rotary — Nellore',
-    role: 'Sister centre led by Dr. Ramya Uppuluri, serving Nellore and surrounding areas.',
-    type: 'Sister Centre',
+    name: 'Rotork',
+    shortName: 'Rotork',
+    role: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
+    type: 'Corporate Donor',
+    logo: '/images/partners/rotork.png',
   },
 ]
 
@@ -93,7 +95,7 @@ const TYPE_COLORS: Record<string, { bg: string; text: string }> = {
   'Diagnostics Partner':  { bg: '#DBEAFE', text: '#1E3A8A' },
   'Nutrition Partner':    { bg: '#DCFCE7', text: '#14532D' },
   'Wellness Partner':     { bg: '#FEF3C7', text: '#78350F' },
-  'Sister Centre':        { bg: 'var(--color-accent-soft)', text: 'var(--color-accent-dark)' },
+  'Corporate Donor':      { bg: '#FEE2E2', text: '#7F1D1D' },
 }
 
 function Partners() {
@@ -118,17 +120,49 @@ function Partners() {
                 className="card card-hover"
                 style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}
               >
-                {/* logo placeholder */}
-                <ImagePlaceholder
-                  label={`Logo of ${p.name}`}
-                  height={64}
-                  style={{
-                    aspectRatio: undefined,
-                    borderRadius: 'var(--radius)',
-                    border: '1px dashed var(--color-border-strong)',
-                    background: 'var(--color-bg-muted)',
-                  }}
-                />
+                {p.logo ? (
+                  <div
+                    style={{
+                      height: 64,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start',
+                      borderRadius: 'var(--radius)',
+                      background: 'var(--color-bg-muted)',
+                      padding: '0.5rem 0.75rem',
+                    }}
+                  >
+                    <Image
+                      src={p.logo}
+                      alt={`Logo of ${p.name}`}
+                      width={140}
+                      height={48}
+                      style={{ objectFit: 'contain', height: '100%', width: 'auto', maxWidth: '100%' }}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      height: 64,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.6rem',
+                      borderRadius: 'var(--radius)',
+                      background: 'var(--color-bg-muted)',
+                      padding: '0.5rem 0.75rem',
+                    }}
+                  >
+                    <span style={{
+                      width: 40, height: 40, borderRadius: 'var(--radius-sm)',
+                      background: 'var(--color-primary)', color: '#fff',
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                      fontWeight: 800, fontSize: '0.85rem', flexShrink: 0,
+                    }}>
+                      {p.shortName.slice(0, 2).toUpperCase()}
+                    </span>
+                  </div>
+                )}
 
                 <div>
                   <span
