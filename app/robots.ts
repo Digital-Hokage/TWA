@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { ORG } from './lib/constants'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/admin/',
     },
-    sitemap: 'https://twachennai.org/sitemap.xml',
+    sitemap: `${ORG.url}/sitemap.xml`,
   }
 }

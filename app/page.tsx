@@ -13,7 +13,6 @@ import MediaCoverage from './components/MediaCoverage'
 import CTABand from './components/CTABand'
 import FAQAccordion from './components/FAQAccordion'
 import Footer from './components/Footer'
-import ImagePlaceholder from './components/ImagePlaceholder'
 import ScrollReveal from './components/ScrollReveal'
 
 const FAQS = [
@@ -142,16 +141,27 @@ function Partners() {
                     />
                   </div>
                 ) : (
-                  <ImagePlaceholder
-                    label={`Logo of ${p.name}`}
-                    height={64}
+                  <div
+                    aria-hidden="true"
                     style={{
-                      aspectRatio: undefined,
+                      height: 64,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.6rem',
                       borderRadius: 'var(--radius)',
-                      border: '1px dashed var(--color-border-strong)',
                       background: 'var(--color-bg-muted)',
+                      padding: '0.5rem 0.75rem',
                     }}
-                  />
+                  >
+                    <span style={{
+                      width: 40, height: 40, borderRadius: 'var(--radius-sm)',
+                      background: 'var(--color-primary)', color: '#fff',
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                      fontWeight: 800, fontSize: '0.85rem', flexShrink: 0,
+                    }}>
+                      {p.shortName.slice(0, 2).toUpperCase()}
+                    </span>
+                  </div>
                 )}
 
                 <div>

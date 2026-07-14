@@ -11,7 +11,9 @@ export const ORG = {
   city: 'Chennai',
   state: 'Tamil Nadu',
   country: 'India',
-  url: 'https://twachennai.org',
+  // CLIENT TODO: point this at twachennai.org once the custom domain is live —
+  // metadataBase, Open Graph, JSON-LD and the sitemap all derive from this value.
+  url: 'https://twac.netlify.app',
 } as const
 
 export const CONTACT = {

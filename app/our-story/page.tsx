@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
+import Icon, { type IconName } from '../components/Icon'
 
 export const metadata: Metadata = {
   title: 'Our Story',
@@ -13,34 +14,39 @@ export const metadata: Metadata = {
 type Placeholder = {
   src: string
   alt: string
-  label: string
+  icon: IconName
+  tone: 'primary' | 'accent'
   caption: string
 }
 
-function ImagePlaceholder({ src, alt, label, caption }: Placeholder) {
+/**
+ * Renders a themed icon card in place of the photo named in `src` until it
+ * arrives (see /public/images/story/README.md for the expected filenames).
+ * Swap for <Image src={src} alt={alt} fill /> once photography is in hand.
+ */
+function ImagePlaceholder({ src, alt, icon, tone, caption }: Placeholder) {
+  const bg = tone === 'accent'
+    ? 'linear-gradient(135deg, var(--color-accent-soft) 0%, #FFFFFF 100%)'
+    : 'linear-gradient(135deg, var(--color-primary-soft) 0%, #FFFFFF 100%)'
   return (
-    <figure style={{ margin: 0 }}>
+    <figure style={{ margin: 0 }} data-photo-pending={src}>
       <div
-        data-src={src}
         role="img"
         aria-label={alt}
         style={{
           aspectRatio: '16 / 9',
           width: '100%',
-          background: 'var(--color-bg-subtle)',
+          background: bg,
           border: '1px solid var(--color-border)',
           borderRadius: 'var(--radius-lg)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          textAlign: 'center',
-          padding: '1.5rem',
-          color: 'var(--color-text-subtle)',
-          fontWeight: 600,
-          fontSize: '0.95rem',
         }}
       >
-        {label}
+        <span className={`icon-tile ${tone} lg`} aria-hidden="true" style={{ background: 'rgba(255,255,255,0.75)' }}>
+          <Icon name={icon} size={28} />
+        </span>
       </div>
       <figcaption
         style={{
@@ -173,7 +179,8 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/safe-transfusion.jpg"
                 alt="Medical staff performing a safe blood transfusion at VHS Thalassaemia Centre, Chennai"
-                label="[ Photo: VHS Thalassaemia Centre — Safe transfusion, optimal chelation ]"
+                icon="droplet"
+                tone="primary"
                 caption="Safe transfusion, optimal chelation — the foundation of every patient's care."
               />
             </div>
@@ -213,7 +220,8 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/awareness-camp-schools.jpg"
                 alt="TWA volunteers conducting a thalassemia awareness camp at a school in Chennai"
-                label="[ Photo: Thalassaemia awareness camp in schools ]"
+                icon="book-open"
+                tone="accent"
                 caption="Thalassaemia awareness camps in schools — reaching the next generation."
               />
             </div>
@@ -250,13 +258,15 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/diwali-after-bmt.jpg"
                 alt="Thalassemia patients celebrating Diwali after successful bone marrow transplantation at VHS Chennai"
-                label="[ Photo: Celebrating Diwali after a successful BMT ]"
+                icon="heart"
+                tone="accent"
                 caption="Celebrating Diwali after a successful BMT."
               />
               <ImagePlaceholder
                 src="/images/story/prenatal-diagnosis-bmt.jpg"
                 alt="Prenatal diagnosis procedure and BMT success at VHS Thalassaemia Centre"
-                label="[ Photo: Prenatal diagnosis and successful BMT ]"
+                icon="dna"
+                tone="primary"
                 caption="Prenatal diagnosis and successful BMT — two milestones that change a family's future."
               />
             </div>
@@ -290,7 +300,8 @@ export default function OurStoryPage() {
               <ImagePlaceholder
                 src="/images/story/thalassemia-free-survival-apollo.jpg"
                 alt="Thalassemia-free survival achieved at Apollo Chennai through BMT partnership with TWA"
-                label="[ Photo: Thalassaemia free survival — Apollo Chennai ]"
+                icon="award"
+                tone="primary"
                 caption="Thalassaemia free survival in Apollo Chennai — the goal that drives everything we do."
               />
             </div>

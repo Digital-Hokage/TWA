@@ -1,5 +1,11 @@
 import Link from 'next/link'
-import ImagePlaceholder from './ImagePlaceholder'
+
+const STORY_NUMBERS = [
+  { value: '2006', desc: 'Year the centre was founded at VHS Hospital' },
+  { value: '199',  desc: 'Patients currently on our care register' },
+  { value: '300+', desc: 'Bone marrow transplants performed, fully free' },
+  { value: '23',   desc: 'Lives we lost — to sepsis, heart and liver iron overload' },
+]
 
 const CHAPTERS = [
   {
@@ -92,43 +98,66 @@ export default function OurStory() {
             </Link>
           </div>
 
-          {/* ── Right: image + honour card ── */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <ImagePlaceholder
-              aspectRatio="3/4"
-              label="Dr. Revathi Raj, Founder & President of TWA Chennai — portrait or candid photo at the VHS Taramani centre"
-            />
+          {/* ── Right: story-in-numbers card ── */}
+          <div
+            style={{
+              background: '#fff',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '2rem',
+            }}
+          >
+            <span className="eyebrow" style={{ fontSize: '0.7rem' }}>
+              Our Story, In Numbers
+            </span>
 
-            {/* Government scheme recognition callout */}
-            <div
-              style={{
-                background: 'var(--color-primary-soft)',
-                border: '1px solid rgba(76,122,76,0.25)',
-                borderRadius: 'var(--radius-lg)',
-                padding: '1.25rem',
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '0.8rem', fontWeight: 700,
-                  textTransform: 'uppercase', letterSpacing: '0.07em',
-                  color: 'var(--color-primary-dark)', marginBottom: '0.4rem',
-                }}
-              >
-                Government Inclusion
-              </p>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>
-                Through persistent advocacy, <strong style={{ color: 'var(--color-primary-dark)' }}>thalassemia comprehensive care</strong> — including
-                diagnosis, transfusion, chelation, and curative BMT — is now fully covered under
-                the Tamil Nadu Chief Minister&apos;s Comprehensive Health Insurance Scheme, at zero cost to patients.
-              </p>
+            <div style={{ marginTop: '0.5rem' }}>
+              {STORY_NUMBERS.map((n, i) => (
+                <div
+                  key={n.value}
+                  style={{
+                    display: 'flex', alignItems: 'baseline', gap: '1.1rem',
+                    padding: '0.9rem 0',
+                    borderBottom: i < STORY_NUMBERS.length - 1 ? '1px solid var(--color-border)' : undefined,
+                  }}
+                >
+                  <span style={{
+                    flexShrink: 0, minWidth: 62,
+                    fontSize: '1.5rem', fontWeight: 800,
+                    color: 'var(--color-primary)', letterSpacing: '-0.02em',
+                  }}>
+                    {n.value}
+                  </span>
+                  <span style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
+                    {n.desc}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            {/* Community event / camp photo */}
-            <ImagePlaceholder
-              aspectRatio="16/9"
-              label="Photo of a TWA community event, awareness camp, or patient gathering at VHS Taramani — e.g. World Thalassemia Day programme, blood donation drive, or Camp Rainbow session"
-            />
+            <blockquote style={{ marginTop: '1.5rem' }}>
+              <p style={{
+                fontStyle: 'italic', color: 'var(--color-text-muted)',
+                fontSize: '0.95rem', lineHeight: 1.65, margin: 0,
+              }}>
+                &ldquo;We share our baby steps, our challenges, where we have fallen, and all the
+                success stories.&rdquo;
+              </p>
+              <footer style={{ marginTop: '0.6rem', fontWeight: 600, fontSize: '0.85rem', color: 'var(--color-text)' }}>
+                — Dr. Revathi Raj
+              </footer>
+            </blockquote>
+
+            <Link
+              href="/our-story"
+              style={{
+                display: 'inline-block', marginTop: '1.5rem',
+                color: 'var(--color-primary)', fontWeight: 600, fontSize: '0.9rem',
+                textDecoration: 'underline',
+              }}
+            >
+              Read the full story →
+            </Link>
           </div>
 
         </div>
