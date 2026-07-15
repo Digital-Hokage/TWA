@@ -19,7 +19,8 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   return routes.map((r) => ({
-    url: `${ORG.url}${r.path}`,
+    // Trailing slash to match the canonical form produced by trailingSlash: true
+    url: `${ORG.url}${r.path}/`,
     lastModified: now,
     changeFrequency: r.changeFrequency,
     priority: r.priority,

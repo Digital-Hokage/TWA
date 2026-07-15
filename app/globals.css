@@ -607,3 +607,7 @@ p  { color: var(--color-ink-muted); }
 /* Footer links */
 .footer-link { text-decoration: none; transition: color .15s ease; }
 .footer-link:hover { color: #fff !important; text-decoration: none; }
+
+/* Developer credit in the footer bottom bar */
+.dev-credit-link { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s ease; }
+.dev-credit-link:hover { color: rgba(255,255,255,0.9); }

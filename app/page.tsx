@@ -13,6 +13,7 @@ import CTABand from './components/CTABand'
 import FAQAccordion from './components/FAQAccordion'
 import Footer from './components/Footer'
 import ScrollReveal from './components/ScrollReveal'
+import { CONTACT } from './lib/constants'
 
 // Static site: homepage content (partners, FAQs) is maintained here in code.
 // The admin panel that used to edit these was server-side and is disabled on
@@ -33,7 +34,7 @@ const FAQS = [
   },
   {
     q: 'How can my company partner with TWA?',
-    a: 'We work with companies on CSR funding, employee giving, volunteering days and blood drives. Write to us at info@twachennai.org and we will share our CSR profile and partnership options.',
+    a: `We work with companies on CSR funding, employee giving, volunteering days and blood drives. Write to us at ${CONTACT.email} and we will share our CSR profile and partnership options.`,
   },
   {
     q: 'Can I visit your centre?',
@@ -234,11 +235,11 @@ function CorporateSupport() {
           {/* Left — photo */}
           <figure style={{ margin: 0 }}>
             <img
-              src="/images/donors/five-star-visit.jpeg"
+              src="/images/donors/five-star-visit-fullBlurred.jpeg"
               alt="Mr. Sivaramakrishnan, CSR Manager of Five-Star Business Finance Limited, visiting thalassemia patients at VHS Thalassaemia Centre, Chennai during a transfusion session"
               style={{
                 width: '100%',
-                aspectRatio: '4 / 3',
+                aspectRatio: '16 / 9',
                 objectFit: 'cover',
                 borderRadius: 12,
                 display: 'block',
@@ -256,6 +257,16 @@ function CorporateSupport() {
               Mr. Sivaramakrishnan visiting patients during transfusion sessions at VHS
               Thalassaemia Centre, Chennai
             </figcaption>
+            <p
+              style={{
+                marginTop: '0.35rem',
+                fontSize: '0.72rem',
+                fontStyle: 'italic',
+                color: 'var(--color-ink-muted)',
+              }}
+            >
+              Patient faces blurred to protect privacy.
+            </p>
           </figure>
 
           {/* Right — text */}
@@ -305,6 +316,17 @@ function CorporateSupport() {
 }
 
 export default function Home() {
+  // FAQPage structured data → eligible for Google FAQ rich results
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
   return (
     <>
       <Header />
@@ -327,6 +349,11 @@ export default function Home() {
         <CTABand />
       </main>
       <Footer />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </>
   )
 }

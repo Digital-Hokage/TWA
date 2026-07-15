@@ -99,17 +99,30 @@ export default function Hero() {
           <div
             className="hero-image-col"
             style={{
+              position: 'relative',
+              overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
               gap: '2rem',
-              background: 'var(--color-primary)',
               borderRadius: 20,
               padding: '2.5rem',
               boxShadow: 'var(--shadow-card-hover)',
             }}
           >
+            {/* Background photo of the VHS Blood Bank building */}
+            <img
+              src="/images/story/vhs-blood-bank.jpg"
+              alt="Rotary Central TTK VHS Blood Bank — home of the TWA Thalassaemia Centre, Chennai since 2006"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+            />
+            {/* Dark green overlay keeps the white text readable */}
+            <div
+              aria-hidden="true"
+              style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(55, 89, 57, 0.85), rgba(55, 89, 57, 0.92))', zIndex: 1 }}
+            />
+
             {/* Top block — quote */}
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
               <span
                 aria-hidden="true"
                 style={{
@@ -141,7 +154,7 @@ export default function Hero() {
             </div>
 
             {/* Middle block — micro-stats */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '1.5rem', display: 'flex' }}>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '1.5rem', display: 'flex', position: 'relative', zIndex: 2 }}>
               {MICRO_STATS.map((s, i) => (
                 <div
                   key={s.label}
@@ -168,7 +181,7 @@ export default function Hero() {
             </div>
 
             {/* Bottom block — badge */}
-            <div>
+            <div style={{ position: 'relative', zIndex: 2 }}>
               <span style={{
                 display: 'inline-block',
                 padding: '0.3rem 0.9rem',

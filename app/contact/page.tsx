@@ -56,9 +56,7 @@ export default function ContactPage() {
                     <div>
                       <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.2rem' }}>Email</div>
                       <div className="text-muted" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>
-                        General: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br />
-                        Donations: <a href={`mailto:${CONTACT.emailDonations}`}>{CONTACT.emailDonations}</a><br />
-                        Volunteers: <a href={`mailto:${CONTACT.emailVolunteers}`}>{CONTACT.emailVolunteers}</a>
+                        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
                       </div>
                     </div>
                   </li>

@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
 import Icon from '../components/Icon'
 import ScrollReveal from '../components/ScrollReveal'
+import { CONTACT } from '../lib/constants'
 
 // Static site: the full press archive is maintained here in code (the admin
 // /media manager was server-side and is disabled on static hosting — see _disabled/).
@@ -555,8 +556,8 @@ export default function MediaPage() {
                     For interviews, photography access, or additional information, reach us directly.
                   </p>
                 </div>
-                <a href="mailto:twachennai@gmail.com" className="btn btn-primary">
-                  <Icon name="mail" size={16} /> twachennai@gmail.com
+                <a href={`mailto:${CONTACT.email}`} className="btn btn-primary">
+                  <Icon name="mail" size={16} /> {CONTACT.email}
                 </a>
               </div>
             </ScrollReveal>

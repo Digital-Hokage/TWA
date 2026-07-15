@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { CONTACT } from '../lib/constants'
 
 export const metadata: Metadata = {
   title: 'Privacy policy',
@@ -59,14 +60,14 @@ export default function PrivacyPage() {
             <h2>5. Your rights</h2>
             <p className="mt-3">
               You can ask us at any time to confirm what data we hold about you, correct it, or
-              delete it. Write to <a href="mailto:privacy@twachennai.org">privacy@twachennai.org</a>.
+              delete it. Write to <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
             </p>
           </section>
 
           <section className="mt-8">
             <h2>6. Contact</h2>
             <p className="mt-3">
-              Questions about this policy? Please email <a href="mailto:privacy@twachennai.org">privacy@twachennai.org</a>.
+              Questions about this policy? Please email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
             </p>
           </section>
         </div>

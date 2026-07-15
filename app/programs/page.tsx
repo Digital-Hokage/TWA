@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
@@ -24,6 +25,15 @@ const SECTIONS: Section[] = [
           <li>A pioneering technique using simple scalp vein sets protects veins in patients undergoing long-term transfusions.</li>
           <li>Transfusion appointments are scheduled in advance and coordinated with treating physicians based on pre-transfusion haemoglobin targets.</li>
         </ul>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', borderRadius: 12, overflow: 'hidden', marginTop: '1.5rem' }}>
+          <Image
+            src="/images/story/safe-transfusion.jpg"
+            alt="The VHS Thalassaemia Centre transfusion ward"
+            fill
+            sizes="(max-width: 760px) 100vw, 720px"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
       </>
     ),
   },
@@ -68,6 +78,15 @@ const SECTIONS: Section[] = [
       <>
         <p>We run carrier-screening drives in colleges, workplaces, schools, and communities. Our volunteers ensure that thalassemia awareness is represented at all regional obstetric meetings and conferences across Tamil Nadu. We have conducted extensive campaigns in Sitteri, Dharmapuri — one of the highest-prevalence districts in the state.</p>
         <p className="mt-3">TWA has assisted over 100 chorion villous sampling (CVS) procedures through an MoU with Mediscan Systems, helping families access prenatal diagnosis and informed choices. Nine babies have been successfully delivered within our own thalassemia patient cohort.</p>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', borderRadius: 12, overflow: 'hidden', marginTop: '1.5rem' }}>
+          <Image
+            src="/images/story/awareness-camp-schools.jpg"
+            alt="Thalassemia carrier screening camp at a school in Tamil Nadu"
+            fill
+            sizes="(max-width: 760px) 100vw, 720px"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
       </>
     ),
   },

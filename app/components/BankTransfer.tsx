@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Icon from './Icon'
 import { trackEvent } from '../lib/gtag'
+import { CONTACT } from '../lib/constants'
 
 const BANK = {
   accountName: 'THALASSEMIA WELFARE ASSOCIATION',
@@ -83,7 +84,7 @@ export default function BankTransfer() {
 
       <p style={{ fontSize: '0.82rem', color: 'var(--color-text-subtle)', marginTop: '1rem' }}>
         After transferring, please email your name, PAN and the transfer reference to{' '}
-        <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a> so we can send your
+        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> so we can send your
         80G tax-exemption receipt.
       </p>
     </div>
