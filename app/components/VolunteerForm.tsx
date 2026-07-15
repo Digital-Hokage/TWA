@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Icon from './Icon'
+import { trackEvent } from '../lib/gtag'
+import { submitForm } from '../lib/web3forms'
 
 const ROLES = [
   { value: 'blood-drive',       label: 'Blood drive coordinator' },
@@ -25,36 +27,39 @@ export default function VolunteerForm() {
     role: '', availability: '', message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (sending) return
     const roleLabel  = ROLES.find((r) => r.value === data.role)?.label  ?? data.role
     const availLabel = AVAILABILITY.find((a) => a.value === data.availability)?.label ?? data.availability
 
-    const body = [
-      'VOLUNTEER APPLICATION',
-      '=====================',
-      `Full Name:    ${data.name}`,
-      `Email:        ${data.email}`,
-      `Phone:        ${data.phone}`,
-      `City:         ${data.city || 'Not provided'}`,
-      '',
-      `Role:         ${roleLabel}`,
-      `Availability: ${availLabel}`,
-      '',
-      'Additional information:',
-      data.message || 'None provided',
-      '',
-      '---',
-      'Submitted via TWA Chennai website volunteer form.',
-      'Please respond within two working days.',
-    ].join('\n')
+    setSending(true)
+    setError(false)
+    trackEvent('volunteer_signup', 'engagement')
 
-    window.location.href =
-      `mailto:twachennai@gmail.com?subject=${encodeURIComponent('Volunteer Application — ' + data.name)}&body=${encodeURIComponent(body)}`
-
-    setSubmitted(true)
-    setData({ name: '', email: '', phone: '', city: '', role: '', availability: '', message: '' })
+    try {
+      // Delivered to the NGO inbox via Web3Forms (no backend needed on static hosting).
+      const res = await submitForm({
+        subject: 'New Volunteer Application — TWA Chennai',
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        city: data.city,
+        role: roleLabel,
+        availability: availLabel,
+        message: data.message,
+      })
+      if (!res.success) throw new Error(res.message || 'Submission failed')
+      setSubmitted(true)
+      setData({ name: '', email: '', phone: '', city: '', role: '', availability: '', message: '' })
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -66,8 +71,15 @@ export default function VolunteerForm() {
 
       {submitted && (
         <div className="form-message success" role="status">
-          Your email client should open with a pre-filled application — just click Send. If it
-          didn&apos;t open, email us at{' '}
+          Thank you for applying to volunteer — we&apos;ve received your application and will
+          respond within two working days. Questions? Email{' '}
+          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+        </div>
+      )}
+
+      {error && (
+        <div className="form-message error" role="status">
+          Sorry, something went wrong submitting your application. Please email it to us at{' '}
           <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
         </div>
       )}
@@ -122,11 +134,11 @@ export default function VolunteerForm() {
           placeholder="Skills, languages, prior volunteering, questions for us." />
       </div>
 
-      <button type="submit" className="btn btn-accent btn-block btn-lg">
-        Submit application <Icon name="arrow-right" size={16} />
+      <button type="submit" className="btn btn-accent btn-block btn-lg" disabled={sending}>
+        {sending ? 'Submitting…' : <>Submit application <Icon name="arrow-right" size={16} /></>}
       </button>
       <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.6rem', textAlign: 'center' }}>
-        Clicking Submit opens your email app with a pre-filled application to twachennai@gmail.com.
+        Your application is sent securely to twachennai@gmail.com. We never share your details.
       </p>
     </form>
   )

@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Icon, { type IconName } from './Icon'
+import { trackEvent } from '../lib/gtag'
 
 type Item = { title: string; desc: string; icon: IconName }
 
@@ -59,7 +62,11 @@ export default function BloodDonorCTA({ extraNote }: { extraNote?: string }) {
         )}
 
         <div className="flex" style={{ justifyContent: 'center', gap: '0.75rem', marginTop: '2.25rem', flexWrap: 'wrap' }}>
-          <Link href="/get-involved#blood-drive" className="btn btn-primary btn-lg">
+          <Link
+            href="/get-involved#blood-drive"
+            className="btn btn-primary btn-lg"
+            onClick={() => trackEvent('blood_donor_cta', 'engagement')}
+          >
             Register as a blood donor
           </Link>
           <Link href="/contact" className="btn btn-outline btn-lg">

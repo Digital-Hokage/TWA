@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import DonateForm from '../components/DonateForm'
+import BankTransfer from '../components/BankTransfer'
 import TaxBenefitsCalculator from '../components/TaxBenefitsCalculator'
 import CostBreakdown from '../components/CostBreakdown'
 import TrustSignals from '../components/TrustSignals'
@@ -26,6 +27,12 @@ export default function DonatePage() {
         <section className="section">
           <div className="container">
             <DonateForm />
+          </div>
+        </section>
+
+        <section className="section-tight bg-subtle" style={{ borderTop: '1px solid var(--color-border)' }}>
+          <div className="container">
+            <BankTransfer />
           </div>
         </section>
 

@@ -5,6 +5,9 @@ import CTABand from '../components/CTABand'
 import Icon from '../components/Icon'
 import ScrollReveal from '../components/ScrollReveal'
 
+// Static site: the full press archive is maintained here in code (the admin
+// /media manager was server-side and is disabled on static hosting — see _disabled/).
+
 export const metadata: Metadata = {
   title: 'Media Coverage',
   description:
@@ -298,9 +301,6 @@ const ARTICLES: Article[] = [
   },
 ]
 
-const FEATURED = ARTICLES.filter((a) => a.featured)
-const REST     = ARTICLES.filter((a) => !a.featured)
-
 function PubBadge({ a }: { a: Article }) {
   return (
     <span
@@ -318,6 +318,7 @@ function PubBadge({ a }: { a: Article }) {
 }
 
 export default function MediaPage() {
+  const FEATURED = ARTICLES.filter((a) => a.featured)
   const urlCount = ARTICLES.filter((a) => a.url !== '#').length
 
   return (
