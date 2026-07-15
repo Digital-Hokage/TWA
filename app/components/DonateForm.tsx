@@ -3,17 +3,30 @@
 import { useMemo, useState } from 'react'
 import { DONATION_PRESETS } from '../lib/constants'
 import Icon from './Icon'
+import { trackEvent } from '../lib/gtag'
+import { submitForm } from '../lib/web3forms'
 
 type Frequency = 'one-time' | 'monthly'
 
 const formatINR = (n: number) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n)
 
+// On static hosting there is no server to create or verify Razorpay orders, so the
+// old /api/donations/create-order + /api/donations/verify flow cannot run here.
+// Instead, set NEXT_PUBLIC_RAZORPAY_PAYMENT_URL to a hosted Razorpay Payment Page /
+// Payment Button link (create one in the Razorpay Dashboard → Payment Pages). That
+// opens Razorpay's own secure, hosted checkout — no backend required on our side.
+// Leave it blank to show the pledge-only flow.
+const RAZORPAY_PAYMENT_URL = process.env.NEXT_PUBLIC_RAZORPAY_PAYMENT_URL ?? ''
+const PAY_NOW_ENABLED = /^https?:\/\//.test(RAZORPAY_PAYMENT_URL)
+
 export default function DonateForm() {
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [amount, setAmount] = useState<number>(8500)
   const [donor, setDonor] = useState({ name: '', email: '', phone: '', pan: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
 
   const impact = useMemo(() => {
     if (amount >= 102000) return 'Funds one patient for a full year.'
@@ -24,47 +37,55 @@ export default function DonateForm() {
     return ''
   }, [amount])
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (sending) return
+    setSending(true)
+    setError(false)
+    trackEvent('donation_initiated', 'engagement', undefined, amount)
+
     const freqLabel = frequency === 'monthly' ? 'Monthly recurring' : 'One-time'
-    const body = [
-      'DONATION PLEDGE',
-      '===============',
-      `Donor Name: ${donor.name}`,
-      `Email:      ${donor.email}`,
-      `Phone:      ${donor.phone || 'Not provided'}`,
-      `PAN:        ${donor.pan || 'Not provided'}`,
-      '',
-      `Donation Type: ${freqLabel}`,
-      `Amount:        ₹${amount.toLocaleString('en-IN')}`,
-      '',
-      'Message:',
-      donor.message || 'None provided',
-      '',
-      '---',
-      'Submitted via TWA Chennai website donation form.',
-      'Please send payment instructions and 80G receipt details.',
-    ].join('\n')
-
-    const subject = `Donation Pledge — ${donor.name} — ₹${amount.toLocaleString('en-IN')} ${freqLabel}`
-    window.location.href =
-      `mailto:twachennai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-    setSubmitted(true)
-    setDonor({ name: '', email: '', phone: '', pan: '', message: '' })
+    try {
+      // Delivered to the NGO inbox via Web3Forms (no backend needed on static hosting).
+      const res = await submitForm({
+        subject: 'New Donation Pledge — TWA Chennai',
+        name: donor.name,
+        email: donor.email,
+        phone: donor.phone,
+        amount: `₹${amount.toLocaleString('en-IN')}`,
+        frequency: freqLabel,
+        pan: donor.pan,
+        message: donor.message,
+      })
+      if (!res.success) throw new Error(res.message || 'Submission failed')
+      setSubmitted(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
     <form onSubmit={onSubmit} aria-labelledby="donate-form-heading" className="card" style={{ maxWidth: 640, margin: '0 auto' }}>
       <h2 id="donate-form-heading" style={{ marginBottom: '0.25rem' }}>Make a donation</h2>
       <p className="text-muted" style={{ fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-        Submit your pledge and our team will follow up with payment instructions and an 80G receipt.
+        {PAY_NOW_ENABLED
+          ? 'Pay securely online through Razorpay, or submit a pledge and our team will follow up with payment instructions and an 80G receipt.'
+          : 'Submit your pledge and our team will follow up with payment instructions and an 80G receipt.'}
       </p>
 
       {submitted && (
         <div className="form-message success" role="status">
-          Your email client should open with a pre-filled pledge — just click Send. If it
-          didn&apos;t open, email us at{' '}
+          Thank you — your pledge has been received. Our team will email you a secure payment link
+          and your 80G receipt details. Questions? Email{' '}
+          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+        </div>
+      )}
+
+      {error && (
+        <div className="form-message error" role="status">
+          Sorry, something went wrong submitting your pledge. Please email us at{' '}
           <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a> with your donation amount.
         </div>
       )}
@@ -161,13 +182,40 @@ export default function DonateForm() {
           className="textarea" placeholder="Dedicate this gift, ask a question, or leave a note." />
       </div>
 
-      <button type="submit" disabled={amount < 100} className="btn btn-primary btn-block btn-lg">
-        Pledge {formatINR(amount)}{frequency === 'monthly' ? ' / month' : ''} <Icon name="arrow-right" size={16} />
+      {/* Option A — Pay Now via Razorpay's hosted Payment Page (only when configured) */}
+      {PAY_NOW_ENABLED && (
+        <>
+          <a
+            href={RAZORPAY_PAYMENT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent('donation_pay_now', 'engagement', undefined, amount)}
+            className="btn btn-accent btn-block btn-lg"
+          >
+            Pay online securely via Razorpay
+          </a>
+          <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.5rem', textAlign: 'center' }}>
+            Opens Razorpay&apos;s secure hosted payment page in a new tab. You can enter your amount there.
+          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.1rem 0' }}>
+            <hr style={{ flex: 1, border: 0, borderTop: '1px solid var(--color-border)' }} />
+            <span style={{ fontSize: '0.8rem', color: 'var(--color-text-subtle)', fontWeight: 600 }}>or prefer to pledge</span>
+            <hr style={{ flex: 1, border: 0, borderTop: '1px solid var(--color-border)' }} />
+          </div>
+        </>
+      )}
+
+      {/* Option B — Pledge (delivered by email via Web3Forms) */}
+      <button type="submit" disabled={amount < 100 || sending} className="btn btn-primary btn-block btn-lg">
+        {sending
+          ? 'Submitting…'
+          : <>Pledge {formatINR(amount)}{frequency === 'monthly' ? ' / month' : ''} <Icon name="arrow-right" size={16} /></>}
       </button>
 
       <p style={{ fontSize: '0.8rem', color: 'var(--color-text-subtle)', marginTop: '0.8rem', textAlign: 'center' }}>
-        Clicking Pledge opens your email app. Our team will follow up with a secure payment link and 80G receipt.
-        By donating you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+        Submitting your pledge sends your details securely to our team, who will follow up with a
+        secure payment link and 80G receipt. By donating you agree to our{' '}
+        <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
       </p>
     </form>
   )

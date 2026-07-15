@@ -2,11 +2,13 @@ import Icon, { type IconName } from './Icon'
 
 type Stat = { value: string; label: string; icon: IconName; note: string }
 
+// Static site: stats are edited here in code (the admin /stats editor was
+// server-side and is disabled on static hosting — see _disabled/).
 const STATS: Stat[] = [
-  { value: '199',  label: 'Patients on Register',             icon: 'users',         note: 'As of 2026' },
-  { value: '300+', label: 'Bone Marrow Transplants Free',     icon: 'award',         note: 'Fully covered' },
-  { value: '20+',  label: 'Years of Uninterrupted Care',      icon: 'calendar',      note: 'Since 2006' },
-  { value: '₹0',   label: 'Cost to Every Patient We Serve',   icon: 'heart',         note: 'Always free' },
+  { value: '199',  label: 'Patients on Register',           icon: 'users',    note: 'As of 2026' },
+  { value: '300+', label: 'Bone Marrow Transplants Free',   icon: 'award',    note: 'Fully covered' },
+  { value: '20+',  label: 'Years of Uninterrupted Care',    icon: 'calendar', note: 'Since 2006' },
+  { value: '₹0',   label: 'Cost to Every Patient We Serve', icon: 'heart',    note: 'Always free' },
 ]
 
 export default function ImpactStats() {

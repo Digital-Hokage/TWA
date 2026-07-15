@@ -14,6 +14,10 @@ import FAQAccordion from './components/FAQAccordion'
 import Footer from './components/Footer'
 import ScrollReveal from './components/ScrollReveal'
 
+// Static site: homepage content (partners, FAQs) is maintained here in code.
+// The admin panel that used to edit these was server-side and is disabled on
+// static hosting — see _disabled/.
+
 const FAQS = [
   {
     q: 'Is my donation tax-deductible?',
@@ -45,7 +49,7 @@ type Partner = {
   logo?: string
 }
 
-const PARTNERS: Partner[] = [
+const PARTNERS_DATA: Partner[] = [
   {
     name: 'Apollo Hospitals, Chennai',
     shortName: 'Apollo',
@@ -89,7 +93,8 @@ const PARTNERS: Partner[] = [
   },
 ]
 
-function Partners() {
+function Partners({ partners }: { partners: Partner[] }) {
+  const PARTNERS = partners
   return (
     <section
       aria-labelledby="partners-heading"
@@ -193,6 +198,112 @@ function Partners() {
   )
 }
 
+function CorporateSupport() {
+  return (
+    <section
+      aria-labelledby="corporate-support-heading"
+      style={{ background: 'var(--color-bg-subtle)', padding: '4rem 1.5rem' }}
+    >
+      <div className="container" style={{ padding: 0 }}>
+        <div className="section-header">
+          <span className="eyebrow eyebrow--accent">Corporate support</span>
+          <h2 id="corporate-support-heading">Those Who Make It Possible</h2>
+          <p className="lead" style={{ margin: '0.75rem auto 0', maxWidth: '60ch' }}>
+            We are deeply grateful to the organisations whose generosity directly funds patient
+            care at VHS Hospital.
+          </p>
+        </div>
+
+        {/* Donor card — image left, text right on desktop; stacked on mobile */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '2rem',
+            alignItems: 'center',
+            maxWidth: 960,
+            margin: '0 auto',
+            background: '#fff',
+            border: '1px solid rgba(76,122,76,0.15)',
+            borderLeft: '4px solid var(--color-primary)',
+            borderRadius: 16,
+            padding: '2rem',
+            boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
+          }}
+        >
+          {/* Left — photo */}
+          <figure style={{ margin: 0 }}>
+            <img
+              src="/images/donors/five-star-visit.jpeg"
+              alt="Mr. Sivaramakrishnan, CSR Manager of Five-Star Business Finance Limited, visiting thalassemia patients at VHS Thalassaemia Centre, Chennai during a transfusion session"
+              style={{
+                width: '100%',
+                aspectRatio: '4 / 3',
+                objectFit: 'cover',
+                borderRadius: 12,
+                display: 'block',
+              }}
+            />
+            <figcaption
+              style={{
+                marginTop: '0.75rem',
+                fontSize: '0.82rem',
+                fontStyle: 'italic',
+                color: 'var(--color-text-subtle)',
+                lineHeight: 1.5,
+              }}
+            >
+              Mr. Sivaramakrishnan visiting patients during transfusion sessions at VHS
+              Thalassaemia Centre, Chennai
+            </figcaption>
+          </figure>
+
+          {/* Right — text */}
+          <div>
+            <h3
+              style={{
+                fontSize: '1.4rem',
+                fontWeight: 700,
+                lineHeight: 1.3,
+                marginBottom: '0.85rem',
+                color: 'var(--color-text)',
+              }}
+            >
+              Five-Star Business Finance Limited
+            </h3>
+
+            <span
+              style={{
+                display: 'inline-block',
+                background: 'var(--color-primary)',
+                color: '#fff',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                padding: '0.35rem 0.9rem',
+                borderRadius: 'var(--radius-full)',
+                marginBottom: '1.1rem',
+              }}
+            >
+              ₹48 Lakhs — Medicines Fund
+            </span>
+
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
+              Five-Star Business Finance Limited made a transformative contribution of ₹48 lakhs
+              towards medicines for our patients. This donation directly funds chelation therapy
+              and supporting medicines for all 199 patients on our care register — ensuring
+              uninterrupted treatment for an entire year.
+            </p>
+
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)' }}>
+              Represented by Mr. Sivaramakrishnan, CSR Manager
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   return (
     <>
@@ -209,7 +320,8 @@ export default function Home() {
         <ScrollReveal><TrustSignals /></ScrollReveal>
         <ScrollReveal><TaxBenefitsCalculator /></ScrollReveal>
         <ScrollReveal><BloodDonorCTA /></ScrollReveal>
-        <ScrollReveal><Partners /></ScrollReveal>
+        <ScrollReveal><Partners partners={PARTNERS_DATA} /></ScrollReveal>
+        <ScrollReveal><CorporateSupport /></ScrollReveal>
         <ScrollReveal><MediaCoverage /></ScrollReveal>
         <ScrollReveal><FAQAccordion items={FAQS} /></ScrollReveal>
         <CTABand />

@@ -10,6 +10,8 @@ type Article = {
   pubColor: { bg: string; text: string }
 }
 
+// Static site: these four highlights are edited here in code (the admin /media
+// manager was server-side and is disabled on static hosting — see _disabled/).
 const ARTICLES: Article[] = [
   {
     publication: 'LiveChennai',

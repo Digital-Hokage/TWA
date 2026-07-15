@@ -2,32 +2,40 @@
 
 import { useState } from 'react'
 import Icon from './Icon'
+import { trackEvent } from '../lib/gtag'
+import { submitForm } from '../lib/web3forms'
 
 export default function ContactForm() {
   const [data, setData] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const body = [
-      `Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Phone: ${data.phone || 'Not provided'}`,
-      '',
-      `Subject: ${data.subject}`,
-      '',
-      'Message:',
-      data.message,
-      '',
-      '---',
-      'Sent via TWA Chennai website contact form.',
-    ].join('\n')
+    if (sending) return
+    setSending(true)
+    setError(false)
+    trackEvent('contact_form', 'engagement')
 
-    window.location.href =
-      `mailto:twachennai@gmail.com?subject=${encodeURIComponent('Contact: ' + data.subject)}&body=${encodeURIComponent(body)}`
-
-    setSubmitted(true)
-    setData({ name: '', email: '', phone: '', subject: '', message: '' })
+    try {
+      // Delivered to the NGO inbox via Web3Forms (no backend needed on static hosting).
+      const res = await submitForm({
+        subject: 'Contact Message — TWA Chennai',
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        subject_line: data.subject,
+        message: data.message,
+      })
+      if (!res.success) throw new Error(res.message || 'Submission failed')
+      setSubmitted(true)
+      setData({ name: '', email: '', phone: '', subject: '', message: '' })
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -39,8 +47,14 @@ export default function ContactForm() {
 
       {submitted && (
         <div className="form-message success" role="status">
-          Your email client should open with a pre-filled message — just click Send. If it
-          didn&apos;t open, email us directly at{' '}
+          Thank you — your message has been sent. We&apos;ll get back to you soon. You can also
+          reach us any time at <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+        </div>
+      )}
+
+      {error && (
+        <div className="form-message error" role="status">
+          Sorry, something went wrong sending your message. Please email us directly at{' '}
           <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
         </div>
       )}
@@ -72,11 +86,11 @@ export default function ContactForm() {
         <textarea id="c-msg" required minLength={10} maxLength={2000} className="textarea"
           value={data.message} onChange={(e) => setData({ ...data, message: e.target.value })} />
       </div>
-      <button type="submit" className="btn btn-primary btn-block btn-lg">
-        Send message <Icon name="arrow-right" size={16} />
+      <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={sending}>
+        {sending ? 'Sending…' : <>Send message <Icon name="arrow-right" size={16} /></>}
       </button>
       <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.6rem', textAlign: 'center' }}>
-        Clicking Send opens your email app with a pre-filled message to twachennai@gmail.com.
+        Your message is sent securely to twachennai@gmail.com. We never share your details.
       </p>
     </form>
   )

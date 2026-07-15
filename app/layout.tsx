@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import type { Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { ORG, CONTACT } from './lib/constants'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -98,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleAnalytics />
       </body>
     </html>
   )
