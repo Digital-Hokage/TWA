@@ -14,23 +14,33 @@ const socialLinks: { name: string; href: string; icon: IconName }[] = [
 export default function Footer() {
   const year = new Date().getFullYear()
 
+  const labelStyle: React.CSSProperties = {
+    color: 'rgba(255,255,255,0.5)',
+    fontSize: '0.72rem',
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.12em',
+    marginBottom: '1rem',
+    fontFamily: 'var(--font-sans)',
+  }
+
   return (
-    <footer style={{ background: '#0F172A', color: '#E2E8F0', marginTop: '4rem' }}>
-      <div className="container" style={{ padding: '3.5rem 1.5rem 1.5rem' }}>
-        <div className="grid grid-4" style={{ gap: '2rem' }}>
+    <footer style={{ background: 'var(--color-ink)', color: 'rgba(255,255,255,0.7)', marginTop: '4rem' }}>
+      <div className="container" style={{ padding: '4rem 1.5rem 3rem' }}>
+        <div className="grid grid-4" style={{ gap: '2.5rem' }}>
           {/* Brand */}
           <div>
             {/* CSS variable override so Logo text reads as white on dark bg */}
             <div
               style={{
                 marginBottom: '1rem',
-                '--color-text': '#fff',
-                '--color-text-subtle': 'rgba(226,232,240,0.55)',
+                '--color-ink': '#fff',
+                '--color-ink-muted': 'rgba(255,255,255,0.55)',
               } as React.CSSProperties}
             >
               <Logo />
             </div>
-            <p style={{ fontSize: '0.92rem', color: 'rgba(226,232,240,0.8)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
               {ORG.tagline}
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
@@ -43,9 +53,9 @@ export default function Footer() {
                   style={{
                     width: 36, height: 36, borderRadius: 8,
                     background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.1)',
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#E2E8F0',
+                    color: 'rgba(255,255,255,0.7)',
                   }}
                 >
                   <Icon name={s.icon} size={16} />
@@ -56,72 +66,82 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h4 style={{ color: '#fff', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.9rem' }}>
-              Explore
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <h4 style={labelStyle}>Explore</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
               {NAV.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} style={{ color: 'rgba(226,232,240,0.75)', fontSize: '0.92rem' }}>
+                  <Link href={item.href} className="footer-link" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>
                     {item.label}
                   </Link>
                 </li>
               ))}
-              <li><Link href="/stories" style={{ color: 'rgba(226,232,240,0.75)', fontSize: '0.92rem' }}>Patient Stories</Link></li>
-              <li><Link href="/donate" style={{ color: 'rgba(226,232,240,0.75)', fontSize: '0.92rem' }}>Donate</Link></li>
+              <li><Link href="/stories" className="footer-link" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>Patient Stories</Link></li>
+              <li><Link href="/donate" className="footer-link" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>Donate</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 style={{ color: '#fff', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.9rem' }}>
-              Contact
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.92rem' }}>
-              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(226,232,240,0.85)' }}>
+            <h4 style={labelStyle}>Contact</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.875rem' }}>
+              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Icon name="map-pin" size={16} />
                 <span>{CONTACT.addressLine1}<br />{CONTACT.addressLine2} – {CONTACT.pincode}</span>
               </li>
-              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(226,232,240,0.85)' }}>
+              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Icon name="phone" size={16} />
-                <a href={`tel:${CONTACT.phonePrimary.replace(/\s/g, '')}`} style={{ color: 'inherit' }}>{CONTACT.phonePrimary}</a>
+                <a href={`tel:${CONTACT.phonePrimary.replace(/\s/g, '')}`} className="footer-link" style={{ color: 'inherit' }}>{CONTACT.phonePrimary}</a>
               </li>
-              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(226,232,240,0.85)' }}>
+              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Icon name="mail" size={16} />
-                <a href={`mailto:${CONTACT.email}`} style={{ color: 'inherit' }}>{CONTACT.email}</a>
+                <a href={`mailto:${CONTACT.email}`} className="footer-link" style={{ color: 'inherit' }}>{CONTACT.email}</a>
               </li>
-              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(226,232,240,0.85)' }}>
+              <li style={{ display: 'flex', gap: '0.6rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Icon name="clock" size={16} />
                 <span>{CONTACT.hours}</span>
               </li>
             </ul>
           </div>
 
-          {/* Registration */}
+          {/* Registration — only rows with confirmed (non-TODO) values are rendered */}
           <div>
-            <h4 style={{ color: '#fff', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.9rem' }}>
-              Registration
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.88rem', color: 'rgba(226,232,240,0.75)' }}>
-              <li>Society Reg. No.: <strong style={{ color: '#fff' }}>{REGISTRATION.societyRegNo}</strong></li>
-              <li>PAN: <strong style={{ color: '#fff' }}>{REGISTRATION.pan}</strong></li>
-              <li>80G Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg80G}</strong></li>
-              <li>12A Reg.: <strong style={{ color: '#fff' }}>{REGISTRATION.reg12A}</strong></li>
+            <h4 style={labelStyle}>Registration</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.45rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }}>
+              {([
+                ['Society Reg. No.', REGISTRATION.societyRegNo],
+                ['PAN', REGISTRATION.pan],
+                ['80G Reg.', REGISTRATION.reg80G],
+                ['12A Reg.', REGISTRATION.reg12A],
+                ['CSR Reg.', REGISTRATION.csrRegNo],
+              ] as [string, string][])
+                .filter(([, value]) => value && value !== 'TODO')
+                .map(([label, value]) => (
+                  <li key={label}>{label}: <strong style={{ color: '#fff', fontWeight: 500 }}>{value}</strong></li>
+                ))}
             </ul>
-            <p style={{ fontSize: '0.8rem', color: 'rgba(226,232,240,0.6)', marginTop: '0.8rem' }}>
+            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.9rem', lineHeight: 1.6 }}>
               All donations are eligible for tax deduction under Section 80G of the Income Tax Act, 1961.
             </p>
           </div>
         </div>
+      </div>
 
-        <hr style={{ border: 0, borderTop: '1px solid rgba(255,255,255,0.08)', margin: '2.5rem 0 1.5rem' }} />
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: 'rgba(226,232,240,0.6)' }}>
-          <p>© {year} {ORG.name}. All rights reserved.</p>
+      {/* Bottom bar */}
+      <div style={{ background: '#0A120B', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+        <div
+          className="container"
+          style={{
+            padding: '1.25rem 1.5rem',
+            display: 'flex', flexWrap: 'wrap', gap: '1rem',
+            justifyContent: 'space-between', alignItems: 'center',
+            fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)',
+          }}
+        >
+          <p style={{ color: 'rgba(255,255,255,0.5)' }}>© {year} {ORG.name}. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <Link href="/privacy" style={{ color: 'inherit' }}>Privacy Policy</Link>
-            <Link href="/terms" style={{ color: 'inherit' }}>Terms of Use</Link>
-            <Link href="/transparency" style={{ color: 'inherit' }}>Transparency</Link>
+            <Link href="/privacy" className="footer-link" style={{ color: 'inherit' }}>Privacy Policy</Link>
+            <Link href="/terms" className="footer-link" style={{ color: 'inherit' }}>Terms of Use</Link>
+            <Link href="/transparency" className="footer-link" style={{ color: 'inherit' }}>Transparency</Link>
           </div>
         </div>
       </div>

@@ -71,9 +71,13 @@ export default function MediaCoverage() {
             <article
               key={a.headline}
               className="card card-hover"
-              style={{ display: 'flex', flexDirection: 'column' }}
+              style={{
+                display: 'flex', flexDirection: 'column',
+                borderRadius: 12, padding: '1.5rem',
+                borderLeft: '3px solid var(--color-primary-soft)',
+              }}
             >
-              {/* header row: publication badge + date */}
+              {/* header row: publication name + date */}
               <div
                 style={{
                   display: 'flex', alignItems: 'center',
@@ -84,18 +88,13 @@ export default function MediaCoverage() {
               >
                 <span
                   style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-                    padding: '0.25rem 0.7rem',
-                    borderRadius: 'var(--radius-full)',
-                    background: a.pubColor.bg,
-                    color: a.pubColor.text,
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    color: 'var(--color-primary)',
                     letterSpacing: '0.025em',
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  <Icon name="file-text" size={11} />
                   {a.publication}
                 </span>
                 <time
@@ -147,11 +146,11 @@ export default function MediaCoverage() {
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
                     marginTop: '1.1rem',
-                    fontSize: '0.8rem', fontWeight: 500,
+                    fontSize: '0.75rem', fontWeight: 500, fontStyle: 'italic',
                     color: 'var(--color-text-subtle)',
                   }}
                 >
-                  Link coming soon
+                  Link being sourced
                 </span>
               )}
             </article>

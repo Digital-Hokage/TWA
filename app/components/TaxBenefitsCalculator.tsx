@@ -39,7 +39,12 @@ export default function TaxBenefitsCalculator() {
                     key={p}
                     type="button"
                     onClick={() => setAmount(p)}
-                    className={amount === p ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'}
+                    className="btn btn-sm"
+                    style={
+                      amount === p
+                        ? { background: 'var(--color-primary)', color: '#fff' }
+                        : { background: 'var(--color-primary-soft)', color: 'var(--color-primary)' }
+                    }
                   >
                     {formatINR(p)}
                   </button>
@@ -74,22 +79,25 @@ export default function TaxBenefitsCalculator() {
             </div>
           </div>
 
-          <div className="card" style={{ background: 'var(--color-accent-soft)', borderColor: '#99F6E4' }}>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--color-accent-dark)' }}>Your tax saving</h3>
-            <dl style={{ display: 'grid', gridTemplateColumns: '1fr auto', rowGap: '0.65rem', columnGap: '1rem' }}>
-              <dt style={{ color: 'var(--color-text-muted)' }}>Donation</dt>
-              <dd style={{ fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>{formatINR(amount)}</dd>
+          <div className="card" style={{ background: '#fff', borderColor: 'rgba(76,122,76,0.2)' }}>
+            <h3 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>Your tax saving</h3>
+            <dl style={{ display: 'grid', gridTemplateColumns: '1fr auto', rowGap: '0.65rem', columnGap: '1rem', alignItems: 'baseline' }}>
+              <dt style={{ color: 'var(--color-ink-muted)' }}>Donation</dt>
+              <dd style={{ fontWeight: 500, fontVariantNumeric: 'tabular-nums' }}>{formatINR(amount)}</dd>
 
-              <dt style={{ color: 'var(--color-text-muted)' }}>Deductible (50%)</dt>
+              <dt style={{ color: 'var(--color-ink-muted)' }}>Deductible (50%)</dt>
               <dd style={{ fontVariantNumeric: 'tabular-nums' }}>{formatINR(amount * 0.5)}</dd>
 
-              <dt style={{ color: 'var(--color-text-muted)' }}>Tax saved</dt>
-              <dd style={{ fontVariantNumeric: 'tabular-nums', color: 'var(--color-accent-dark)', fontWeight: 700 }}>
+              <dt style={{ color: 'var(--color-ink-muted)' }}>Tax saved</dt>
+              <dd style={{ fontVariantNumeric: 'tabular-nums', color: 'var(--color-primary)', fontWeight: 600 }}>
                 {formatINR(deduction)}
               </dd>
 
-              <dt style={{ fontWeight: 700 }}>Effective cost to you</dt>
-              <dd style={{ fontWeight: 800, fontSize: '1.25rem', fontVariantNumeric: 'tabular-nums' }}>
+              <dt style={{ fontWeight: 600, color: 'var(--color-ink)' }}>Effective cost to you</dt>
+              <dd style={{
+                fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1.75rem',
+                color: 'var(--color-primary)', fontVariantNumeric: 'tabular-nums',
+              }}>
                 {formatINR(effectiveCost)}
               </dd>
             </dl>

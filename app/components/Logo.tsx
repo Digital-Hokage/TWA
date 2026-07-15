@@ -20,18 +20,20 @@ export default function Logo() {
       <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
         <span
           style={{
-            fontWeight: 700,
-            color: 'var(--color-text)',
-            fontSize: '0.95rem',
+            fontFamily: 'var(--font-serif)',
+            fontWeight: 600,
+            color: 'var(--color-ink)',
+            fontSize: '1rem',
+            letterSpacing: '-0.005em',
           }}
         >
           Thalassaemia Welfare Association
         </span>
         <span
           style={{
-            fontSize: '0.68rem',
-            color: 'var(--color-text-subtle)',
-            fontWeight: 500,
+            fontSize: '0.7rem',
+            color: 'var(--color-ink-muted)',
+            fontWeight: 400,
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
           }}

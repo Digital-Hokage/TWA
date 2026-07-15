@@ -17,87 +17,111 @@ type Placeholder = {
   icon: IconName
   tone: 'primary' | 'accent'
   caption: string
+  chapter?: 1 | 2 | 3
 }
 
 /**
- * Renders a themed icon card in place of the photo named in `src` until it
+ * Renders a themed typographic card in place of the photo named in `src` until it
  * arrives (see /public/images/story/README.md for the expected filenames).
  * Swap for <Image src={src} alt={alt} fill /> once photography is in hand.
+ * Each chapter has its own visual treatment so the cards read as intentional design.
  */
-function ImagePlaceholder({ src, alt, icon, tone, caption }: Placeholder) {
-  const bg = tone === 'accent'
-    ? 'linear-gradient(135deg, var(--color-accent-soft) 0%, #FFFFFF 100%)'
-    : 'linear-gradient(135deg, var(--color-primary-soft) 0%, #FFFFFF 100%)'
+function ImagePlaceholder({ src, alt, icon, caption, chapter = 1 }: Placeholder) {
+  const variants: Record<1 | 2 | 3, React.CSSProperties> = {
+    1: { background: 'var(--color-primary-soft)', borderLeft: '3px solid var(--color-primary)' },
+    2: { background: '#F0F7F0', borderBottom: '3px solid var(--color-primary)' },
+    3: { background: '#fff', boxShadow: 'var(--shadow-card)', borderTop: '3px solid var(--color-primary)' },
+  }
   return (
     <figure style={{ margin: 0 }} data-photo-pending={src}>
       <div
         role="img"
         aria-label={alt}
         style={{
-          aspectRatio: '16 / 9',
+          minHeight: 240,
           width: '100%',
-          background: bg,
-          border: '1px solid var(--color-border)',
-          borderRadius: 'var(--radius-lg)',
+          borderRadius: 14,
+          padding: '2rem',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          gap: '1.5rem',
+          ...variants[chapter],
         }}
       >
-        <span className={`icon-tile ${tone} lg`} aria-hidden="true" style={{ background: 'rgba(255,255,255,0.75)' }}>
-          <Icon name={icon} size={28} />
+        <span
+          aria-hidden="true"
+          style={{
+            width: 44, height: 44,
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            borderRadius: 10,
+            background: 'rgba(255,255,255,0.75)',
+            color: 'var(--color-primary)',
+          }}
+        >
+          <Icon name={icon} size={22} />
         </span>
+        <p
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontStyle: 'italic',
+            fontSize: '1.15rem',
+            lineHeight: 1.5,
+            color: 'var(--color-ink)',
+            margin: 0,
+            maxWidth: '32ch',
+          }}
+        >
+          {caption}
+        </p>
       </div>
-      <figcaption
-        style={{
-          marginTop: '0.75rem',
-          fontSize: '0.9rem',
-          color: 'var(--color-text-subtle)',
-          fontStyle: 'italic',
-        }}
-      >
-        {caption}
-      </figcaption>
     </figure>
   )
 }
 
-const PARTNERS: { name: string; desc: string; logo: string; alt: string }[] = [
+const PARTNERS: { name: string; desc: string; logo?: string; alt: string; initials: string }[] = [
   {
     name: 'Apollo Hospitals, Chennai',
     desc: 'MoU partner for haploidentical Bone Marrow Transplantation — over 300 procedures performed free of cost.',
     logo: '/images/partners/apollo-hospitals.png',
     alt: 'Apollo Hospitals Chennai logo',
+    initials: 'AH',
   },
   {
     name: 'Mediscan Systems',
     desc: 'MoU partner for prenatal diagnosis — over 100 chorion villous sampling procedures facilitated over 20 years.',
     logo: '/images/partners/mediscan-systems.png',
     alt: 'Mediscan Systems logo',
+    initials: 'MS',
   },
   {
     name: 'Annamayil',
     desc: 'Provides high-quality nutritious food for patients travelling to the centre for transfusion sessions.',
-    logo: '/images/partners/annamayil.png',
+    // No logo file available yet — renders a text-based initials mark instead
     alt: 'Annamayil logo',
+    initials: 'AN',
   },
   {
     name: 'Camp Rainbow',
     desc: 'Conducts art therapy and creative wellness sessions for young thalassemia patients at our centre.',
     logo: '/images/partners/camp-rainbow.webp',
     alt: 'Camp Rainbow logo',
+    initials: 'CR',
   },
   {
     name: 'Five Star Business Finance Limited',
     desc: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
     logo: '/images/partners/five-star-business-finance.png',
     alt: 'Five Star Business Finance Limited logo',
+    initials: 'FS',
   },
   {
     name: 'Rotork',
     desc: 'Corporate donor supporting patient care and programme costs at TWA Chennai.',
     logo: '/images/partners/rotork.png',
     alt: 'Rotork logo',
+    initials: 'RO',
   },
 ]
 
@@ -129,11 +153,12 @@ export default function OurStoryPage() {
               style={{
                 margin: '0 auto',
                 maxWidth: '26ch',
+                fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(1.7rem, 4.5vw, 2.75rem)',
-                fontWeight: 800,
-                lineHeight: 1.15,
-                letterSpacing: '-0.025em',
-                color: 'var(--color-text)',
+                fontWeight: 700,
+                lineHeight: 1.2,
+                letterSpacing: '-0.01em',
+                color: 'var(--color-ink)',
               }}
             >
               &ldquo;Learn from Yesterday. Live for Today. Hope for Tomorrow.&rdquo;
@@ -173,7 +198,7 @@ export default function OurStoryPage() {
         {/* Section 3 — Learn from Yesterday */}
         <section className="section bg-subtle">
           <div className="container-narrow">
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)' }}>Learn from Yesterday</h2>
+            <h2 className="heading-rule" style={{ fontSize: '2rem', fontWeight: 700 }}>Learn from Yesterday</h2>
 
             <div style={{ marginTop: '2rem' }}>
               <ImagePlaceholder
@@ -181,6 +206,7 @@ export default function OurStoryPage() {
                 alt="Medical staff performing a safe blood transfusion at VHS Thalassaemia Centre, Chennai"
                 icon="droplet"
                 tone="primary"
+                chapter={1}
                 caption="Safe transfusion, optimal chelation — the foundation of every patient's care."
               />
             </div>
@@ -222,6 +248,7 @@ export default function OurStoryPage() {
                 alt="TWA volunteers conducting a thalassemia awareness camp at a school in Chennai"
                 icon="book-open"
                 tone="accent"
+                chapter={1}
                 caption="Thalassaemia awareness camps in schools — reaching the next generation."
               />
             </div>
@@ -231,7 +258,7 @@ export default function OurStoryPage() {
         {/* Section 4 — Live for Today */}
         <section className="section">
           <div className="container-narrow">
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)' }}>Live for Today</h2>
+            <h2 className="heading-rule" style={{ fontSize: '2rem', fontWeight: 700 }}>Live for Today</h2>
 
             <p style={{ marginTop: '2rem' }}>
               We have now performed over 300 BMT procedures for thalassaemia patients fully free of
@@ -260,6 +287,7 @@ export default function OurStoryPage() {
                 alt="Thalassemia patients celebrating Diwali after successful bone marrow transplantation at VHS Chennai"
                 icon="heart"
                 tone="accent"
+                chapter={2}
                 caption="Celebrating Diwali after a successful BMT."
               />
               <ImagePlaceholder
@@ -267,6 +295,7 @@ export default function OurStoryPage() {
                 alt="Prenatal diagnosis procedure and BMT success at VHS Thalassaemia Centre"
                 icon="dna"
                 tone="primary"
+                chapter={2}
                 caption="Prenatal diagnosis and successful BMT — two milestones that change a family's future."
               />
             </div>
@@ -276,7 +305,7 @@ export default function OurStoryPage() {
         {/* Section 5 — Hope for Tomorrow */}
         <section className="section bg-subtle">
           <div className="container-narrow">
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)' }}>Hope for Tomorrow</h2>
+            <h2 className="heading-rule" style={{ fontSize: '2rem', fontWeight: 700 }}>Hope for Tomorrow</h2>
 
             <p style={{ marginTop: '2rem' }}>
               The way forward is to network and partner with government and non-governmental agencies to
@@ -302,6 +331,7 @@ export default function OurStoryPage() {
                 alt="Thalassemia-free survival achieved at Apollo Chennai through BMT partnership with TWA"
                 icon="award"
                 tone="primary"
+                chapter={3}
                 caption="Thalassaemia free survival in Apollo Chennai — the goal that drives everything we do."
               />
             </div>
@@ -343,40 +373,72 @@ export default function OurStoryPage() {
         </section>
 
         {/* Section 7 — Partners & collaborators */}
-        <section className="section bg-subtle">
-          <div className="container">
+        <section style={{ background: 'var(--color-primary-dark)', padding: '4rem 1.5rem' }}>
+          <div className="container" style={{ padding: 0 }}>
             <div className="section-header">
-              <h2>Partners Who Make This Possible</h2>
-              <p style={{ marginTop: '0.5rem' }}>Over two decades, these organisations have stood with us.</p>
+              <h2 style={{ color: '#fff' }}>Partners Who Make This Possible</h2>
+              <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.7)' }}>Over two decades, these organisations have stood with us.</p>
             </div>
             <div className="grid grid-2">
               {PARTNERS.map((p) => (
-                <article key={p.name} className="card" style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                  <div
-                    style={{
-                      width: 80,
-                      height: 80,
-                      flexShrink: 0,
-                      background: 'var(--color-bg-subtle)',
-                      border: '1px solid var(--color-border)',
-                      borderRadius: 'var(--radius)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '0.6rem',
-                    }}
-                  >
-                    <Image
-                      src={p.logo}
-                      alt={p.alt}
-                      width={68}
-                      height={68}
-                      style={{ objectFit: 'contain', width: '100%', height: '100%' }}
-                    />
-                  </div>
+                <article
+                  key={p.name}
+                  className="partner-card-dark"
+                  style={{
+                    display: 'flex', gap: '1.25rem', alignItems: 'flex-start',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: 12,
+                    padding: '1.5rem',
+                    transition: 'background .2s ease',
+                  }}
+                >
+                  {p.logo ? (
+                    <div
+                      style={{
+                        width: 64,
+                        height: 64,
+                        flexShrink: 0,
+                        background: '#fff',
+                        borderRadius: 10,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '0.5rem',
+                      }}
+                    >
+                      <Image
+                        src={p.logo}
+                        alt={p.alt}
+                        width={54}
+                        height={54}
+                        style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        width: 64,
+                        height: 64,
+                        flexShrink: 0,
+                        background: 'rgba(255,255,255,0.15)',
+                        borderRadius: 10,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontFamily: 'var(--font-serif)',
+                        fontWeight: 600,
+                        fontSize: '1.1rem',
+                        color: '#fff',
+                      }}
+                    >
+                      {p.initials}
+                    </div>
+                  )}
                   <div>
-                    <h3 className="card-title">{p.name}</h3>
-                    <p className="card-body">{p.desc}</p>
+                    <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 500, color: '#fff', marginBottom: '0.4rem' }}>{p.name}</h3>
+                    <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{p.desc}</p>
                   </div>
                 </article>
               ))}

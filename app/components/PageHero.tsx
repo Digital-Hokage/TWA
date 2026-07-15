@@ -15,8 +15,8 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
     <section
       style={{
         background: '#FFFFFF',
-        borderBottom: '1px solid var(--color-border)',
-        padding: '4rem 0 3.5rem',
+        borderBottom: '1px solid rgba(76, 122, 76, 0.12)',
+        padding: '4.5rem 0 4rem',
       }}
     >
       <div className="container-narrow">
@@ -24,11 +24,9 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
           <span
             style={{
               display: 'block',
-              fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
+              fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.12em',
               textTransform: 'uppercase', marginBottom: '1rem',
               color: eyebrowColor,
-              borderLeft: '3px solid currentColor',
-              paddingLeft: '0.75rem',
             }}
           >
             {eyebrow}
@@ -36,8 +34,10 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
         )}
         <h1
           style={{
-            color: 'var(--color-text)',
-            lineHeight: 1.08,
+            color: 'var(--color-ink)',
+            lineHeight: 1.15,
+            fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
+            fontWeight: 700,
             marginBottom: lead ? '1rem' : 0,
           }}
         >
@@ -46,8 +46,8 @@ export default function PageHero({ eyebrow, eyebrowVariant = 'primary', title, l
         {lead && (
           <p
             style={{
-              fontSize: '1.125rem', lineHeight: 1.72,
-              color: 'var(--color-text-muted)',
+              fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.75,
+              color: 'var(--color-ink-muted)',
               maxWidth: '58ch',
               margin: 0,
             }}

@@ -1,5 +1,5 @@
 import { MONTHLY_COST } from '../lib/constants'
-import Icon, { type IconName } from './Icon'
+import { type IconName } from './Icon'
 
 type Row = { label: string; amount: number; icon: IconName; detail: string }
 
@@ -27,31 +27,57 @@ export default function CostBreakdown() {
 
         <div className="grid grid-2" style={{ alignItems: 'start' }}>
           <div>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {ROWS.map((r) => (
-                <li key={r.label} className="card card-flat" style={{ padding: '1rem 1.25rem' }}>
-                  <div className="flex-between" style={{ alignItems: 'center', gap: '1rem' }}>
-                    <div className="flex" style={{ alignItems: 'center', gap: '0.85rem' }}>
-                      <span className="icon-tile" aria-hidden="true"><Icon name={r.icon} size={18} /></span>
-                      <div>
-                        <div style={{ fontWeight: 600, color: 'var(--color-text)' }}>{r.label}</div>
-                        <div style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)' }}>{r.detail}</div>
+            <div
+              style={{
+                background: '#fff',
+                border: '1px solid rgba(76,122,76,0.1)',
+                borderRadius: 14,
+                padding: '1.75rem',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            >
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.35rem' }}>
+                {ROWS.map((r) => {
+                  const pct = Math.round((r.amount / MONTHLY_COST.total) * 100)
+                  return (
+                    <li key={r.label}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem', marginBottom: '0.5rem' }}>
+                        <div>
+                          <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--color-ink)' }}>{r.label}</span>
+                          <span style={{ display: 'block', fontSize: '0.78rem', color: 'var(--color-text-subtle)' }}>{r.detail}</span>
+                        </div>
+                        <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--color-primary)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
+                          {formatINR(r.amount)}
+                        </span>
                       </div>
-                    </div>
-                    <div style={{ fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>{formatINR(r.amount)}</div>
-                  </div>
-                </li>
-              ))}
-              <li className="card" style={{ padding: '1rem 1.25rem', background: 'var(--color-text)', color: '#fff' }}>
-                <div className="flex-between" style={{ alignItems: 'center' }}>
-                  <span style={{ fontWeight: 700, color: '#fff' }}>Total per patient, per month</span>
-                  <span style={{ fontWeight: 800, fontSize: '1.15rem', fontVariantNumeric: 'tabular-nums', color: '#fff' }}>
-                    {formatINR(MONTHLY_COST.total)}
-                  </span>
-                </div>
-              </li>
-            </ul>
-            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginTop: '1rem' }}>
+                      <div
+                        aria-hidden="true"
+                        style={{ height: 4, borderRadius: 'var(--radius-full)', background: 'rgba(76,122,76,0.1)', overflow: 'hidden' }}
+                      >
+                        <div style={{ width: `${pct}%`, height: '100%', borderRadius: 'var(--radius-full)', background: 'var(--color-primary)' }} />
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+
+              <div
+                style={{
+                  display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem',
+                  marginTop: '1.5rem', paddingTop: '1.25rem',
+                  borderTop: '1.5px solid rgba(15,26,16,0.15)',
+                }}
+              >
+                <span style={{ fontWeight: 700, color: 'var(--color-ink)' }}>Total per patient, per month</span>
+                <span style={{
+                  fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1.5rem',
+                  color: 'var(--color-ink)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+                }}>
+                  {formatINR(MONTHLY_COST.total)}
+                </span>
+              </div>
+            </div>
+            <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-muted)', marginTop: '1rem' }}>
               Comprehensive care including BMT, chelation, diagnostics, and transfusions for our
               patients is covered under the government insurance scheme through years of advocacy by TWA.
             </p>

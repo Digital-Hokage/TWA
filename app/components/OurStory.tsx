@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
 const STORY_NUMBERS = [
-  { value: '2006', desc: 'Year the centre was founded at VHS Hospital' },
-  { value: '199',  desc: 'Patients currently on our care register' },
-  { value: '300+', desc: 'Bone marrow transplants performed, fully free' },
-  { value: '23',   desc: 'Lives we lost — to sepsis, heart and liver iron overload' },
+  { value: '2006', desc: 'Year the centre was founded at VHS Hospital, Taramani' },
+  { value: '199',  desc: 'Patients currently on our care register (as of 2026)' },
+  { value: '300+', desc: 'Bone marrow transplants performed, fully free of cost' },
+  { value: '23',   desc: 'Lives lost over two decades — to sepsis, heart and liver iron overload' },
 ]
 
 const CHAPTERS = [
@@ -34,23 +34,19 @@ export default function OurStory() {
           {/* ── Left: narrative ── */}
           <div>
             <div style={{ marginBottom: '2rem' }}>
-              <span className="eyebrow eyebrow--accent">Our story, in her words</span>
-              <h2 id="story-heading" style={{ marginTop: '0.5rem', marginBottom: '1.25rem' }}>
+              <span className="eyebrow">Our story, in her words</span>
+              <h2 id="story-heading" style={{ marginTop: '0.25rem', marginBottom: '1.25rem', fontSize: 'clamp(2rem, 3vw, 2.8rem)', fontWeight: 700 }}>
                 A story from the heart.
               </h2>
               {/* pull quote */}
               <blockquote
+                className="pull-quote"
                 style={{
                   borderLeft: '3px solid var(--color-primary)',
-                  paddingLeft: '1.375rem',
+                  paddingLeft: '1.25rem',
                   marginBottom: '2.25rem',
-                  fontStyle: 'italic',
-                  color: 'var(--color-text-muted)',
-                  fontSize: '1.05rem',
+                  fontSize: '1rem',
                   lineHeight: 1.7,
-                  background: 'linear-gradient(90deg, rgba(76,122,76,0.04) 0%, transparent 100%)',
-                  borderRadius: '0 8px 8px 0',
-                  padding: '0.875rem 1.375rem',
                 }}
               >
                 "In 2006, a group of patient families, volunteers, and physicians came together
@@ -59,29 +55,28 @@ export default function OurStory() {
               </blockquote>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {CHAPTERS.map((c) => (
-                <div key={c.title} style={{ display: 'flex', gap: '1.25rem' }}>
+                <div key={c.title} className="timeline-item" style={{ display: 'flex', gap: '1.25rem' }}>
                   <div
                     style={{
                       flexShrink: 0,
-                      width: 40, height: 40,
+                      width: 28, height: 28,
                       borderRadius: '50%',
-                      background: 'var(--color-primary)',
-                      boxShadow: 'none',
-                      color: '#fff',
+                      background: 'var(--color-primary-soft)',
+                      color: 'var(--color-primary)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 800, fontSize: '0.72rem',
-                      letterSpacing: '0.03em',
-                      marginTop: '0.15rem',
+                      fontWeight: 600, fontSize: '0.75rem',
+                      marginTop: '0.1rem',
+                      position: 'relative', zIndex: 1,
                     }}
                     aria-hidden="true"
                   >
                     {c.num}
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.05rem', marginBottom: '0.4rem' }}>{c.title}</h3>
-                    <p style={{ fontSize: '0.925rem', lineHeight: 1.7, color: 'var(--color-text-muted)' }}>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>{c.title}</h3>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--color-ink-muted)' }}>
                       {c.text}
                     </p>
                   </div>
@@ -91,8 +86,12 @@ export default function OurStory() {
 
             <Link
               href="/our-story"
-              className="btn btn-outline"
-              style={{ marginTop: '2rem', display: 'inline-flex', whiteSpace: 'normal', textAlign: 'center' }}
+              className="quiet-link"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                marginTop: '2rem',
+                color: 'var(--color-primary)', fontWeight: 500, fontSize: '0.9rem',
+              }}
             >
               Read the full story in Dr. Revathi Raj&apos;s own words →
             </Link>
@@ -102,61 +101,72 @@ export default function OurStory() {
           <div
             style={{
               background: '#fff',
-              border: '1px solid var(--color-border)',
-              borderRadius: 'var(--radius-lg)',
+              border: '1.5px solid rgba(76, 122, 76, 0.15)',
+              borderRadius: 16,
               padding: '2rem',
+              boxShadow: 'var(--shadow-card)',
+              alignSelf: 'start',
             }}
           >
-            <span className="eyebrow" style={{ fontSize: '0.7rem' }}>
-              Our Story, In Numbers
+            <span className="eyebrow" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', marginBottom: '1.5rem' }}>
+              TWA Chennai · In Numbers
             </span>
 
-            <div style={{ marginTop: '0.5rem' }}>
+            <div>
               {STORY_NUMBERS.map((n, i) => (
                 <div
                   key={n.value}
                   style={{
                     display: 'flex', alignItems: 'baseline', gap: '1.1rem',
                     padding: '0.9rem 0',
-                    borderBottom: i < STORY_NUMBERS.length - 1 ? '1px solid var(--color-border)' : undefined,
+                    borderBottom: i < STORY_NUMBERS.length - 1 ? '1px solid rgba(76,122,76,0.1)' : undefined,
                   }}
                 >
                   <span style={{
-                    flexShrink: 0, minWidth: 62,
-                    fontSize: '1.5rem', fontWeight: 800,
-                    color: 'var(--color-primary)', letterSpacing: '-0.02em',
+                    flexShrink: 0, minWidth: 78,
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '2.2rem', fontWeight: 700,
+                    color: 'var(--color-primary)', lineHeight: 1,
                   }}>
                     {n.value}
                   </span>
-                  <span style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--color-ink-muted)', lineHeight: 1.4 }}>
                     {n.desc}
                   </span>
                 </div>
               ))}
             </div>
 
-            <blockquote style={{ marginTop: '1.5rem' }}>
+            <blockquote
+              className="pull-quote"
+              style={{
+                marginTop: '1.5rem',
+                borderLeft: '2px solid var(--color-primary-soft)',
+                paddingLeft: '1rem',
+              }}
+            >
               <p style={{
-                fontStyle: 'italic', color: 'var(--color-text-muted)',
+                fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+                color: 'var(--color-ink-muted)',
                 fontSize: '0.95rem', lineHeight: 1.65, margin: 0,
               }}>
                 &ldquo;We share our baby steps, our challenges, where we have fallen, and all the
                 success stories.&rdquo;
               </p>
-              <footer style={{ marginTop: '0.6rem', fontWeight: 600, fontSize: '0.85rem', color: 'var(--color-text)' }}>
+              <footer style={{ marginTop: '0.6rem', fontWeight: 500, fontSize: '0.85rem', color: 'var(--color-ink)', fontFamily: 'var(--font-sans)', fontStyle: 'normal' }}>
                 — Dr. Revathi Raj
               </footer>
             </blockquote>
 
             <Link
               href="/our-story"
+              className="quiet-link"
               style={{
                 display: 'inline-block', marginTop: '1.5rem',
-                color: 'var(--color-primary)', fontWeight: 600, fontSize: '0.9rem',
-                textDecoration: 'underline',
+                color: 'var(--color-primary)', fontWeight: 500, fontSize: '0.875rem',
               }}
             >
-              Read the full story →
+              Read the full story in her own words →
             </Link>
           </div>
 

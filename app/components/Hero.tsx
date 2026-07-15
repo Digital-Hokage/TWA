@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Icon from './Icon'
 
 const MICRO_STATS = [
-  { value: '199',  label: 'Patients' },
-  { value: '300+', label: 'BMTs' },
-  { value: '₹0',   label: 'Cost' },
+  { value: '199',  label: 'Patients in care' },
+  { value: '300+', label: 'BMTs free' },
+  { value: '₹0',   label: 'Cost to patients' },
 ]
 
 const TRUST = [
@@ -17,42 +17,46 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      style={{
-        background: '#FFFFFF',
-        padding: '5.5rem 0 5rem',
-        borderBottom: '1px solid var(--color-border)',
-      }}
+      style={{ padding: '5.5rem 0 5rem' }}
     >
       <div className="container">
         <div className="hero-grid">
 
           {/* ── Left: copy ── */}
-          <div>
-            {/* Eyebrow */}
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            {/* Eyebrow pill */}
             <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.09em',
+              alignSelf: 'flex-start',
+              display: 'inline-flex', alignItems: 'center',
+              fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em',
               textTransform: 'uppercase', color: 'var(--color-primary)',
+              background: 'var(--color-primary-soft)',
+              borderRadius: 'var(--radius-full)',
+              padding: '0.35rem 0.85rem',
               marginBottom: '1.5rem',
-              borderLeft: '3px solid var(--color-primary)',
-              paddingLeft: '0.75rem',
             }}>
               VHS Hospital, Taramani · Chennai · Est. 2006
             </span>
 
             <h1
               id="hero-heading"
-              style={{ marginBottom: '1.5rem', lineHeight: 1.05, color: 'var(--color-text)' }}
+              style={{
+                fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
+                lineHeight: 1.1,
+                fontWeight: 700,
+                color: 'var(--color-ink)',
+                marginBottom: '1.5rem',
+              }}
             >
-              Learn from Yesterday.<br />
-              Live for Today.<br />
-              Hope for Tomorrow.
+              Learn from <span style={{ color: 'var(--color-primary)' }}>Yesterday.</span><br />
+              Live for <span style={{ color: 'var(--color-primary)' }}>Today.</span><br />
+              Hope for <span style={{ color: 'var(--color-primary)' }}>Tomorrow.</span>
             </h1>
 
             <p style={{
-              fontSize: '1.125rem', lineHeight: 1.75,
-              color: 'var(--color-text-muted)',
-              maxWidth: '52ch', marginBottom: '2.5rem',
+              fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.75,
+              color: 'var(--color-ink-muted)',
+              maxWidth: 480, marginBottom: '2rem',
             }}>
               For over two decades, TWA Chennai has provided lifesaving blood transfusions,
               medicines, and comprehensive care to thalassemia patients — completely free of
@@ -60,98 +64,123 @@ export default function Hero() {
             </p>
 
             {/* CTA buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '3rem' }}>
-              <Link href="/donate" className="btn btn-primary btn-lg">
-                Donate to a Patient <Icon name="arrow-right" size={16} />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <Link href="/donate" className="btn btn-primary">
+                Donate to a Patient <Icon name="arrow-right" size={15} />
               </Link>
-              <Link href="/get-involved" className="btn btn-outline btn-lg">
+              <Link href="/get-involved" className="btn btn-outline">
                 Become a Blood Donor
               </Link>
             </div>
 
-            {/* Trust badges */}
+            {/* Trust strip */}
             <ul style={{
-              marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '1.5rem',
-              listStyle: 'none', fontSize: '0.84rem', color: 'var(--color-text-subtle)',
+              marginTop: '1.5rem',
+              display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem',
+              listStyle: 'none', fontSize: '0.78rem', color: 'var(--color-ink-muted)',
             }}>
-              {TRUST.map((t) => (
-                <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ color: 'var(--color-primary)', flexShrink: 0, display: 'inline-flex' }}>
-                    <Icon name="check-circle" size={14} />
+              {TRUST.map((t, i) => (
+                <li key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <span style={{ color: 'var(--color-primary)', display: 'inline-flex' }}>
+                      <Icon name="check-circle" size={13} />
+                    </span>
+                    {t}
                   </span>
-                  {t}
+                  {i < TRUST.length - 1 && (
+                    <span aria-hidden="true" style={{ color: 'var(--color-primary)', opacity: 0.5 }}>·</span>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* ── Right: single quote/stats card ── */}
+          {/* ── Right: the statement card ── */}
           <div
             className="hero-image-col"
             style={{
               display: 'flex',
               flexDirection: 'column',
-              height: '100%',
-              alignSelf: 'stretch',
-              background: 'var(--color-primary-dark)',
-              borderRadius: 'var(--radius-lg)',
+              gap: '2rem',
+              background: 'var(--color-primary)',
+              borderRadius: 20,
               padding: '2.5rem',
-              boxShadow: 'var(--shadow-md)',
+              boxShadow: 'var(--shadow-card-hover)',
             }}
           >
-            {/* Decorative rule */}
-            <div style={{ width: 48, height: 3, borderRadius: 'var(--radius-full)', background: 'var(--color-primary-mid)' }} />
-
-            {/* Quote */}
-            <p style={{
-              marginTop: '2rem',
-              fontFamily: 'Georgia, "Times New Roman", serif',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontSize: '1.5rem',
-              lineHeight: 1.42,
-              color: '#fff',
-            }}>
-              &ldquo;Home is a place where hearts are woven together, and no family member gets
-              left behind or forgotten.&rdquo;
-            </p>
-
-            {/* Attribution */}
-            <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-              <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', margin: 0 }}>
-                — Dr. Revathi Raj
+            {/* Top block — quote */}
+            <div style={{ flex: 1 }}>
+              <span
+                aria-hidden="true"
+                style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '5rem',
+                  lineHeight: 1,
+                  color: 'rgba(255,255,255,0.2)',
+                  marginBottom: '-1rem',
+                  userSelect: 'none',
+                }}
+              >
+                &ldquo;
+              </span>
+              <p style={{
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                fontWeight: 400,
+                fontSize: '1.3rem',
+                lineHeight: 1.5,
+                color: '#fff',
+              }}>
+                Home is a place where hearts are woven together, and no family member gets
+                left behind or forgotten.
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', marginTop: '0.35rem' }}>
-                Honorary President, TWA Chennai
-              </p>
-              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem', marginTop: '0.2rem' }}>
-                VHS Hospital, Taramani · Est. 2006
+              <p style={{ marginTop: '1.25rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
+                — Dr. Revathi Raj, Honorary President, TWA Chennai
               </p>
             </div>
 
-            <div style={{ flex: 1 }} />
-
-            {/* Micro-stats */}
-            <div style={{ display: 'flex', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+            {/* Middle block — micro-stats */}
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '1.5rem', display: 'flex' }}>
               {MICRO_STATS.map((s, i) => (
                 <div
                   key={s.label}
                   style={{
                     flex: '1 1 0', minWidth: 0, textAlign: 'center',
-                    borderRight: i < MICRO_STATS.length - 1 ? '1px solid rgba(255,255,255,0.15)' : undefined,
+                    borderRight: i < MICRO_STATS.length - 1 ? '1px solid rgba(255,255,255,0.2)' : undefined,
+                    padding: '0 0.5rem',
                   }}
                 >
-                  <div style={{ color: '#fff', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.02em' }}>
+                  <div style={{
+                    fontFamily: 'var(--font-serif)',
+                    color: '#fff', fontWeight: 700, fontSize: '2rem', lineHeight: 1.1,
+                  }}>
                     {s.value}
                   </div>
                   <div style={{
-                    marginTop: '0.3rem', color: 'rgba(255,255,255,0.6)',
-                    fontSize: '0.68rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em',
+                    marginTop: '0.35rem', color: 'rgba(255,255,255,0.7)',
+                    fontSize: '0.72rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.07em',
                   }}>
                     {s.label}
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom block — badge */}
+            <div>
+              <span style={{
+                display: 'inline-block',
+                padding: '0.3rem 0.9rem',
+                borderRadius: 'var(--radius-full)',
+                background: 'rgba(255,255,255,0.15)',
+                color: '#fff',
+                fontSize: '0.7rem',
+                fontWeight: 500,
+                letterSpacing: '0.03em',
+              }}>
+                VHS Hospital, Taramani · Est. 2006
+              </span>
             </div>
           </div>
 
