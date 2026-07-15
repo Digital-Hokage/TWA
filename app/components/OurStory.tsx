@@ -97,7 +97,8 @@ export default function OurStory() {
             </Link>
           </div>
 
-          {/* ── Right: story-in-numbers card ── */}
+          {/* ── Right: story-in-numbers card + ward photo ── */}
+          <div style={{ alignSelf: 'start', display: 'flex', flexDirection: 'column' }}>
           <div
             style={{
               background: '#fff',
@@ -105,7 +106,6 @@ export default function OurStory() {
               borderRadius: 16,
               padding: '2rem',
               boxShadow: 'var(--shadow-card)',
-              alignSelf: 'start',
             }}
           >
             <span className="eyebrow" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', marginBottom: '1.5rem' }}>
@@ -168,6 +168,19 @@ export default function OurStory() {
             >
               Read the full story in her own words →
             </Link>
+          </div>
+
+          {/* Transfusion ward photo below the stat card */}
+          <figure style={{ margin: '1rem 0 0' }}>
+            <img
+              src="/images/story/safe-transfusion.jpg"
+              alt="The transfusion ward at VHS Thalassaemia Centre — patients receiving safe blood transfusions"
+              style={{ width: '100%', borderRadius: 12, objectFit: 'cover', aspectRatio: '4 / 3', display: 'block' }}
+            />
+            <figcaption style={{ marginTop: '0.5rem', fontSize: '0.75rem', fontStyle: 'italic', color: 'var(--color-ink-muted)', lineHeight: 1.5 }}>
+              The transfusion ward at VHS Hospital, Taramani — where every bed tells a story of hope.
+            </figcaption>
+          </figure>
           </div>
 
         </div>

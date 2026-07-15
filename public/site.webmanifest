@@ -1,0 +1,21 @@
+{
+  "name": "Thalassemia Welfare Association Chennai",
+  "short_name": "TWA Chennai",
+  "description": "Two decades of thalassemia care at VHS Hospital, Chennai",
+  "icons": [
+    {
+      "src": "/android-chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#4C7A4C",
+  "background_color": "#F7F9F7",
+  "display": "standalone",
+  "start_url": "/"
+}

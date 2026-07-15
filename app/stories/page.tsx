@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
 import PageHero from '../components/PageHero'
+import { CONTACT } from '../lib/constants'
 
 export const metadata: Metadata = {
   title: 'Patient stories',
@@ -48,7 +49,7 @@ export default function StoriesPage() {
               <p className="mt-3" style={{ lineHeight: 1.72 }}>
                 If you have been part of our community as a patient, parent, sibling or donor and
                 would like to share your experience, please write to us at
-                {' '}<a href="mailto:stories@twachennai.org" style={{ fontWeight: 600 }}>stories@twachennai.org</a>.
+                {' '}<a href={`mailto:${CONTACT.email}`} style={{ fontWeight: 600 }}>{CONTACT.email}</a>.
               </p>
             </div>
           </div>

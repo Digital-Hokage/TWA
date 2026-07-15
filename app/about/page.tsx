@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
@@ -39,6 +40,21 @@ export default function AboutPage() {
           title={ORG.name}
           lead={`Since ${ORG.foundedYear}, we have walked alongside families navigating thalassemia in Tamil Nadu — one transfusion, one bone marrow transplant, one school year at a time.`}
         />
+
+        {/* Blood Bank building banner */}
+        <section style={{ padding: '2rem 1.5rem 0' }}>
+          <div className="container">
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', maxHeight: 400, borderRadius: 16, overflow: 'hidden', marginBottom: '2rem' }}>
+              <Image
+                src="/images/story/vhs-blood-bank.jpg"
+                alt="Rotary Central TTK VHS Blood Bank — home of the TWA Thalassaemia Centre since 2006"
+                fill
+                sizes="(max-width: 1100px) 100vw, 1100px"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+            </div>
+          </div>
+        </section>
 
         {/* Mission / Vision */}
         <section className="section">

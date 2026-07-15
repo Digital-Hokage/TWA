@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Icon from './Icon'
 import { trackEvent } from '../lib/gtag'
 import { submitForm } from '../lib/web3forms'
+import { CONTACT } from '../lib/constants'
 
 const ROLES = [
   { value: 'blood-drive',       label: 'Blood drive coordinator' },
@@ -73,14 +74,14 @@ export default function VolunteerForm() {
         <div className="form-message success" role="status">
           Thank you for applying to volunteer — we&apos;ve received your application and will
           respond within two working days. Questions? Email{' '}
-          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </div>
       )}
 
       {error && (
         <div className="form-message error" role="status">
           Sorry, something went wrong submitting your application. Please email it to us at{' '}
-          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </div>
       )}
 
@@ -138,7 +139,7 @@ export default function VolunteerForm() {
         {sending ? 'Submitting…' : <>Submit application <Icon name="arrow-right" size={16} /></>}
       </button>
       <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.6rem', textAlign: 'center' }}>
-        Your application is sent securely to twachennai@gmail.com. We never share your details.
+        Your application is sent securely to {CONTACT.email}. We never share your details.
       </p>
     </form>
   )

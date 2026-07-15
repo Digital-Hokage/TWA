@@ -11,17 +11,16 @@ export const ORG = {
   city: 'Chennai',
   state: 'Tamil Nadu',
   country: 'India',
-  // CLIENT TODO: point this at twachennai.org once the custom domain is live —
-  // metadataBase, Open Graph, JSON-LD and the sitemap all derive from this value.
-  url: 'https://twac.netlify.app',
+  // Canonical production domain. metadataBase, Open Graph, JSON-LD, the sitemap
+  // and robots.txt all derive from this value.
+  url: 'https://twachennai.org',
 } as const
 
 export const CONTACT = {
   phonePrimary: '044-22542201',
   phoneHelpline: '044-22542202',
-  email: 'info@twachennai.org',
-  emailDonations: 'donate@twachennai.org',
-  emailVolunteers: 'volunteer@twachennai.org',
+  // Single source of truth — the only contact email used across the whole site.
+  email: 'office@twachennai.org',
   addressLine1: 'VHS Thalassaemia Transfusion Centre, Rotary Central TTK VHS Blood Bank',
   addressLine2: 'Voluntary Health Services, Rajiv Gandhi Salai, Taramani, Chennai',
   pincode: '600113',

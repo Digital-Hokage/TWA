@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { CONTACT } from '../lib/constants'
 
 export const metadata: Metadata = {
   title: 'Terms of use',
@@ -34,7 +35,7 @@ export default function TermsPage() {
               Donations are processed in Indian rupees. An 80G receipt is issued by email to the
               donor named in the transaction. Donations are non-refundable except in cases of
               proven duplicate payment or technical error. Refund requests must be raised within
-              7 days at <a href="mailto:donate@twachennai.org">donate@twachennai.org</a>.
+              7 days at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
             </p>
           </section>
 

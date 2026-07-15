@@ -144,6 +144,26 @@ export default function Footer() {
             <Link href="/transparency" className="footer-link" style={{ color: 'inherit' }}>Transparency</Link>
           </div>
         </div>
+        {/* Developer credit — subtle, centered */}
+        <p
+          style={{
+            fontSize: '0.72rem',
+            color: 'rgba(255,255,255,0.4)',
+            textAlign: 'center',
+            marginTop: '4px',
+            padding: '0 1.5rem 1.25rem',
+          }}
+        >
+          Designed &amp; developed by{' '}
+          <a
+            href="https://digitalhokage.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="dev-credit-link"
+          >
+            Digital Hokage
+          </a>
+        </p>
       </div>
     </footer>
   )

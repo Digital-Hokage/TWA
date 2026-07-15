@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
-import Icon, { type IconName } from '../components/Icon'
 
 export const metadata: Metadata = {
   title: 'Our Story',
@@ -11,71 +10,29 @@ export const metadata: Metadata = {
     'Two decades of thalassemia care at VHS Hospital, Chennai — told in the words of Dr. Revathi Raj, Honorary President, TWA.',
 }
 
-type Placeholder = {
-  src: string
-  alt: string
-  icon: IconName
-  tone: 'primary' | 'accent'
-  caption: string
-  chapter?: 1 | 2 | 3
+const CAPTION: React.CSSProperties = {
+  marginTop: '0.6rem',
+  fontSize: '0.75rem',
+  fontStyle: 'italic',
+  color: 'var(--color-ink-muted)',
+  lineHeight: 1.5,
 }
 
 /**
- * Renders a themed typographic card in place of the photo named in `src` until it
- * arrives (see /public/images/story/README.md for the expected filenames).
- * Swap for <Image src={src} alt={alt} fill /> once photography is in hand.
- * Each chapter has its own visual treatment so the cards read as intentional design.
+ * A captioned story photo. The image is cover-cropped to a fixed aspect ratio so
+ * portrait and landscape source photos sit together tidily. `ratio`/`position`
+ * are tuned per image to keep faces in frame (clinical charts are rendered full,
+ * uncropped, elsewhere).
  */
-function ImagePlaceholder({ src, alt, icon, caption, chapter = 1 }: Placeholder) {
-  const variants: Record<1 | 2 | 3, React.CSSProperties> = {
-    1: { background: 'var(--color-primary-soft)', borderLeft: '3px solid var(--color-primary)' },
-    2: { background: '#F0F7F0', borderBottom: '3px solid var(--color-primary)' },
-    3: { background: '#fff', boxShadow: 'var(--shadow-card)', borderTop: '3px solid var(--color-primary)' },
-  }
+function StoryImage({
+  src, alt, caption, ratio = '4 / 3', position = 'center',
+}: { src: string; alt: string; caption: string; ratio?: string; position?: string }) {
   return (
-    <figure style={{ margin: 0 }} data-photo-pending={src}>
-      <div
-        role="img"
-        aria-label={alt}
-        style={{
-          minHeight: 240,
-          width: '100%',
-          borderRadius: 14,
-          padding: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          gap: '1.5rem',
-          ...variants[chapter],
-        }}
-      >
-        <span
-          aria-hidden="true"
-          style={{
-            width: 44, height: 44,
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            borderRadius: 10,
-            background: 'rgba(255,255,255,0.75)',
-            color: 'var(--color-primary)',
-          }}
-        >
-          <Icon name={icon} size={22} />
-        </span>
-        <p
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontStyle: 'italic',
-            fontSize: '1.15rem',
-            lineHeight: 1.5,
-            color: 'var(--color-ink)',
-            margin: 0,
-            maxWidth: '32ch',
-          }}
-        >
-          {caption}
-        </p>
+    <figure style={{ margin: 0 }}>
+      <div style={{ position: 'relative', width: '100%', aspectRatio: ratio, borderRadius: 14, overflow: 'hidden' }}>
+        <Image src={src} alt={alt} fill sizes="(max-width: 760px) 100vw, 720px" style={{ objectFit: 'cover', objectPosition: position }} />
       </div>
+      <figcaption style={CAPTION}>{caption}</figcaption>
     </figure>
   )
 }
@@ -201,13 +158,10 @@ export default function OurStoryPage() {
             <h2 className="heading-rule" style={{ fontSize: '2rem', fontWeight: 700 }}>Learn from Yesterday</h2>
 
             <div style={{ marginTop: '2rem' }}>
-              <ImagePlaceholder
+              <StoryImage
                 src="/images/story/safe-transfusion.jpg"
-                alt="Medical staff performing a safe blood transfusion at VHS Thalassaemia Centre, Chennai"
-                icon="droplet"
-                tone="primary"
-                chapter={1}
-                caption="Safe transfusion, optimal chelation — the foundation of every patient's care."
+                alt="Medical staff and patients at the VHS Thalassaemia Centre transfusion ward, Chennai"
+                caption="Safe transfusion, optimal chelation — the foundation of every patient's care since 2006."
               />
             </div>
 
@@ -243,13 +197,10 @@ export default function OurStoryPage() {
             </p>
 
             <div style={{ marginTop: '2rem' }}>
-              <ImagePlaceholder
+              <StoryImage
                 src="/images/story/awareness-camp-schools.jpg"
-                alt="TWA volunteers conducting a thalassemia awareness camp at a school in Chennai"
-                icon="book-open"
-                tone="accent"
-                chapter={1}
-                caption="Thalassaemia awareness camps in schools — reaching the next generation."
+                alt="TWA volunteers conducting thalassemia carrier screening at a school in Tamil Nadu — students receiving finger prick blood tests"
+                caption="Thalassemia awareness and carrier screening camps in schools across Tamil Nadu."
               />
             </div>
           </div>
@@ -282,21 +233,17 @@ export default function OurStoryPage() {
             </p>
 
             <div className="grid grid-2" style={{ marginTop: '2rem' }}>
-              <ImagePlaceholder
+              <StoryImage
                 src="/images/story/diwali-after-bmt.jpg"
-                alt="Thalassemia patients celebrating Diwali after successful bone marrow transplantation at VHS Chennai"
-                icon="heart"
-                tone="accent"
-                chapter={2}
+                alt="A young girl in festive clothes celebrating Diwali after a successful bone marrow transplant"
                 caption="Celebrating Diwali after a successful BMT."
+                ratio="1 / 1"
               />
-              <ImagePlaceholder
+              <StoryImage
                 src="/images/story/prenatal-diagnosis-bmt.jpg"
-                alt="Prenatal diagnosis procedure and BMT success at VHS Thalassaemia Centre"
-                icon="dna"
-                tone="primary"
-                chapter={2}
+                alt="Two young children laughing and embracing — thriving after thalassemia treatment and BMT"
                 caption="Prenatal diagnosis and successful BMT — two milestones that change a family's future."
+                ratio="1 / 1"
               />
             </div>
           </div>
@@ -325,15 +272,25 @@ export default function OurStoryPage() {
               therapy, and we hope our patients will be able to benefit from this and lead a healthy life.
             </p>
 
-            <div style={{ marginTop: '2rem' }}>
-              <ImagePlaceholder
-                src="/images/story/thalassemia-free-survival-apollo.jpg"
-                alt="Thalassemia-free survival achieved at Apollo Chennai through BMT partnership with TWA"
-                icon="award"
-                tone="primary"
-                chapter={3}
-                caption="Thalassaemia free survival in Apollo Chennai — the goal that drives everything we do."
+            <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <StoryImage
+                src="/images/story/thalassemia-free-survival.jpg"
+                alt="A teenage thalassemia patient with her father — healthy and thriving after treatment at VHS Chennai"
+                caption="Thalassaemia free survival — the goal that drives everything we do."
               />
+              {/* Clinical chart — rendered full and uncropped so the axes stay legible */}
+              <figure style={{ margin: 0 }}>
+                <Image
+                  src="/images/story/survival-chart-apollo.jpg"
+                  alt="Kaplan-Meier survival function chart showing thalassemia-free survival rates at Apollo Chennai through BMT partnership with TWA"
+                  width={851}
+                  height={501}
+                  style={{ width: '100%', height: 'auto', borderRadius: 14, border: '1px solid rgba(76,122,76,0.15)', padding: '1rem', background: 'white' }}
+                />
+                <figcaption style={CAPTION}>
+                  Survival function data from Apollo Chennai — evidence of what sustained, quality care achieves.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -363,7 +320,7 @@ export default function OurStoryPage() {
                 <polygon points="10 8 16 12 10 16 10 8" fill="rgba(255,255,255,0.35)" stroke="none" />
               </svg>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600, fontSize: '0.95rem', margin: 0 }}>
-                Our awareness film is coming soon.
+                Our awareness film will be published here shortly.
               </p>
               <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', margin: 0 }}>
                 Produced by TWA Chennai — check back shortly.
@@ -444,6 +401,24 @@ export default function OurStoryPage() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* Patient photo consent note */}
+        <section style={{ padding: '0 1.5rem 2.5rem' }}>
+          <p
+            style={{
+              maxWidth: 600,
+              margin: '0 auto',
+              textAlign: 'center',
+              fontSize: '0.75rem',
+              fontStyle: 'italic',
+              color: 'var(--color-ink-muted)',
+              lineHeight: 1.6,
+            }}
+          >
+            Patient photographs are shared with the knowledge and consent of the individuals and
+            their families. We are grateful to them for allowing their stories to inspire others.
+          </p>
         </section>
 
         {/* Section 8 — Closing CTA */}

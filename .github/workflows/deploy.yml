@@ -47,3 +47,4 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.env*
+            **/*-original.*

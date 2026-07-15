@@ -5,6 +5,7 @@ import { DONATION_PRESETS } from '../lib/constants'
 import Icon from './Icon'
 import { trackEvent } from '../lib/gtag'
 import { submitForm } from '../lib/web3forms'
+import { CONTACT } from '../lib/constants'
 
 type Frequency = 'one-time' | 'monthly'
 
@@ -79,14 +80,14 @@ export default function DonateForm() {
         <div className="form-message success" role="status">
           Thank you — your pledge has been received. Our team will email you a secure payment link
           and your 80G receipt details. Questions? Email{' '}
-          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </div>
       )}
 
       {error && (
         <div className="form-message error" role="status">
           Sorry, something went wrong submitting your pledge. Please email us at{' '}
-          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a> with your donation amount.
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> with your donation amount.
         </div>
       )}
 

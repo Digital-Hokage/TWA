@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABand from '../components/CTABand'
 import Icon, { type IconName } from '../components/Icon'
-import { REGISTRATION } from '../lib/constants'
+import { REGISTRATION, CONTACT } from '../lib/constants'
 import PageHero from '../components/PageHero'
 
 export const metadata: Metadata = {
@@ -64,7 +64,7 @@ export default function TransparencyPage() {
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)', marginTop: '0.75rem' }}>
               Original certificates are available on request. Write to us at
-              {' '}<a href="mailto:info@twachennai.org">info@twachennai.org</a>.
+              {' '}<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
             </p>
           </div>
         </section>
@@ -117,7 +117,7 @@ export default function TransparencyPage() {
             <p className="mt-3">
               If you have a concern about a donation, an interaction with our team or any aspect
               of our work, please write to our Grievance Officer at
-              {' '}<a href="mailto:grievance@twachennai.org">grievance@twachennai.org</a>.
+              {' '}<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
               We acknowledge every complaint within two working days and aim to resolve them
               within fifteen.
             </p>

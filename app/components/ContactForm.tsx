@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Icon from './Icon'
 import { trackEvent } from '../lib/gtag'
 import { submitForm } from '../lib/web3forms'
+import { CONTACT } from '../lib/constants'
 
 export default function ContactForm() {
   const [data, setData] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
@@ -48,14 +49,14 @@ export default function ContactForm() {
       {submitted && (
         <div className="form-message success" role="status">
           Thank you — your message has been sent. We&apos;ll get back to you soon. You can also
-          reach us any time at <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+          reach us any time at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </div>
       )}
 
       {error && (
         <div className="form-message error" role="status">
           Sorry, something went wrong sending your message. Please email us directly at{' '}
-          <a href="mailto:twachennai@gmail.com">twachennai@gmail.com</a>.
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </div>
       )}
 
@@ -90,7 +91,7 @@ export default function ContactForm() {
         {sending ? 'Sending…' : <>Send message <Icon name="arrow-right" size={16} /></>}
       </button>
       <p style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', marginTop: '0.6rem', textAlign: 'center' }}>
-        Your message is sent securely to twachennai@gmail.com. We never share your details.
+        Your message is sent securely to {CONTACT.email}. We never share your details.
       </p>
     </form>
   )
