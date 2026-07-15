@@ -306,14 +306,12 @@ function PubBadge({ a }: { a: Article }) {
     <span
       style={{
         display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-        padding: '0.22rem 0.65rem',
-        borderRadius: 'var(--radius-full)',
-        background: a.pubColor.bg, color: a.pubColor.text,
-        fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.025em',
+        fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.025em',
+        color: 'var(--color-primary)',
         whiteSpace: 'nowrap',
       }}
     >
-      <Icon name="newspaper" size={10} />
+      <Icon name="newspaper" size={11} />
       {a.pubShort}
     </span>
   )
@@ -386,8 +384,8 @@ export default function MediaPage() {
                     className="card"
                     style={{
                       display: 'flex', flexDirection: 'column', height: '100%',
-                      border: '1px solid var(--color-primary-soft)',
-                      boxShadow: '0 0 0 1px var(--color-primary-soft), var(--shadow-md)',
+                      borderRadius: 12,
+                      borderLeft: '3px solid var(--color-primary)',
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
@@ -441,8 +439,8 @@ export default function MediaPage() {
                           Read article <Icon name="arrow-up-right" size={13} />
                         </a>
                       ) : (
-                        <span className="btn btn-outline btn-sm" style={{ flexShrink: 0, opacity: 0.45, cursor: 'default' }}>
-                          Link coming soon
+                        <span style={{ flexShrink: 0, fontSize: '0.75rem', color: 'var(--color-text-subtle)', fontStyle: 'italic' }}>
+                          Link being sourced
                         </span>
                       )}
                     </div>
@@ -474,6 +472,8 @@ export default function MediaPage() {
                     style={{
                       display: 'flex', gap: '1.25rem', alignItems: 'flex-start',
                       background: '#fff', padding: '1.25rem 1.5rem',
+                      borderRadius: 12,
+                      borderLeft: '3px solid var(--color-primary-soft)',
                     }}
                   >
                     {/* year sidebar */}
@@ -523,8 +523,8 @@ export default function MediaPage() {
                           Read article <Icon name="arrow-up-right" size={13} />
                         </a>
                       ) : (
-                        <span style={{ display: 'inline-block', marginTop: '0.65rem', fontSize: '0.78rem', color: 'var(--color-text-subtle)', fontStyle: 'italic' }}>
-                          Direct link to be added
+                        <span style={{ display: 'inline-block', marginTop: '0.65rem', fontSize: '0.75rem', color: 'var(--color-text-subtle)', fontStyle: 'italic' }}>
+                          Link being sourced
                         </span>
                       )}
                     </div>

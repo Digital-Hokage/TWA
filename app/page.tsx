@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import ImpactStats from './components/ImpactStats'
 import OurStory from './components/OurStory'
 import ProgramsOverview from './components/ProgramsOverview'
 import CostBreakdown from './components/CostBreakdown'
@@ -90,112 +89,99 @@ const PARTNERS: Partner[] = [
   },
 ]
 
-const TYPE_COLORS: Record<string, { bg: string; text: string }> = {
-  'Hospital Partner':     { bg: '#EDF3ED', text: '#375939' },
-  'Diagnostics Partner':  { bg: '#DBEAFE', text: '#1E3A8A' },
-  'Nutrition Partner':    { bg: '#DCFCE7', text: '#14532D' },
-  'Wellness Partner':     { bg: '#FEF3C7', text: '#78350F' },
-  'Corporate Donor':      { bg: '#FEE2E2', text: '#7F1D1D' },
-}
-
 function Partners() {
   return (
-    <section className="section bg-subtle" aria-labelledby="partners-heading">
-      <div className="container">
+    <section
+      aria-labelledby="partners-heading"
+      style={{ background: 'var(--color-primary-dark)', padding: '4rem 1.5rem' }}
+    >
+      <div className="container" style={{ padding: 0 }}>
         <div className="section-header">
-          <span className="eyebrow eyebrow--accent">Our network</span>
-          <h2 id="partners-heading">Partners &amp; Collaborators</h2>
-          <p className="lead" style={{ margin: '0.75rem auto 0' }}>
+          <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.6)' }}>Our network</span>
+          <h2 id="partners-heading" style={{ color: '#fff' }}>Partners &amp; Collaborators</h2>
+          <p style={{ margin: '0.75rem auto 0', fontSize: '1rem', fontWeight: 300, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', maxWidth: '60ch' }}>
             TWA works alongside a network of hospitals, NGOs, and government bodies that share our
             commitment to comprehensive thalassemia care across Tamil Nadu.
           </p>
         </div>
 
         <div className="partner-grid">
-          {PARTNERS.map((p) => {
-            const color = TYPE_COLORS[p.type] ?? { bg: 'var(--color-bg-muted)', text: 'var(--color-text-muted)' }
-            return (
-              <div
-                key={p.name}
-                className="card card-hover"
-                style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}
-              >
-                {p.logo ? (
-                  <div
-                    style={{
-                      height: 64,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
-                      borderRadius: 'var(--radius)',
-                      background: 'var(--color-bg-muted)',
-                      padding: '0.5rem 0.75rem',
-                    }}
-                  >
-                    <Image
-                      src={p.logo}
-                      alt={`Logo of ${p.name}`}
-                      width={140}
-                      height={48}
-                      style={{ objectFit: 'contain', height: '100%', width: 'auto', maxWidth: '100%' }}
-                    />
-                  </div>
-                ) : (
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      height: 64,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.6rem',
-                      borderRadius: 'var(--radius)',
-                      background: 'var(--color-bg-muted)',
-                      padding: '0.5rem 0.75rem',
-                    }}
-                  >
-                    <span style={{
-                      width: 40, height: 40, borderRadius: 'var(--radius-sm)',
-                      background: 'var(--color-primary)', color: '#fff',
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 800, fontSize: '0.85rem', flexShrink: 0,
-                    }}>
-                      {p.shortName.slice(0, 2).toUpperCase()}
-                    </span>
-                  </div>
-                )}
-
-                <div>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.2rem 0.6rem',
-                      borderRadius: 'var(--radius-full)',
-                      background: color.bg,
-                      color: color.text,
-                      fontSize: '0.7rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.04em',
-                      marginBottom: '0.45rem',
-                    }}
-                  >
-                    {p.type}
-                  </span>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.35rem', color: 'var(--color-text)' }}>
-                    {p.name}
-                  </h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>
-                    {p.role}
-                  </p>
+          {PARTNERS.map((p) => (
+            <div
+              key={p.name}
+              className="partner-card-dark"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: 12,
+                padding: '1.5rem',
+                display: 'flex', flexDirection: 'column', gap: '0.85rem',
+                transition: 'background .2s ease',
+              }}
+            >
+              {p.logo ? (
+                <div
+                  style={{
+                    width: 48, height: 48,
+                    borderRadius: 10,
+                    background: '#fff',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    padding: '0.35rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Image
+                    src={p.logo}
+                    alt={`Logo of ${p.name}`}
+                    width={40}
+                    height={40}
+                    style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                  />
                 </div>
+              ) : (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    width: 48, height: 48,
+                    borderRadius: 10,
+                    background: 'rgba(255,255,255,0.15)',
+                    color: '#fff',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: '1rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  {p.shortName.slice(0, 2).toUpperCase()}
+                </div>
+              )}
+
+              <div>
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: '0.65rem', fontWeight: 600,
+                    letterSpacing: '0.1em', textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.6)',
+                    marginBottom: '0.4rem',
+                  }}
+                >
+                  {p.type}
+                </span>
+                <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', fontWeight: 500, marginBottom: '0.35rem', color: '#fff' }}>
+                  {p.name}
+                </h3>
+                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
+                  {p.role}
+                </p>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
 
         <p
           style={{
             maxWidth: 700, margin: '2.25rem auto 0',
-            color: 'var(--color-text-subtle)', textAlign: 'center', fontSize: '0.9rem',
+            color: 'rgba(255,255,255,0.6)', textAlign: 'center', fontSize: '0.9rem',
           }}
         >
           We are grateful to all blood donors, corporate partners, and individual supporters who
@@ -212,9 +198,9 @@ export default function Home() {
     <>
       <Header />
       <main id="main">
-        {/* Hero + ImpactStats are above-the-fold — no animation delay needed */}
+        {/* Hero is above-the-fold — no animation delay needed.
+            The impact stats live inside the hero card; the full-width strip was removed as duplicate. */}
         <Hero />
-        <ImpactStats />
 
         {/* Below-fold sections get smooth scroll-reveal */}
         <ScrollReveal><OurStory /></ScrollReveal>

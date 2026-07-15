@@ -31,22 +31,22 @@ export default function Header() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: scrolled ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.90)',
-        backdropFilter: 'saturate(200%) blur(16px)',
-        WebkitBackdropFilter: 'saturate(200%) blur(16px)',
-        borderBottom: '1px solid var(--color-border)',
-        boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)' : 'none',
-        transition: 'box-shadow .25s ease, background .25s ease',
+        background: 'rgba(255,255,255,0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(76, 122, 76, 0.12)',
+        boxShadow: scrolled ? '0 2px 24px rgba(15,26,16,0.06)' : 'none',
+        transition: 'box-shadow .25s ease',
       }}
     >
-      <div className="container flex-between" style={{ padding: '0.85rem 1.5rem' }}>
+      <div className="container flex-between" style={{ minHeight: 64, padding: '0 1.5rem' }}>
         {/* Logo */}
         <Link href="/" aria-label="Thalassemia Welfare Association Chennai — Home" style={{ textDecoration: 'none' }}>
           <Logo />
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Primary" className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+        <nav aria-label="Primary" className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '0.125rem' }}>
           {NAV.map((item) => {
             const active = pathname === item.href
             return (
@@ -54,16 +54,15 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
+                className="nav-link"
                 style={{
-                  padding: '0.5rem 0.85rem',
-                  borderRadius: 'var(--radius)',
-                  fontWeight: active ? 600 : 500,
-                  fontSize: '0.9rem',
-                  color: active ? 'var(--color-primary)' : 'var(--color-text)',
+                  padding: '0.5rem 0.7rem',
+                  fontWeight: active ? 500 : 400,
+                  fontSize: '0.875rem',
+                  color: active ? 'var(--color-primary)' : 'var(--color-ink-muted)',
                   textDecoration: 'none',
-                  background: active ? 'var(--color-primary-soft)' : 'transparent',
-                  transition: 'background .15s ease, color .15s ease',
-                  letterSpacing: '-0.01em',
+                  transition: 'color .15s ease',
+                  letterSpacing: '-0.005em',
                 }}
               >
                 {item.label}
@@ -72,8 +71,11 @@ export default function Header() {
           })}
           <Link
             href="/donate"
-            className="btn btn-accent btn-sm"
-            style={{ marginLeft: '0.5rem', fontWeight: 700 }}
+            className="btn btn-primary"
+            style={{
+              marginLeft: '0.75rem', fontWeight: 500, fontSize: '0.875rem',
+              padding: '0.5rem 1.25rem', minHeight: 0,
+            }}
           >
             Donate
           </Link>
@@ -89,11 +91,11 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           style={{
             background: 'transparent', border: 0, cursor: 'pointer',
-            padding: '0.5rem', color: 'var(--color-text)',
+            padding: '0.5rem', color: 'var(--color-ink)',
             display: 'none',
           }}
         >
-          <Icon name={open ? 'x' : 'menu'} size={24} />
+          <Icon name={open ? 'x' : 'menu'} size={22} />
         </button>
       </div>
 
@@ -108,8 +110,8 @@ export default function Header() {
           background: '#fff',
         }}
       >
-        <nav aria-label="Mobile" style={{ padding: '0.5rem 1rem 1rem' }}>
-          {NAV.map((item) => {
+        <nav aria-label="Mobile" style={{ padding: '0.25rem 1.25rem 1.25rem' }}>
+          {NAV.map((item, i) => {
             const active = pathname === item.href
             return (
               <Link
@@ -118,20 +120,19 @@ export default function Header() {
                 aria-current={active ? 'page' : undefined}
                 style={{
                   display: 'block',
-                  padding: '0.85rem 0.75rem',
-                  borderRadius: 'var(--radius)',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  color: active ? 'var(--color-primary)' : 'var(--color-text)',
+                  padding: '1rem 0.25rem',
+                  borderBottom: i < NAV.length - 1 ? '1px solid rgba(76,122,76,0.1)' : undefined,
+                  fontWeight: active ? 500 : 400,
+                  fontSize: '0.95rem',
+                  color: active ? 'var(--color-primary)' : 'var(--color-ink-muted)',
                   textDecoration: 'none',
-                  background: active ? 'var(--color-primary-soft)' : 'transparent',
                 }}
               >
                 {item.label}
               </Link>
             )
           })}
-          <Link href="/donate" className="btn btn-primary btn-block" style={{ marginTop: '0.5rem' }}>
+          <Link href="/donate" className="btn btn-primary btn-block" style={{ marginTop: '1rem' }}>
             Donate
           </Link>
         </nav>
@@ -141,6 +142,10 @@ export default function Header() {
         @media (max-width: 920px) {
           :global(.desktop-nav) { display: none !important; }
           .mobile-toggle { display: inline-flex !important; }
+        }
+        :global(.nav-link:hover) {
+          color: var(--color-primary) !important;
+          text-decoration: none !important;
         }
       `}</style>
     </header>

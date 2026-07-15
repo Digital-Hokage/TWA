@@ -24,10 +24,31 @@ export default function TrustSignals() {
 
         <div className="grid grid-4">
           {SIGNALS.map((s) => (
-            <div key={s.title} className="card card-hover">
-              <span className="icon-tile accent lg" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
-              <h3 className="card-title" style={{ marginTop: '1rem', fontWeight: 700 }}>{s.title}</h3>
-              <p className="card-body">{s.desc}</p>
+            <div
+              key={s.title}
+              style={{
+                background: '#fff',
+                borderRadius: 12,
+                padding: '1.5rem',
+                borderLeft: '3px solid var(--color-primary)',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                  fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.1em',
+                  textTransform: 'uppercase', color: 'var(--color-primary)',
+                  marginBottom: '0.75rem',
+                }}
+              >
+                <Icon name={s.icon} size={14} /> Credential
+              </span>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>
+                {s.title}
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-ink-muted)', lineHeight: 1.65 }}>{s.desc}</p>
             </div>
           ))}
         </div>

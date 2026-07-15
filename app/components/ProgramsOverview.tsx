@@ -52,9 +52,11 @@ export default function ProgramsOverview() {
     <section className="section" id="programs" aria-labelledby="programs-heading">
       <div className="container">
         <div className="section-header">
-          <span className="eyebrow eyebrow--accent">What we do</span>
-          <h2 id="programs-heading">A lifelong package of care, not a one-time gift.</h2>
-          <p className="lead" style={{ margin: '0.75rem auto 0' }}>
+          <span className="eyebrow">What we do</span>
+          <h2 id="programs-heading" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontWeight: 700 }}>
+            A lifelong package of care, not a one-time gift.
+          </h2>
+          <p className="lead" style={{ margin: '0.75rem auto 0', maxWidth: 560 }}>
             Thalassemia major is a lifelong condition. Patients need transfusions every few weeks
             and daily medication for life. Our programmes are built around that reality.
           </p>
@@ -62,22 +64,37 @@ export default function ProgramsOverview() {
 
         <div className="grid grid-3">
           {PROGRAMS.map((p) => (
-            <article key={p.title} className="card card-hover" style={{ borderTop: '3px solid transparent', transition: 'box-shadow .3s cubic-bezier(0.16,1,0.3,1), transform .3s cubic-bezier(0.16,1,0.3,1), border-color .25s ease' }}>
-              <span className="icon-tile" aria-hidden="true" style={{ background: 'var(--color-primary-soft)', color: 'var(--color-primary)' }}>
-                <Icon name={p.icon} size={20} />
+            <article
+              key={p.title}
+              className="card card-hover"
+              style={{ display: 'flex', flexDirection: 'column' }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: 32, height: 32,
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  borderRadius: 8,
+                  background: 'var(--color-primary-soft)',
+                  color: 'var(--color-primary)',
+                  flexShrink: 0,
+                }}
+              >
+                <Icon name={p.icon} size={18} />
               </span>
-              <h3 className="card-title" style={{ marginTop: '1.1rem', fontWeight: 700 }}>{p.title}</h3>
+              <h3 className="card-title" style={{ marginTop: '1rem' }}>{p.title}</h3>
               <p className="card-body">{p.desc}</p>
               <Link
                 href={p.href}
+                className="quiet-link"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-                  marginTop: '1rem', fontSize: '0.88rem', fontWeight: 700,
+                  marginTop: 'auto', paddingTop: '1rem',
+                  fontSize: '0.8rem', fontWeight: 500,
                   color: 'var(--color-primary)',
-                  letterSpacing: '-0.01em',
                 }}
               >
-                Learn more <Icon name="arrow-right" size={13} />
+                Learn more <Icon name="arrow-right" size={12} />
               </Link>
             </article>
           ))}
