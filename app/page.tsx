@@ -92,6 +92,13 @@ const PARTNERS_DATA: Partner[] = [
     type: 'Corporate Donor',
     logo: '/images/partners/rotork.png',
   },
+  {
+    name: 'SAIPEM',
+    shortName: 'Saipem',
+    role: 'Corporate donor supporting safer transfusions through bedside blood filters for our patients.',
+    type: 'Corporate Donor',
+    logo: '/images/partners/saipem.jpeg',
+  },
 ]
 
 function Partners({ partners }: { partners: Partner[] }) {
@@ -199,6 +206,144 @@ function Partners({ partners }: { partners: Partner[] }) {
   )
 }
 
+type Donor = {
+  name: string
+  contribution: string
+  body: string
+  representative: string
+  image: string
+  caption: string
+  /** Set only where patients appear in frame and faces have been blurred. */
+  privacyNote?: boolean
+}
+
+const DONORS: Donor[] = [
+  {
+    name: 'Five-Star Business Finance Limited',
+    contribution: 'Medicines Fund',
+    body:
+      'Five-Star Business Finance Limited made a transformative contribution towards medicines ' +
+      'for our patients. This donation directly funds chelation therapy and supporting medicines ' +
+      'for all 199 patients on our care register — ensuring uninterrupted treatment for an ' +
+      'entire year.',
+    representative: 'Represented by Mr. Sivaramakrishnan, CSR Manager',
+    image: '/images/donors/five-star-visit-fullBlurred.jpeg',
+    caption:
+      'Mr. Sivaramakrishnan visiting patients during transfusion sessions at VHS Thalassaemia Centre, Chennai',
+    privacyNote: true,
+  },
+  {
+    name: 'SAIPEM',
+    contribution: 'Bedside Blood Filters',
+    body:
+      'SAIPEM donated bedside leucocyte filters for our patients. Every unit of blood is passed ' +
+      'through a filter at the bedside during transfusion, removing white cells that cause ' +
+      'reactions and long-term complications — making each of the thousands of transfusions we ' +
+      'support every year safer.',
+    representative: 'Presented at VHS Thalassaemia Centre, Chennai',
+    image: '/images/donors/saipem-visit.jpg',
+    caption:
+      'SAIPEM representatives receiving a citation from the TWA team at VHS Thalassaemia Centre, Chennai',
+  },
+]
+
+function DonorCard({ donor }: { donor: Donor }) {
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+        gap: '2rem',
+        alignItems: 'center',
+        maxWidth: 960,
+        margin: '0 auto',
+        background: '#fff',
+        border: '1px solid rgba(76,122,76,0.15)',
+        borderLeft: '4px solid var(--color-primary)',
+        borderRadius: 16,
+        padding: '2rem',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
+      }}
+    >
+      {/* Left — photo */}
+      <figure style={{ margin: 0 }}>
+        <img
+          src={donor.image}
+          alt={donor.caption}
+          style={{
+            width: '100%',
+            aspectRatio: '16 / 9',
+            objectFit: 'cover',
+            borderRadius: 12,
+            display: 'block',
+          }}
+        />
+        <figcaption
+          style={{
+            marginTop: '0.75rem',
+            fontSize: '0.82rem',
+            fontStyle: 'italic',
+            color: 'var(--color-text-subtle)',
+            lineHeight: 1.5,
+          }}
+        >
+          {donor.caption}
+        </figcaption>
+        {donor.privacyNote && (
+          <p
+            style={{
+              marginTop: '0.35rem',
+              fontSize: '0.72rem',
+              fontStyle: 'italic',
+              color: 'var(--color-ink-muted)',
+            }}
+          >
+            Patient faces blurred to protect privacy.
+          </p>
+        )}
+      </figure>
+
+      {/* Right — text */}
+      <div>
+        <h3
+          style={{
+            fontSize: '1.4rem',
+            fontWeight: 700,
+            lineHeight: 1.3,
+            marginBottom: '0.85rem',
+            color: 'var(--color-text)',
+          }}
+        >
+          {donor.name}
+        </h3>
+
+        <span
+          style={{
+            display: 'inline-block',
+            background: 'var(--color-primary)',
+            color: '#fff',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            padding: '0.35rem 0.9rem',
+            borderRadius: 'var(--radius-full)',
+            marginBottom: '1.1rem',
+          }}
+        >
+          {donor.contribution}
+        </span>
+
+        <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
+          {donor.body}
+        </p>
+
+        <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)' }}>
+          {donor.representative}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function CorporateSupport() {
   return (
     <section
@@ -215,100 +360,11 @@ function CorporateSupport() {
           </p>
         </div>
 
-        {/* Donor card — image left, text right on desktop; stacked on mobile */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-            gap: '2rem',
-            alignItems: 'center',
-            maxWidth: 960,
-            margin: '0 auto',
-            background: '#fff',
-            border: '1px solid rgba(76,122,76,0.15)',
-            borderLeft: '4px solid var(--color-primary)',
-            borderRadius: 16,
-            padding: '2rem',
-            boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
-          }}
-        >
-          {/* Left — photo */}
-          <figure style={{ margin: 0 }}>
-            <img
-              src="/images/donors/five-star-visit-fullBlurred.jpeg"
-              alt="Mr. Sivaramakrishnan, CSR Manager of Five-Star Business Finance Limited, visiting thalassemia patients at VHS Thalassaemia Centre, Chennai during a transfusion session"
-              style={{
-                width: '100%',
-                aspectRatio: '16 / 9',
-                objectFit: 'cover',
-                borderRadius: 12,
-                display: 'block',
-              }}
-            />
-            <figcaption
-              style={{
-                marginTop: '0.75rem',
-                fontSize: '0.82rem',
-                fontStyle: 'italic',
-                color: 'var(--color-text-subtle)',
-                lineHeight: 1.5,
-              }}
-            >
-              Mr. Sivaramakrishnan visiting patients during transfusion sessions at VHS
-              Thalassaemia Centre, Chennai
-            </figcaption>
-            <p
-              style={{
-                marginTop: '0.35rem',
-                fontSize: '0.72rem',
-                fontStyle: 'italic',
-                color: 'var(--color-ink-muted)',
-              }}
-            >
-              Patient faces blurred to protect privacy.
-            </p>
-          </figure>
-
-          {/* Right — text */}
-          <div>
-            <h3
-              style={{
-                fontSize: '1.4rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '0.85rem',
-                color: 'var(--color-text)',
-              }}
-            >
-              Five-Star Business Finance Limited
-            </h3>
-
-            <span
-              style={{
-                display: 'inline-block',
-                background: 'var(--color-primary)',
-                color: '#fff',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                padding: '0.35rem 0.9rem',
-                borderRadius: 'var(--radius-full)',
-                marginBottom: '1.1rem',
-              }}
-            >
-              ₹48 Lakhs — Medicines Fund
-            </span>
-
-            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-              Five-Star Business Finance Limited made a transformative contribution of ₹48 lakhs
-              towards medicines for our patients. This donation directly funds chelation therapy
-              and supporting medicines for all 199 patients on our care register — ensuring
-              uninterrupted treatment for an entire year.
-            </p>
-
-            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)' }}>
-              Represented by Mr. Sivaramakrishnan, CSR Manager
-            </p>
-          </div>
+        {/* Donor cards — image left, text right on desktop; stacked on mobile */}
+        <div style={{ display: 'grid', gap: '2rem' }}>
+          {DONORS.map((d) => (
+            <DonorCard key={d.name} donor={d} />
+          ))}
         </div>
       </div>
     </section>
